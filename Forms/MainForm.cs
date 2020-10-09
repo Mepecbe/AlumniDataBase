@@ -27,21 +27,23 @@ namespace DataBase
         {
             if (metroStyleManager1.Theme == MetroThemeStyle.Light)
             {
-                metroStyleManager1.Theme = MetroThemeStyle.Dark;
-                this.Edit.Theme = MetroThemeStyle.Dark;
-                this.Add.Theme = MetroThemeStyle.Dark;
-                this.Show.Theme = MetroThemeStyle.Dark;
-                this.Export.Theme = MetroThemeStyle.Dark;
-                this.Theme = MetroThemeStyle.Dark;
+                this.metroStyleManager1.Theme = MetroThemeStyle.Dark;
+                this.metroButton1      .Theme = MetroThemeStyle.Dark;
+                this.Export            .Theme = MetroThemeStyle.Dark;
+                this.Show              .Theme = MetroThemeStyle.Dark;
+                this.Edit              .Theme = MetroThemeStyle.Dark;
+                this.Add               .Theme = MetroThemeStyle.Dark;
+                this                   .Theme = MetroThemeStyle.Dark;
             }
             else
             {
-                metroStyleManager1.Theme = MetroThemeStyle.Light;
-                this.Edit.Theme = MetroThemeStyle.Light;
-                this.Add.Theme = MetroThemeStyle.Light;
-                this.Show.Theme = MetroThemeStyle.Light;
-                this.Export.Theme = MetroThemeStyle.Light;
-                this.Theme = MetroThemeStyle.Light;
+                this.metroStyleManager1.Theme = MetroThemeStyle.Light;
+                this.metroButton1      .Theme = MetroThemeStyle.Light;
+                this.Export            .Theme = MetroThemeStyle.Light;
+                this.Show              .Theme = MetroThemeStyle.Light;
+                this.Edit              .Theme = MetroThemeStyle.Light;
+                this.Add               .Theme = MetroThemeStyle.Light;
+                this                   .Theme = MetroThemeStyle.Light;
             }
 
             this.UpdateStyles();

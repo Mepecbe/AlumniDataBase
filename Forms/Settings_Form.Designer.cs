@@ -47,10 +47,10 @@
             this.metroListView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListView1.FullRowSelect = true;
-            this.metroListView1.Location = new System.Drawing.Point(20, 129);
+            this.metroListView1.Location = new System.Drawing.Point(20, 63);
             this.metroListView1.Name = "metroListView1";
             this.metroListView1.OwnerDraw = true;
-            this.metroListView1.Size = new System.Drawing.Size(523, 278);
+            this.metroListView1.Size = new System.Drawing.Size(523, 344);
             this.metroListView1.TabIndex = 0;
             this.metroListView1.UseCompatibleStateImageBehavior = false;
             this.metroListView1.UseSelectable = true;
@@ -79,12 +79,14 @@
             this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
             this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
             // 
             // удалитьВыбранноеToolStripMenuItem
             // 
             this.удалитьВыбранноеToolStripMenuItem.Name = "удалитьВыбранноеToolStripMenuItem";
             this.удалитьВыбранноеToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.удалитьВыбранноеToolStripMenuItem.Text = "Удалить выбранное";
+            this.удалитьВыбранноеToolStripMenuItem.Click += new System.EventHandler(this.удалитьВыбранноеToolStripMenuItem_Click);
             // 
             // Settings_Form
             // 
@@ -94,6 +96,7 @@
             this.Controls.Add(this.metroListView1);
             this.Name = "Settings_Form";
             this.Text = "Настройки";
+            this.Shown += new System.EventHandler(this.Settings_Form_Shown);
             this.metroContextMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
 
