@@ -10,17 +10,48 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using MetroFramework;
+using DataBase.Forms;
 
 namespace DataBase
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
+        public static string FILE_NAME = "D:\\Db.xml";
+
         public MainForm()
         {
             InitializeComponent();
         }
-    }
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            if (metroStyleManager1.Theme == MetroThemeStyle.Light)
+            {
+                metroStyleManager1.Theme = MetroThemeStyle.Dark;
+                this.Edit.Theme = MetroThemeStyle.Dark;
+                this.Add.Theme = MetroThemeStyle.Dark;
+                this.Show.Theme = MetroThemeStyle.Dark;
+                this.Export.Theme = MetroThemeStyle.Dark;
+                this.Theme = MetroThemeStyle.Dark;
+            }
+            else
+            {
+                metroStyleManager1.Theme = MetroThemeStyle.Light;
+                this.Edit.Theme = MetroThemeStyle.Light;
+                this.Add.Theme = MetroThemeStyle.Light;
+                this.Show.Theme = MetroThemeStyle.Light;
+                this.Export.Theme = MetroThemeStyle.Light;
+                this.Theme = MetroThemeStyle.Light;
+            }
+
+            this.UpdateStyles();
+        }
+
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            new Settings_Form().ShowDialog();
+        }
+    }
 
 
 
@@ -41,7 +72,7 @@ namespace DataBase
         /// <summary>
         /// Строки таблицы
         /// </summary>
-        public Row TableRow;
+        public Row TableRows;
 
         /// <summary>
         /// Экземпляр строки

@@ -28,11 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.Export = new MetroFramework.Controls.MetroTile();
             this.Show = new MetroFramework.Controls.MetroTile();
             this.Edit = new MetroFramework.Controls.MetroTile();
             this.Add = new MetroFramework.Controls.MetroTile();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(868, 5);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 4;
+            this.metroButton1.Text = "СТИЛЬ";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // metroStyleManager1
+            // 
+            this.metroStyleManager1.Owner = this;
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(61, 288);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(183, 187);
+            this.metroTile1.TabIndex = 5;
+            this.metroTile1.Text = "Настройки";
+            this.metroTile1.TileImage = global::DataBase.Properties.Resources.settings_gear;
+            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.UseSelectable = true;
+            this.metroTile1.UseTileImage = true;
+            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // Export
             // 
@@ -90,7 +123,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 441);
+            this.ClientSize = new System.Drawing.Size(984, 498);
+            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.Export);
             this.Controls.Add(this.Show);
             this.Controls.Add(this.Edit);
@@ -100,6 +135,7 @@
             this.Name = "MainForm";
             this.Resizable = false;
             this.Text = "База данных выпускников";
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,6 +146,9 @@
         private MetroFramework.Controls.MetroTile Edit;
         private MetroFramework.Controls.MetroTile Show;
         private MetroFramework.Controls.MetroTile Export;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager1;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }
 
