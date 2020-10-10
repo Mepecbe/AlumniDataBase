@@ -53,6 +53,11 @@ namespace DataBase
         {
             new Settings_Form().ShowDialog();
         }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            new Add_Form().ShowDialog();
+        }
     }
 
 

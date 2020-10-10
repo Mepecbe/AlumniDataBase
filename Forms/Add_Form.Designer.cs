@@ -28,19 +28,753 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.Year = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.Table_1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.Table_2 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.Table_3 = new MetroFramework.Controls.MetroTextBox();
+            this.Add_button = new MetroFramework.Controls.MetroButton();
+            this.metroListView1 = new MetroFramework.Controls.MetroListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.Table_4 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.Table_5 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.Table_6 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.Table_7 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.Table_8 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.Table_9 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.Table_10 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox7 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox8 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox9 = new MetroFramework.Controls.MetroComboBox();
+            this.metroComboBox10 = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(61, 74);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel1.TabIndex = 0;
+            this.metroLabel1.Text = "Год";
+            // 
+            // Year
+            // 
+            // 
+            // 
+            // 
+            this.Year.CustomButton.Image = null;
+            this.Year.CustomButton.Location = new System.Drawing.Point(206, 1);
+            this.Year.CustomButton.Name = "";
+            this.Year.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Year.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Year.CustomButton.TabIndex = 1;
+            this.Year.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Year.CustomButton.UseSelectable = true;
+            this.Year.CustomButton.Visible = false;
+            this.Year.Lines = new string[0];
+            this.Year.Location = new System.Drawing.Point(115, 74);
+            this.Year.MaxLength = 32767;
+            this.Year.Name = "Year";
+            this.Year.PasswordChar = '\0';
+            this.Year.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Year.SelectedText = "";
+            this.Year.SelectionLength = 0;
+            this.Year.SelectionStart = 0;
+            this.Year.ShortcutsEnabled = true;
+            this.Year.Size = new System.Drawing.Size(228, 23);
+            this.Year.TabIndex = 1;
+            this.Year.UseSelectable = true;
+            this.Year.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Year.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(61, 119);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(125, 57);
+            this.metroLabel2.TabIndex = 2;
+            this.metroLabel2.Text = "Наименование УО\r\nили организации\r\n";
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(192, 119);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(151, 29);
+            this.metroComboBox1.TabIndex = 3;
+            this.metroComboBox1.UseSelectable = true;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(61, 176);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(143, 38);
+            this.metroLabel3.TabIndex = 4;
+            this.metroLabel3.Text = "Код и наименование \r\nспециальности";
+            // 
+            // metroTextBox1
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox1.CustomButton.Image = null;
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(102, 1);
+            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox1.CustomButton.TabIndex = 1;
+            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox1.CustomButton.UseSelectable = true;
+            this.metroTextBox1.CustomButton.Visible = false;
+            this.metroTextBox1.Lines = new string[0];
+            this.metroTextBox1.Location = new System.Drawing.Point(219, 176);
+            this.metroTextBox1.MaxLength = 32767;
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.PasswordChar = '\0';
+            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox1.SelectedText = "";
+            this.metroTextBox1.SelectionLength = 0;
+            this.metroTextBox1.SelectionStart = 0;
+            this.metroTextBox1.ShortcutsEnabled = true;
+            this.metroTextBox1.Size = new System.Drawing.Size(124, 23);
+            this.metroTextBox1.TabIndex = 5;
+            this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(640, 74);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(40, 19);
+            this.metroLabel4.TabIndex = 6;
+            this.metroLabel4.Text = "ФИО";
+            // 
+            // Table_1
+            // 
+            // 
+            // 
+            // 
+            this.Table_1.CustomButton.Image = null;
+            this.Table_1.CustomButton.Location = new System.Drawing.Point(268, 1);
+            this.Table_1.CustomButton.Name = "";
+            this.Table_1.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Table_1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Table_1.CustomButton.TabIndex = 1;
+            this.Table_1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Table_1.CustomButton.UseSelectable = true;
+            this.Table_1.CustomButton.Visible = false;
+            this.Table_1.Lines = new string[0];
+            this.Table_1.Location = new System.Drawing.Point(694, 70);
+            this.Table_1.MaxLength = 32767;
+            this.Table_1.Name = "Table_1";
+            this.Table_1.PasswordChar = '\0';
+            this.Table_1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Table_1.SelectedText = "";
+            this.Table_1.SelectionLength = 0;
+            this.Table_1.SelectionStart = 0;
+            this.Table_1.ShortcutsEnabled = true;
+            this.Table_1.Size = new System.Drawing.Size(290, 23);
+            this.Table_1.TabIndex = 7;
+            this.Table_1.UseSelectable = true;
+            this.Table_1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Table_1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(1024, 72);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(33, 19);
+            this.metroLabel5.TabIndex = 8;
+            this.metroLabel5.Text = "Пол";
+            // 
+            // Table_2
+            // 
+            this.Table_2.FormattingEnabled = true;
+            this.Table_2.ItemHeight = 23;
+            this.Table_2.Items.AddRange(new object[] {
+            "М",
+            "Ж"});
+            this.Table_2.Location = new System.Drawing.Point(1063, 68);
+            this.Table_2.Name = "Table_2";
+            this.Table_2.Size = new System.Drawing.Size(82, 29);
+            this.Table_2.TabIndex = 9;
+            this.Table_2.UseSelectable = true;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(640, 110);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(96, 19);
+            this.metroLabel6.TabIndex = 11;
+            this.metroLabel6.Text = "Год рождения";
+            // 
+            // Table_3
+            // 
+            // 
+            // 
+            // 
+            this.Table_3.CustomButton.Image = null;
+            this.Table_3.CustomButton.Location = new System.Drawing.Point(70, 1);
+            this.Table_3.CustomButton.Name = "";
+            this.Table_3.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Table_3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Table_3.CustomButton.TabIndex = 1;
+            this.Table_3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Table_3.CustomButton.UseSelectable = true;
+            this.Table_3.CustomButton.Visible = false;
+            this.Table_3.Lines = new string[0];
+            this.Table_3.Location = new System.Drawing.Point(742, 110);
+            this.Table_3.MaxLength = 32767;
+            this.Table_3.Name = "Table_3";
+            this.Table_3.PasswordChar = '\0';
+            this.Table_3.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Table_3.SelectedText = "";
+            this.Table_3.SelectionLength = 0;
+            this.Table_3.SelectionStart = 0;
+            this.Table_3.ShortcutsEnabled = true;
+            this.Table_3.Size = new System.Drawing.Size(92, 23);
+            this.Table_3.TabIndex = 12;
+            this.Table_3.UseSelectable = true;
+            this.Table_3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Table_3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // Add_button
+            // 
+            this.Add_button.Location = new System.Drawing.Point(640, 280);
+            this.Add_button.Name = "Add_button";
+            this.Add_button.Size = new System.Drawing.Size(505, 23);
+            this.Add_button.TabIndex = 15;
+            this.Add_button.Text = "Добавить в таблицу";
+            this.Add_button.UseSelectable = true;
+            this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
+            // 
+            // metroListView1
+            // 
+            this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10});
+            this.metroListView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListView1.FullRowSelect = true;
+            this.metroListView1.Location = new System.Drawing.Point(20, 309);
+            this.metroListView1.Name = "metroListView1";
+            this.metroListView1.OwnerDraw = true;
+            this.metroListView1.Size = new System.Drawing.Size(1281, 456);
+            this.metroListView1.TabIndex = 16;
+            this.metroListView1.UseCompatibleStateImageBehavior = false;
+            this.metroListView1.UseSelectable = true;
+            this.metroListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ФИО";
+            this.columnHeader1.Width = 205;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Пол";
+            this.columnHeader2.Width = 46;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Год рождения";
+            this.columnHeader3.Width = 120;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Семейное положение";
+            this.columnHeader4.Width = 176;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Адрес";
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Наименование гос органа";
+            this.columnHeader6.Width = 122;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Наименование организации";
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Должность";
+            this.columnHeader8.Width = 115;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Возможность обеспеч. жил. площадью";
+            this.columnHeader9.Width = 125;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Предоставляется право смостоятельного трудоустройства";
+            this.columnHeader10.Width = 158;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(640, 145);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(146, 19);
+            this.metroLabel8.TabIndex = 17;
+            this.metroLabel8.Text = "Семейное положение";
+            // 
+            // Table_4
+            // 
+            this.Table_4.FormattingEnabled = true;
+            this.Table_4.ItemHeight = 23;
+            this.Table_4.Items.AddRange(new object[] {
+            "Женат(а)",
+            "Не женат(а)"});
+            this.Table_4.Location = new System.Drawing.Point(792, 139);
+            this.Table_4.Name = "Table_4";
+            this.Table_4.Size = new System.Drawing.Size(121, 29);
+            this.Table_4.TabIndex = 18;
+            this.Table_4.UseSelectable = true;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(640, 176);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(46, 19);
+            this.metroLabel9.TabIndex = 19;
+            this.metroLabel9.Text = "Адрес";
+            // 
+            // Table_5
+            // 
+            // 
+            // 
+            // 
+            this.Table_5.CustomButton.Image = null;
+            this.Table_5.CustomButton.Location = new System.Drawing.Point(197, 1);
+            this.Table_5.CustomButton.Name = "";
+            this.Table_5.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Table_5.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Table_5.CustomButton.TabIndex = 1;
+            this.Table_5.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Table_5.CustomButton.UseSelectable = true;
+            this.Table_5.CustomButton.Visible = false;
+            this.Table_5.Lines = new string[0];
+            this.Table_5.Location = new System.Drawing.Point(694, 176);
+            this.Table_5.MaxLength = 32767;
+            this.Table_5.Name = "Table_5";
+            this.Table_5.PasswordChar = '\0';
+            this.Table_5.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Table_5.SelectedText = "";
+            this.Table_5.SelectionLength = 0;
+            this.Table_5.SelectionStart = 0;
+            this.Table_5.ShortcutsEnabled = true;
+            this.Table_5.Size = new System.Drawing.Size(219, 23);
+            this.Table_5.TabIndex = 20;
+            this.Table_5.UseSelectable = true;
+            this.Table_5.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Table_5.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.Location = new System.Drawing.Point(640, 211);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(71, 19);
+            this.metroLabel10.TabIndex = 21;
+            this.metroLabel10.Text = "Гос. орган";
+            // 
+            // Table_6
+            // 
+            // 
+            // 
+            // 
+            this.Table_6.CustomButton.Image = null;
+            this.Table_6.CustomButton.Location = new System.Drawing.Point(180, 1);
+            this.Table_6.CustomButton.Name = "";
+            this.Table_6.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Table_6.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Table_6.CustomButton.TabIndex = 1;
+            this.Table_6.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Table_6.CustomButton.UseSelectable = true;
+            this.Table_6.CustomButton.Visible = false;
+            this.Table_6.Lines = new string[0];
+            this.Table_6.Location = new System.Drawing.Point(711, 211);
+            this.Table_6.MaxLength = 32767;
+            this.Table_6.Name = "Table_6";
+            this.Table_6.PasswordChar = '\0';
+            this.Table_6.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Table_6.SelectedText = "";
+            this.Table_6.SelectionLength = 0;
+            this.Table_6.SelectionStart = 0;
+            this.Table_6.ShortcutsEnabled = true;
+            this.Table_6.Size = new System.Drawing.Size(202, 23);
+            this.Table_6.TabIndex = 22;
+            this.Table_6.UseSelectable = true;
+            this.Table_6.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Table_6.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(640, 240);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(91, 19);
+            this.metroLabel11.TabIndex = 23;
+            this.metroLabel11.Text = "Организация";
+            // 
+            // Table_7
+            // 
+            // 
+            // 
+            // 
+            this.Table_7.CustomButton.Image = null;
+            this.Table_7.CustomButton.Location = new System.Drawing.Point(154, 1);
+            this.Table_7.CustomButton.Name = "";
+            this.Table_7.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Table_7.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Table_7.CustomButton.TabIndex = 1;
+            this.Table_7.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Table_7.CustomButton.UseSelectable = true;
+            this.Table_7.CustomButton.Visible = false;
+            this.Table_7.Lines = new string[0];
+            this.Table_7.Location = new System.Drawing.Point(737, 240);
+            this.Table_7.MaxLength = 32767;
+            this.Table_7.Name = "Table_7";
+            this.Table_7.PasswordChar = '\0';
+            this.Table_7.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Table_7.SelectedText = "";
+            this.Table_7.SelectionLength = 0;
+            this.Table_7.SelectionStart = 0;
+            this.Table_7.ShortcutsEnabled = true;
+            this.Table_7.Size = new System.Drawing.Size(176, 23);
+            this.Table_7.TabIndex = 24;
+            this.Table_7.UseSelectable = true;
+            this.Table_7.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Table_7.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(928, 110);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(75, 19);
+            this.metroLabel12.TabIndex = 25;
+            this.metroLabel12.Text = "Должность";
+            // 
+            // Table_8
+            // 
+            // 
+            // 
+            // 
+            this.Table_8.CustomButton.Image = null;
+            this.Table_8.CustomButton.Location = new System.Drawing.Point(99, 1);
+            this.Table_8.CustomButton.Name = "";
+            this.Table_8.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Table_8.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Table_8.CustomButton.TabIndex = 1;
+            this.Table_8.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Table_8.CustomButton.UseSelectable = true;
+            this.Table_8.CustomButton.Visible = false;
+            this.Table_8.Lines = new string[0];
+            this.Table_8.Location = new System.Drawing.Point(1024, 110);
+            this.Table_8.MaxLength = 32767;
+            this.Table_8.Name = "Table_8";
+            this.Table_8.PasswordChar = '\0';
+            this.Table_8.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Table_8.SelectedText = "";
+            this.Table_8.SelectionLength = 0;
+            this.Table_8.SelectionStart = 0;
+            this.Table_8.ShortcutsEnabled = true;
+            this.Table_8.Size = new System.Drawing.Size(121, 23);
+            this.Table_8.TabIndex = 26;
+            this.Table_8.UseSelectable = true;
+            this.Table_8.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Table_8.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel13
+            // 
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(928, 147);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(190, 57);
+            this.metroLabel13.TabIndex = 27;
+            this.metroLabel13.Text = "Возможность \r\nобеспечения жил. площадью\r\n";
+            // 
+            // Table_9
+            // 
+            this.Table_9.FormattingEnabled = true;
+            this.Table_9.ItemHeight = 23;
+            this.Table_9.Items.AddRange(new object[] {
+            "Да",
+            "Нет"});
+            this.Table_9.Location = new System.Drawing.Point(1024, 141);
+            this.Table_9.Name = "Table_9";
+            this.Table_9.Size = new System.Drawing.Size(121, 29);
+            this.Table_9.TabIndex = 28;
+            this.Table_9.UseSelectable = true;
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(928, 192);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(162, 57);
+            this.metroLabel14.TabIndex = 29;
+            this.metroLabel14.Text = "Право самостоятельного\r\nтрудойстроства\r\n";
+            // 
+            // Table_10
+            // 
+            this.Table_10.FormattingEnabled = true;
+            this.Table_10.ItemHeight = 23;
+            this.Table_10.Items.AddRange(new object[] {
+            "Да",
+            "Нет"});
+            this.Table_10.Location = new System.Drawing.Point(1040, 211);
+            this.Table_10.Name = "Table_10";
+            this.Table_10.Size = new System.Drawing.Size(105, 29);
+            this.Table_10.TabIndex = 30;
+            this.Table_10.UseSelectable = true;
+            // 
+            // metroLabel15
+            // 
+            this.metroLabel15.AutoSize = true;
+            this.metroLabel15.Location = new System.Drawing.Point(61, 221);
+            this.metroLabel15.Name = "metroLabel15";
+            this.metroLabel15.Size = new System.Drawing.Size(155, 19);
+            this.metroLabel15.TabIndex = 31;
+            this.metroLabel15.Text = "Председатель комиссии";
+            // 
+            // metroComboBox7
+            // 
+            this.metroComboBox7.FormattingEnabled = true;
+            this.metroComboBox7.ItemHeight = 23;
+            this.metroComboBox7.Location = new System.Drawing.Point(219, 217);
+            this.metroComboBox7.Name = "metroComboBox7";
+            this.metroComboBox7.Size = new System.Drawing.Size(124, 29);
+            this.metroComboBox7.TabIndex = 32;
+            this.metroComboBox7.UseSelectable = true;
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.Location = new System.Drawing.Point(61, 259);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(84, 19);
+            this.metroLabel16.TabIndex = 33;
+            this.metroLabel16.Text = "Заместитель";
+            // 
+            // metroComboBox8
+            // 
+            this.metroComboBox8.FormattingEnabled = true;
+            this.metroComboBox8.ItemHeight = 23;
+            this.metroComboBox8.Location = new System.Drawing.Point(151, 255);
+            this.metroComboBox8.Name = "metroComboBox8";
+            this.metroComboBox8.Size = new System.Drawing.Size(192, 29);
+            this.metroComboBox8.TabIndex = 34;
+            this.metroComboBox8.UseSelectable = true;
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.Location = new System.Drawing.Point(360, 74);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(112, 19);
+            this.metroLabel17.TabIndex = 35;
+            this.metroLabel17.Text = "Члены комиссии";
+            // 
+            // metroComboBox9
+            // 
+            this.metroComboBox9.FormattingEnabled = true;
+            this.metroComboBox9.ItemHeight = 23;
+            this.metroComboBox9.Location = new System.Drawing.Point(391, 104);
+            this.metroComboBox9.Name = "metroComboBox9";
+            this.metroComboBox9.Size = new System.Drawing.Size(191, 29);
+            this.metroComboBox9.TabIndex = 36;
+            this.metroComboBox9.UseSelectable = true;
+            // 
+            // metroComboBox10
+            // 
+            this.metroComboBox10.FormattingEnabled = true;
+            this.metroComboBox10.ItemHeight = 23;
+            this.metroComboBox10.Location = new System.Drawing.Point(391, 145);
+            this.metroComboBox10.Name = "metroComboBox10";
+            this.metroComboBox10.Size = new System.Drawing.Size(191, 29);
+            this.metroComboBox10.TabIndex = 37;
+            this.metroComboBox10.UseSelectable = true;
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.Location = new System.Drawing.Point(371, 108);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(14, 19);
+            this.metroLabel18.TabIndex = 38;
+            this.metroLabel18.Text = "1";
+            // 
+            // metroLabel19
+            // 
+            this.metroLabel19.AutoSize = true;
+            this.metroLabel19.Location = new System.Drawing.Point(371, 149);
+            this.metroLabel19.Name = "metroLabel19";
+            this.metroLabel19.Size = new System.Drawing.Size(16, 19);
+            this.metroLabel19.TabIndex = 39;
+            this.metroLabel19.Text = "2";
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(371, 192);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(211, 23);
+            this.metroButton1.TabIndex = 40;
+            this.metroButton1.Text = "Сохранить ведомость";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // Add_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1321, 785);
+            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.metroLabel19);
+            this.Controls.Add(this.metroLabel18);
+            this.Controls.Add(this.metroComboBox10);
+            this.Controls.Add(this.metroComboBox9);
+            this.Controls.Add(this.metroLabel17);
+            this.Controls.Add(this.metroComboBox8);
+            this.Controls.Add(this.metroLabel16);
+            this.Controls.Add(this.metroComboBox7);
+            this.Controls.Add(this.metroLabel15);
+            this.Controls.Add(this.Table_10);
+            this.Controls.Add(this.metroLabel14);
+            this.Controls.Add(this.Table_9);
+            this.Controls.Add(this.metroLabel13);
+            this.Controls.Add(this.Table_8);
+            this.Controls.Add(this.metroLabel12);
+            this.Controls.Add(this.Table_7);
+            this.Controls.Add(this.metroLabel11);
+            this.Controls.Add(this.Table_6);
+            this.Controls.Add(this.metroLabel10);
+            this.Controls.Add(this.Table_5);
+            this.Controls.Add(this.metroLabel9);
+            this.Controls.Add(this.Table_4);
+            this.Controls.Add(this.metroLabel8);
+            this.Controls.Add(this.metroListView1);
+            this.Controls.Add(this.Add_button);
+            this.Controls.Add(this.Table_3);
+            this.Controls.Add(this.metroLabel6);
+            this.Controls.Add(this.Table_2);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.Table_1);
+            this.Controls.Add(this.metroLabel4);
+            this.Controls.Add(this.metroTextBox1);
+            this.Controls.Add(this.metroLabel3);
+            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.Year);
+            this.Controls.Add(this.metroLabel1);
             this.Name = "Add_Form";
-            this.Text = "Добавление ведомости персонального учета выпускников";
+            this.Text = "Добавление ведомости";
+            this.Load += new System.EventHandler(this.Add_Form_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTextBox Year;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroTextBox Table_1;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroComboBox Table_2;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox Table_3;
+        private MetroFramework.Controls.MetroButton Add_button;
+        private MetroFramework.Controls.MetroListView metroListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroComboBox Table_4;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroTextBox Table_5;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroTextBox Table_6;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroTextBox Table_7;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroTextBox Table_8;
+        private MetroFramework.Controls.MetroLabel metroLabel13;
+        private MetroFramework.Controls.MetroComboBox Table_9;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
+        private MetroFramework.Controls.MetroComboBox Table_10;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
+        private MetroFramework.Controls.MetroComboBox metroComboBox7;
+        private MetroFramework.Controls.MetroLabel metroLabel16;
+        private MetroFramework.Controls.MetroComboBox metroComboBox8;
+        private MetroFramework.Controls.MetroLabel metroLabel17;
+        private MetroFramework.Controls.MetroComboBox metroComboBox9;
+        private MetroFramework.Controls.MetroComboBox metroComboBox10;
+        private MetroFramework.Controls.MetroLabel metroLabel18;
+        private MetroFramework.Controls.MetroLabel metroLabel19;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

@@ -118,6 +118,7 @@
             this.Add.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Add.UseSelectable = true;
             this.Add.UseTileImage = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // MainForm
             // 
