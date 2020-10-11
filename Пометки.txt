@@ -48,3 +48,25 @@
 		Наименование организации
 		Принят на должность служащего, рабочего(разряд)
 		Примечание
+
+
+
+		<?xml version="1.0" encoding="UTF-8"?>
+<statements>
+  <statement year="2020" EducationalInstitution="Новопольский ГАЭК" codeAndSpecialityName="2-40-40 ПОИТ" chairman="Крумкач Т.Н." deputy="Неведомская Н.М." CommissionMember1="Платонова Т.Ю" CommissionMember2="Захарич ">
+    <TabularPart>
+      <row>
+        <name>Володько Никита Иванович</name>
+		<year>2001</year>
+		<FamilyStatus>Не женат</FamilyStatus>
+		<Address>г. Минск, ул. Мачульского, д.24, кв. 113</Address>
+        <GovernmentAgency>гос. орган</GovernmentAgency>
+		<Organization>Организация</Organization>
+		<sex>Муж.</sex>
+		<position>Должность 1</position>
+        <m1>Возможность обеспечения жил. площадью</m1>
+		<m2>Право самостоятельного трудоустройства</m2>
+      </row>
+    </TabularPart>
+  </statement>
+</statements>

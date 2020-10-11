@@ -61,7 +61,7 @@ namespace DataBase
     }
 
 
-
+    /*
     /// <summary>
     /// Ведомость персонального учета выпускников
     /// </summary>
@@ -102,5 +102,78 @@ namespace DataBase
             public string Position;
             public string Note;
         }
+    }*/
+
+
+    /// <summary>
+    /// Ведомость распределения выпускников
+    /// </summary>
+    public class Statement2
+    {
+        public XmlElement StatementInXml;
+
+        /// <summary>
+        /// Год ведомости
+        /// </summary>
+        public System.UInt16 Year
+        {
+            get { return Convert.ToUInt16(this.StatementInXml.Attributes["year"].Value); }
+            set { this.StatementInXml.Attributes["year"].Value = value.ToString(); }
+        }
+
+        /// <summary>
+        /// Учреждение образования
+        /// </summary>
+        public string EducationalInstitution { 
+            get { return this.StatementInXml.Attributes["EducationalInstitution"].Value; } 
+            set { this.StatementInXml.Attributes["EducationalInstitution"].Value = value; } 
+        }
+
+        /// <summary>
+        /// Код и наименование специальности
+        /// </summary>
+        public string codeAndSpecialityName
+        {
+            get { return this.StatementInXml.Attributes["codeAndSpecialityName"].Value; }
+            set { this.StatementInXml.Attributes["codeAndSpecialityName"].Value = value; }
+        }
+
+        /// <summary>
+        /// Председатель комиссии
+        /// </summary>
+        public string chairman
+        {
+            get { return this.StatementInXml.Attributes["chairman"].Value; }
+            set { this.StatementInXml.Attributes["chairman"].Value = value; }
+        }
+
+        /// <summary>
+        /// Заместитель
+        /// </summary>
+        public string deputy
+        {
+            get { return this.StatementInXml.Attributes["deputy"].Value; }
+            set { this.StatementInXml.Attributes["deputy"].Value = value; }
+        }
+
+        /// <summary>
+        /// Первый член комисии
+        /// </summary>
+        public string CommissionMember1
+        {
+            get { return this.StatementInXml.Attributes["CommissionMember1"].Value; }
+            set { this.StatementInXml.Attributes["CommissionMember1"].Value = value; }
+        }
+
+        /// <summary>
+        /// Второй член комисии
+        /// </summary>
+        public string CommissionMember2
+        {
+            get { return this.StatementInXml.Attributes["CommissionMember2"].Value; }
+            set { this.StatementInXml.Attributes["CommissionMember2"].Value = value; }
+        }
+
+        
     }
 }

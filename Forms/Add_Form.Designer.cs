@@ -719,7 +719,7 @@
             this.Controls.Add(this.Year);
             this.Controls.Add(this.metroLabel1);
             this.Name = "Add_Form";
-            this.Text = "Добавление ведомости";
+            this.Text = "Добавление ведомости распределения выпускников";
             this.Load += new System.EventHandler(this.Add_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
