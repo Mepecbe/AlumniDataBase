@@ -256,9 +256,30 @@ namespace DataBase
         /// Вставить в документ и сохранить
         /// </summary>
         /// <param name="document"></param>
-        public void SaveStatementInDocument(XmlDocument document)
+        public void AppendAndSaveStatementInDocument(XmlDocument document)
         {
             document.DocumentElement.AppendChild(this.StatementInXml);
+        }
+
+        public void AppendTabularPart(ListView.ListViewItemCollection items, ListView.ColumnHeaderCollection columns)
+        {
+            XmlElement TabularPart = getTabularPart();
+            //XmlElement[,] Table = new XmlElement[items.Count,10];
+
+            for(int row = 0; row < items.Count; row++)
+            {
+                XmlElement TableRow = Statement2_Document.CreateElement("row");
+                TabularPart.AppendChild(TableRow);
+
+                for (byte column = 0; column < items[0].SubItems.Count; column++)
+                {
+                    XmlElement XmlColumn = Statement2_Document.CreateElement(columns[column].Tag.ToString());
+                    XmlColumn.InnerText = items[row].SubItems[column].Text;
+                    TableRow.AppendChild(XmlColumn);
+                }
+            }
+
+            Statement2_Document.Save(Config.Statement2_Path);
         }
     }
 }

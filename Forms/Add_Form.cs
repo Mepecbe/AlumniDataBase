@@ -62,7 +62,7 @@ namespace DataBase.Forms
         private void Add_button_Click(object sender, EventArgs e)
         {
             //Добавление строки в табличку
-            ListViewItem item = this.metroListView1.Items.Add(this.Table_1.Text);
+            ListViewItem item = this.Table.Items.Add(this.Table_1.Text);
             
             //Добавление в строчку различных реквизитов(контролы реквизитов начинаются с "Table_", после "_" идет порядковый номер)
             for(byte a = 2; a <= 10; a++)
@@ -86,7 +86,7 @@ namespace DataBase.Forms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if(this.metroListView1.Items.Count == 0)
+            if(this.Table.Items.Count == 0)
             {
                 DialogResult result = MetroMessageBox.Show(this, "Вы точно хотите сохранить ведомость? Табличная часть пуста", "Внимание", MessageBoxButtons.YesNo);
                 if (result == DialogResult.No) return;
@@ -101,6 +101,21 @@ namespace DataBase.Forms
                     this.CommissionMember1.Text,
                     this.CommissionMember2.Text
                     );
+            }
+            else
+            {
+                Statement2 newStatement = new Statement2(
+                    Statement2.Statement2_Document.DocumentElement,
+                    Convert.ToUInt16(this.Year.Text),
+                    this.Education.Text,
+                    this.CodeAndName.Text,
+                    this.ChairMan.Text,
+                    this.deputy.Text,
+                    this.CommissionMember1.Text,
+                    this.CommissionMember2.Text
+                    );
+
+                newStatement.AppendTabularPart(this.Table.Items, this.Table.Columns);
             }
         }
     }

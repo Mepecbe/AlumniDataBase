@@ -41,17 +41,17 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.Table_3 = new MetroFramework.Controls.MetroTextBox();
             this.Add_button = new MetroFramework.Controls.MetroButton();
-            this.metroListView1 = new MetroFramework.Controls.MetroListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Table = new MetroFramework.Controls.MetroListView();
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Sex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.YearOfBirth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FamilyStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.GovernmentAgency = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Organization = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.m1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.m2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.Table_4 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -285,78 +285,88 @@
             this.Add_button.UseSelectable = true;
             this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
             // 
-            // metroListView1
+            // Table
             // 
-            this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10});
-            this.metroListView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.metroListView1.FullRowSelect = true;
-            this.metroListView1.Location = new System.Drawing.Point(20, 309);
-            this.metroListView1.Name = "metroListView1";
-            this.metroListView1.OwnerDraw = true;
-            this.metroListView1.Size = new System.Drawing.Size(1281, 456);
-            this.metroListView1.TabIndex = 16;
-            this.metroListView1.UseCompatibleStateImageBehavior = false;
-            this.metroListView1.UseSelectable = true;
-            this.metroListView1.View = System.Windows.Forms.View.Details;
+            this.Table.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.name,
+            this.Sex,
+            this.YearOfBirth,
+            this.FamilyStatus,
+            this.Address,
+            this.GovernmentAgency,
+            this.Organization,
+            this.Position,
+            this.m1,
+            this.m2});
+            this.Table.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Table.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Table.FullRowSelect = true;
+            this.Table.Location = new System.Drawing.Point(20, 309);
+            this.Table.Name = "Table";
+            this.Table.OwnerDraw = true;
+            this.Table.Size = new System.Drawing.Size(1281, 456);
+            this.Table.TabIndex = 16;
+            this.Table.UseCompatibleStateImageBehavior = false;
+            this.Table.UseSelectable = true;
+            this.Table.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // name
             // 
-            this.columnHeader1.Text = "ФИО";
-            this.columnHeader1.Width = 205;
+            this.name.Tag = "name";
+            this.name.Text = "ФИО";
+            this.name.Width = 205;
             // 
-            // columnHeader2
+            // Sex
             // 
-            this.columnHeader2.Text = "Пол";
-            this.columnHeader2.Width = 46;
+            this.Sex.Tag = "Sex";
+            this.Sex.Text = "Пол";
+            this.Sex.Width = 46;
             // 
-            // columnHeader3
+            // YearOfBirth
             // 
-            this.columnHeader3.Text = "Год рождения";
-            this.columnHeader3.Width = 120;
+            this.YearOfBirth.Tag = "YearOfBirth";
+            this.YearOfBirth.Text = "Год рождения";
+            this.YearOfBirth.Width = 120;
             // 
-            // columnHeader4
+            // FamilyStatus
             // 
-            this.columnHeader4.Text = "Семейное положение";
-            this.columnHeader4.Width = 176;
+            this.FamilyStatus.Tag = "FamilyStatus";
+            this.FamilyStatus.Text = "Семейное положение";
+            this.FamilyStatus.Width = 176;
             // 
-            // columnHeader5
+            // Address
             // 
-            this.columnHeader5.Text = "Адрес";
+            this.Address.Tag = "Address";
+            this.Address.Text = "Адрес";
             // 
-            // columnHeader6
+            // GovernmentAgency
             // 
-            this.columnHeader6.Text = "Наименование гос органа";
-            this.columnHeader6.Width = 122;
+            this.GovernmentAgency.Tag = "GovernmentAgency";
+            this.GovernmentAgency.Text = "Наименование гос органа";
+            this.GovernmentAgency.Width = 122;
             // 
-            // columnHeader7
+            // Organization
             // 
-            this.columnHeader7.Text = "Наименование организации";
+            this.Organization.Tag = "Organization";
+            this.Organization.Text = "Наименование организации";
             // 
-            // columnHeader8
+            // Position
             // 
-            this.columnHeader8.Text = "Должность";
-            this.columnHeader8.Width = 115;
+            this.Position.Tag = "Position";
+            this.Position.Text = "Должность";
+            this.Position.Width = 115;
             // 
-            // columnHeader9
+            // m1
             // 
-            this.columnHeader9.Text = "Возможность обеспеч. жил. площадью";
-            this.columnHeader9.Width = 125;
+            this.m1.Tag = "m1";
+            this.m1.Text = "Возможность обеспеч. жил. площадью";
+            this.m1.Width = 125;
             // 
-            // columnHeader10
+            // m2
             // 
-            this.columnHeader10.Text = "Предоставляется право смостоятельного трудоустройства";
-            this.columnHeader10.Width = 158;
+            this.m2.Tag = "m2";
+            this.m2.Text = "Предоставляется право смостоятельного трудоустройства";
+            this.m2.Width = 158;
             // 
             // metroLabel8
             // 
@@ -704,7 +714,7 @@
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.Table_4);
             this.Controls.Add(this.metroLabel8);
-            this.Controls.Add(this.metroListView1);
+            this.Controls.Add(this.Table);
             this.Controls.Add(this.Add_button);
             this.Controls.Add(this.Table_3);
             this.Controls.Add(this.metroLabel6);
@@ -741,17 +751,17 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox Table_3;
         private MetroFramework.Controls.MetroButton Add_button;
-        private MetroFramework.Controls.MetroListView metroListView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private MetroFramework.Controls.MetroListView Table;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader Sex;
+        private System.Windows.Forms.ColumnHeader YearOfBirth;
+        private System.Windows.Forms.ColumnHeader FamilyStatus;
+        private System.Windows.Forms.ColumnHeader Address;
+        private System.Windows.Forms.ColumnHeader GovernmentAgency;
+        private System.Windows.Forms.ColumnHeader Organization;
+        private System.Windows.Forms.ColumnHeader Position;
+        private System.Windows.Forms.ColumnHeader m1;
+        private System.Windows.Forms.ColumnHeader m2;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroComboBox Table_4;
         private MetroFramework.Controls.MetroLabel metroLabel9;
