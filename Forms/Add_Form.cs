@@ -118,5 +118,30 @@ namespace DataBase.Forms
                 newStatement.AppendTabularPart(this.Table.Items, this.Table.Columns);
             }
         }
+
+        private void Add_Form_ResizeEnd(object sender, EventArgs e)
+        {
+            int width = (int)Math.Ceiling(
+                Convert.ToSingle(this.Table.Width - this.Table.Columns[1].Width - this.Table.Columns[2].Width - this.Table.Columns[3].Width - this.Table.Columns[8].Width - this.Table.Columns[9].Width) / (this.Table.Columns.Count - 5)) - 2;
+
+            for (byte index = 0; index < this.Table.Columns.Count; index++)
+            {
+                //Пропуск изменения ширины некоторых колонок 
+                if (index == 1 || index == 2 || index == 3 || index == 8 || index == 9) continue;
+
+                this.Table.Columns[index].Width = width;
+            }
+        }
+
+        private FormWindowState PrevState;
+        private void Add_Form_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                Add_Form_ResizeEnd(null, null);
+            else if(PrevState == FormWindowState.Maximized && this.WindowState == FormWindowState.Normal)
+                Add_Form_ResizeEnd(null, null);
+
+            PrevState = this.WindowState;
+        }
     }
 }

@@ -264,7 +264,6 @@ namespace DataBase
         public void AppendTabularPart(ListView.ListViewItemCollection items, ListView.ColumnHeaderCollection columns)
         {
             XmlElement TabularPart = getTabularPart();
-            //XmlElement[,] Table = new XmlElement[items.Count,10];
 
             for(int row = 0; row < items.Count; row++)
             {

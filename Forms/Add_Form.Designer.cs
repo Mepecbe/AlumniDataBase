@@ -301,6 +301,7 @@
             this.Table.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Table.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Table.FullRowSelect = true;
+            this.Table.LabelEdit = true;
             this.Table.Location = new System.Drawing.Point(20, 309);
             this.Table.Name = "Table";
             this.Table.OwnerDraw = true;
@@ -731,6 +732,9 @@
             this.Name = "Add_Form";
             this.Text = "Добавление ведомости распределения выпускников";
             this.Load += new System.EventHandler(this.Add_Form_Load);
+            this.ResizeBegin += new System.EventHandler(this.Add_Form_ResizeEnd);
+            this.ResizeEnd += new System.EventHandler(this.Add_Form_ResizeEnd);
+            this.Resize += new System.EventHandler(this.Add_Form_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
