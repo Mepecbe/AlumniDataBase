@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -11,12 +12,14 @@ using System.Collections.Generic;
 
 using MetroFramework;
 using DataBase.Forms;
+using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace DataBase
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
-        public static string FILE_NAME = "D:\\Db.xml";
+        public static string STATEMENTS2_FILE_NAME = "Statements2.xml";
 
         public MainForm()
         {
@@ -47,6 +50,10 @@ namespace DataBase
             }
 
             this.UpdateStyles();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(STATEMENTS2_FILE_NAME);
+            Statement2 a = new Statement2(doc, doc.DocumentElement);
         }
 
         private void metroTile1_Click(object sender, EventArgs e)
@@ -67,42 +74,8 @@ namespace DataBase
     /// </summary>
     public class Statement1
     {
-        public readonly string EducationalInstitution;
-        public readonly System.UInt16 Year;
-        public readonly string Info;
-        public readonly string Speciality;
-        public readonly string SpecialtyDirection;
-        public readonly string Specialization;
-        public readonly string Qualification;
-        public readonly string Group;
-
-        /// <summary>
-        /// Строки таблицы
-        /// </summary>
-        public Row TableRows;
-
-        /// <summary>
-        /// Экземпляр строки
-        /// </summary>
-        public class Row
-        {
-            public string FIO;
-            /// <summary>
-            /// Информация за годы
-            /// </summary>
-            public InformationForTheYear[] InformationOverTheYears;
-        }
-
-        /// <summary>
-        /// Информация за 1 год
-        /// </summary>
-        public class InformationForTheYear
-        {
-            public string OrganizationName;
-            public string Position;
-            public string Note;
-        }
-    }*/
+    }
+    */
 
 
     /// <summary>
@@ -111,6 +84,83 @@ namespace DataBase
     public class Statement2
     {
         public XmlElement StatementInXml;
+
+        /// <summary>
+        ///  Создать и сохранить ведомость
+        /// </summary>
+        /// <param name="document">Документ, в котором будет сохранена ведомость</param>
+        /// <param name="In">Элемент, в который будет вложен элемент ведомости</param>
+        /// <param name="year">год ведомости</param>
+        /// <param name="EducationalInstitution">Учреждение образования</param>
+        /// <param name="codeAndSpecialityName">Код и наименование специальности</param>
+        /// <param name="chairman">Председатель</param>
+        /// <param name="deputy">Заместитель</param>
+        /// <param name="CommissionMember1">Член комиссии</param>
+        /// <param name="CommissionMember2">Член комиссии</param>
+        public Statement2(XmlDocument document, 
+                          XmlElement In, 
+                          System.UInt16 year = 0,
+                          string EducationalInstitution = "",
+                          string codeAndSpecialityName = "",
+                          string chairman = "",
+                          string deputy = "",
+                          string CommissionMember1 = "",
+                          string CommissionMember2 = "",
+                          string documentName = "Statements2.xml"
+            )
+        {
+            //
+            //Можно было всё очень сильно упростить, если передавать параметры(атрибуты) ведомости с помощью словаря
+            // но я уже сделал вот так
+            //
+            this.StatementInXml = document.CreateElement("statement");
+            In.AppendChild(this.StatementInXml);
+
+            XmlAttribute Attr_year                   = document.CreateAttribute("year");
+                         Attr_year.Value = year.ToString();     
+            
+            XmlAttribute Attr_EducationalInstitution = document.CreateAttribute("EducationalInstitution");
+                         Attr_EducationalInstitution.Value = EducationalInstitution;
+            
+            XmlAttribute Attr_codeAndSpecialityName  = document.CreateAttribute("codeAndSpecialityName");
+                         Attr_codeAndSpecialityName.Value = codeAndSpecialityName;
+            
+            XmlAttribute Attr_chairman               = document.CreateAttribute("chairman");
+                         Attr_chairman.Value = chairman;
+            
+            XmlAttribute Attr_deputy                 = document.CreateAttribute("deputy");
+                         Attr_deputy.Value = deputy;
+            
+            XmlAttribute Attr_CommissionMember1      = document.CreateAttribute("CommissionMember1");
+                         Attr_CommissionMember1.Value = CommissionMember1;
+            
+            XmlAttribute Attr_CommissionMember2      = document.CreateAttribute("CommissionMember2");
+                         Attr_CommissionMember2.Value = CommissionMember2;
+
+            this.StatementInXml.Attributes.Append(Attr_year);
+            this.StatementInXml.Attributes.Append(Attr_EducationalInstitution);
+            this.StatementInXml.Attributes.Append(Attr_codeAndSpecialityName);
+            this.StatementInXml.Attributes.Append(Attr_chairman);
+            this.StatementInXml.Attributes.Append(Attr_deputy);
+            this.StatementInXml.Attributes.Append(Attr_CommissionMember1);
+            this.StatementInXml.Attributes.Append(Attr_CommissionMember2);
+
+            XmlElement TabularPart = document.CreateElement("TabularPart");
+            this.StatementInXml.AppendChild(TabularPart);
+
+            document.Save(documentName);
+        }
+
+
+        /// <summary>
+        /// "Загрузить" ведомость из XML элемента
+        /// </summary>
+        /// <param name="StatementElement">Элемент ведомости</param>
+        public Statement2(XmlElement StatementElement)
+        {
+            this.StatementInXml = StatementElement;
+        }
+
 
         /// <summary>
         /// Год ведомости
@@ -173,7 +223,41 @@ namespace DataBase
             get { return this.StatementInXml.Attributes["CommissionMember2"].Value; }
             set { this.StatementInXml.Attributes["CommissionMember2"].Value = value; }
         }
+                       
 
-        
+        /// <summary>
+        /// По имени ищет XmlElement среди потомков элемента, передаваемого в параметре
+        /// </summary>
+        /// <param name="element">Элемент, среди потомков которого будет производится поиск</param>
+        /// <param name="name">Название элемента</param>
+        /// <returns></returns>
+        public XmlElement getElementByName(XmlElement element, string name)
+        {
+            foreach(XmlElement elem in element.ChildNodes)
+            {
+                if (elem.Name == name)
+                    return elem;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Возвращает табличную часть
+        /// </summary>
+        /// <returns></returns>
+        public XmlElement getTabularPart()
+        {
+            return getElementByName(this.StatementInXml, "TabularPart");
+        }
+
+        /// <summary>
+        /// Вставить в документ и сохранить
+        /// </summary>
+        /// <param name="document"></param>
+        public void SaveStatementInDocument(XmlDocument document)
+        {
+            document.DocumentElement.AppendChild(this.StatementInXml);
+        }
     }
 }
