@@ -61,6 +61,11 @@ namespace DataBase
         {
             new Add_Form().ShowDialog();
         }
+
+        private void Export_Click(object sender, EventArgs e)
+        {
+            new SetExport_Form().ShowDialog();
+        }
     }
 
 

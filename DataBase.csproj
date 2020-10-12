@@ -67,6 +67,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SetExport_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SetExport_Form.Designer.cs">
+      <DependentUpon>SetExport_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings_AddValue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SetExport_Form.resx">
+      <DependentUpon>SetExport_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings_AddValue.resx">
       <DependentUpon>Settings_AddValue.cs</DependentUpon>
@@ -132,6 +141,7 @@
     <None Include="Resources\documents-symbol.png" />
     <None Include="Resources\flash-drive.png" />
     <None Include="Resources\settings-gear.png" />
+    <None Include="Resources\folder-with-check-mark.png" />
     <Content Include="Пометки.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

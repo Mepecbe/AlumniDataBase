@@ -79,6 +79,7 @@
             this.Export.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Export.UseSelectable = true;
             this.Export.UseTileImage = true;
+            this.Export.Click += new System.EventHandler(this.Export_Click);
             // 
             // Show
             // 

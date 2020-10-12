@@ -103,6 +103,16 @@ namespace DataBase.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_with_check_mark {
+            get {
+                object obj = ResourceManager.GetObject("folder-with-check-mark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap settings_gear {
             get {
                 object obj = ResourceManager.GetObject("settings-gear", resourceCulture);
