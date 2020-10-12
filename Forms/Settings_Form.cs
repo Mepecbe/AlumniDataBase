@@ -98,6 +98,13 @@ namespace DataBase.Forms
             //Открыть диалог на открытие персонального учета выпускников
             string file = getFile();
             if(!string.IsNullOrWhiteSpace(file)){
+                if (!Config.CheckValidXmlDocument(file))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Выбранный вами документ не прошёл проверку\n" +
+                        "Изменения не будут применены", "Внимание");
+                    return;
+                }
+
                 if (!(Config.Statement1_Path == file))
                 {
                     Config.Statement1_Path = this.PathToStatement1File.Text = file;
@@ -117,7 +124,14 @@ namespace DataBase.Forms
             string file = getFile();
             if (!string.IsNullOrWhiteSpace(file))
             {
-                if(!(Config.Statement2_Path == file))
+                if (!Config.CheckValidXmlDocument(file))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Выбранный вами документ не прошёл проверку\n" +
+                        "Изменения не будут применены", "Внимание");
+                    return;
+                }
+
+                if (!(Config.Statement2_Path == file))
                 {
                     Config.Statement2_Path = this.PathToStatement2File.Text = file;
                     SelectedNewFile_reboot();
@@ -165,7 +179,7 @@ namespace DataBase.Forms
         private void CreateXml(string path)
         {
             StreamWriter writer = new StreamWriter(File.Create(path));
-            writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF - 8\"?> <nodes></nodes>");
+            writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?> <nodes></nodes>");
             writer.Close();
         }
     }
@@ -303,6 +317,29 @@ namespace DataBase.Forms
                 rootElement.Attributes["PathToStatement2"].Value = value;
                 document.Save(SETTINGS_FILE_NAME);
             }
+        }
+
+        /// <summary>
+        /// Проверяет "валидность" XML файла
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
+        /// <returns></returns>
+        public static bool CheckValidXmlDocument(string path)
+        {
+            XmlDocument doc = new XmlDocument();
+            //Нас интересуют только ошибки XML структуры
+            try
+            {
+                doc.Load(path);
+                return true;
+            }
+            catch(XmlException)
+            {
+                return false;
+            }catch
+            {
+                return true;
+            }          
         }
     }
 }
