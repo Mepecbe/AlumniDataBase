@@ -21,7 +21,7 @@ namespace DataBase.Forms
 
         private void Add_Form_Load(object sender, EventArgs e)
         {
-            Dictionary<string, List<string>> keyValues = Settings_Form.Config.GetValues();
+            Dictionary<string, List<string>> keyValues = Config.GetValues();
 
             this.Year.Text = DateTime.Now.Year.ToString();
 
@@ -90,6 +90,8 @@ namespace DataBase.Forms
             {
                 DialogResult result = MetroMessageBox.Show(this, "Вы точно хотите сохранить ведомость? Табличная часть пуста", "Внимание", MessageBoxButtons.YesNo);
                 if (result == DialogResult.No) return;
+
+                
             }
         }
     }

@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using System.IO;
 
 using System.Xml;
+using System.Runtime.CompilerServices;
+using MetroFramework;
+using System.Windows.Forms.VisualStyles;
 
 namespace DataBase.Forms
 {
@@ -54,6 +57,7 @@ namespace DataBase.Forms
 
         private void Settings_Form_Shown(object sender, EventArgs e)
         {
+            /*загрузка "ключ-значение" в ListView*/
             Dictionary<string, List<string>> keyValues = Config.GetValues();
 
             foreach (string key in keyValues.Keys)
@@ -64,6 +68,9 @@ namespace DataBase.Forms
                     newItem.SubItems.Add(value);
                 }
             }
+
+            this.PathToStatement1File.Text = Config.Statement1_Path;
+            this.PathToStatement2File.Text = Config.Statement2_Path;
         }
 
         private void удалитьВыбранноеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,116 +84,176 @@ namespace DataBase.Forms
 
                 this.metroListView1.SelectedItems[index].Remove();
             }
+        }
 
+        public string getFile()
+        {
+            openFileDialog1.FileName = "";
+            openFileDialog1.ShowDialog();
+            return openFileDialog1.FileName;
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            //Открыть диалог на открытие персонального учета выпускников
+            string file = getFile();
+            if(!string.IsNullOrWhiteSpace(file)){
+                Config.Statement1_Path = this.PathToStatement1File.Text = file;
+            }
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            //Открыть диалог на открытие ведомости распределения выпускников
+            string file = getFile();
+            if (!string.IsNullOrWhiteSpace(file))
+            {
+                if(!(Config.Statement2_Path == file))
+                {
+                    Config.Statement2_Path = this.PathToStatement2File.Text = file;
+                    MetroFramework.MetroMessageBox.Show(this, "Вы выбрали новый файл, " +
+                        "Изменения не будут применены");
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Вы выбрали файл, который открыт сейчас\n" +
+                        "Изменения не будут применены");
+                }
+            }
+        }
+    }
+
+
+    public static class Config
+    {
+        public const string SETTINGS_FILE_NAME = "Settings.xml";
+        static XmlDocument document = new XmlDocument();
+        static XmlElement rootElement;
+
+        static Config()
+        {
+            if (!System.IO.File.Exists(SETTINGS_FILE_NAME))
+            {
+                StreamWriter writer = new StreamWriter(File.Create(SETTINGS_FILE_NAME));
+                writer.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+                writer.Close();
+            }
+
+            document.Load(SETTINGS_FILE_NAME);
+            rootElement = document.DocumentElement;
+        }
+
+        /// <summary>
+        /// Получить значения для полей "выбора"(types)
+        /// </summary>
+        /// <returns>Словарь</returns>
+        public static Dictionary<string, List<string>> GetValues()
+        {
+            Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+
+            foreach (XmlElement element in rootElement.ChildNodes)
+            {
+                if (element.Attributes.Count == 0) continue;
+
+                dictionary[element.Attributes[0].Value] = new List<string>();
+
+                foreach (XmlElement ChildElement in element.ChildNodes)
+                {
+                    dictionary[element.Attributes[0].Value].Add(ChildElement.InnerText);
+                }
+            }
+
+            return dictionary;
         }
 
 
-        public static class Config
+        /// <summary>
+        /// Добавить значение в конфиг
+        /// </summary>
+        /// <param name="key">Ключ</param>
+        /// <param name="value">Значение</param>
+        public static void AddToConfig(string key, string value)
         {
-            static XmlDocument document = new XmlDocument();
-            static XmlElement rootElement;
+            /*XmlElement element = document.CreateElement("value");
 
-            static Config()
+            XmlAttribute attr = document.CreateAttribute("type");
+            attr.Value = value
+            element.Attributes.Append()*/
+
+            bool Added = false;
+
+            foreach (XmlElement Elements in rootElement)
             {
-                if (!System.IO.File.Exists("Settings.xml"))
+                if (Elements.Attributes[0].Value == key)
                 {
-                    StreamWriter writer = new StreamWriter(File.Create("Settings.xml"));
-                    writer.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
-                    writer.Close();
+                    XmlElement newChildElement = document.CreateElement("value");
+                    newChildElement.InnerText = value;
+                    Elements.AppendChild(newChildElement);
+                    Added = true;
                 }
-
-                document.Load("Settings.xml");
-                rootElement = document.DocumentElement;
             }
 
-            /// <summary>
-            /// Получить значения для полей "выбора"(types)
-            /// </summary>
-            /// <returns>Словарь</returns>
-            public static Dictionary<string, List<string>> GetValues()
+            if (!Added)
             {
-                Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+                XmlElement newElement = document.CreateElement("value");
+                XmlAttribute newElement_Attributes = document.CreateAttribute("type");
+                newElement_Attributes.Value = key;
 
-                foreach (XmlElement element in rootElement.ChildNodes)
-                {
-                    if (element.Attributes.Count == 0) continue;
+                XmlElement child = document.CreateElement("value");
+                child.InnerText = value;
 
-                    dictionary[element.Attributes[0].Value] = new List<string>();
-                    
-                    foreach(XmlElement ChildElement in element.ChildNodes)
-                    {
-                        dictionary[element.Attributes[0].Value].Add(ChildElement.InnerText);
-                    }
-                }
+                newElement.Attributes.Append(newElement_Attributes);
+                newElement.AppendChild(child);
 
-                return dictionary;
+                rootElement.AppendChild(newElement);
             }
 
+            document.Save(SETTINGS_FILE_NAME);
+        }
 
-            /// <summary>
-            /// Добавить значение в конфиг
-            /// </summary>
-            /// <param name="key">Ключ</param>
-            /// <param name="value">Значение</param>
-            public static void AddToConfig(string key, string value)
+        public static void DeleteFromConfig(string key, string value)
+        {
+            foreach (XmlElement Elements in rootElement)
             {
-                /*XmlElement element = document.CreateElement("value");
-
-                XmlAttribute attr = document.CreateAttribute("type");
-                attr.Value = value
-                element.Attributes.Append()*/
-
-                bool Added = false;
-
-                foreach (XmlElement Elements in rootElement)
+                if (Elements.Attributes[0].Value == key)
                 {
-                    if(Elements.Attributes[0].Value == key)
+                    foreach (XmlElement child in Elements.ChildNodes)
                     {
-                        XmlElement newChildElement = document.CreateElement("value");
-                        newChildElement.InnerText = value;
-                        Elements.AppendChild(newChildElement);
-                        Added = true;
-                    }
-                }
-
-                if (!Added)
-                {
-                    XmlElement newElement = document.CreateElement("value");
-                    XmlAttribute newElement_Attributes = document.CreateAttribute("type");
-                    newElement_Attributes.Value = key;
-
-                    XmlElement child = document.CreateElement("value");
-                    child.InnerText = value;
-
-                    newElement.Attributes.Append(newElement_Attributes);
-                    newElement.AppendChild(child);
-
-                    rootElement.AppendChild(newElement);
-                }
-
-                document.Save("Settings.xml");
-            }
-
-            public static void DeleteFromConfig(string key, string value)
-            {
-                foreach (XmlElement Elements in rootElement)
-                {
-                    if (Elements.Attributes[0].Value == key)
-                    {
-                        foreach(XmlElement child in Elements.ChildNodes)
+                        if (child.InnerText == value)
                         {
-                            if(child.InnerText == value)
-                            {
-                                Elements.RemoveChild(child);
-                            }
+                            Elements.RemoveChild(child);
                         }
                     }
                 }
+            }
 
-                document.Save("Settings.xml");
+            document.Save(SETTINGS_FILE_NAME);
+        }
+
+        public static string Statement1_Path
+        {
+            get
+            {
+                return rootElement.Attributes["PathToStatement1"].Value;
+            }
+
+            set
+            {
+                rootElement.Attributes["PathToStatement1"].Value = value;
             }
         }
 
-        
+        public static string Statement2_Path
+        {
+            get
+            {
+                return rootElement.Attributes["PathToStatement2"].Value;
+            }
+
+            set
+            {
+                rootElement.Attributes["PathToStatement2"].Value = value;
+            }
+        }
     }
 }

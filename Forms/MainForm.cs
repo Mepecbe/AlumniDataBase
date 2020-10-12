@@ -88,7 +88,7 @@ namespace DataBase
         /// <summary>
         ///  Создать и сохранить ведомость
         /// </summary>
-        /// <param name="document">Документ, в котором будет сохранена ведомость</param>
+        /// <param name="document">Документ XML</param>
         /// <param name="In">Элемент, в который будет вложен элемент ведомости</param>
         /// <param name="year">год ведомости</param>
         /// <param name="EducationalInstitution">Учреждение образования</param>
@@ -97,6 +97,7 @@ namespace DataBase
         /// <param name="deputy">Заместитель</param>
         /// <param name="CommissionMember1">Член комиссии</param>
         /// <param name="CommissionMember2">Член комиссии</param>
+        /// <param name="documentName">Наименование документа</param>
         public Statement2(XmlDocument document, 
                           XmlElement In, 
                           System.UInt16 year = 0,
