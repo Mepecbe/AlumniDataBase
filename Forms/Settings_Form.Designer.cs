@@ -209,6 +209,7 @@
             this.CreateStatement1.TabIndex = 7;
             this.CreateStatement1.Text = "Создать";
             this.CreateStatement1.UseSelectable = true;
+            this.CreateStatement1.Click += new System.EventHandler(this.CreateStatement1_Click);
             // 
             // CreateStatement2
             // 
@@ -218,6 +219,11 @@
             this.CreateStatement2.TabIndex = 8;
             this.CreateStatement2.Text = "Создать";
             this.CreateStatement2.UseSelectable = true;
+            this.CreateStatement2.Click += new System.EventHandler(this.CreateStatement2_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Файлы XML (*.xml) | *.xml";
             // 
             // Settings_Form
             // 

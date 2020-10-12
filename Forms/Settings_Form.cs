@@ -98,7 +98,16 @@ namespace DataBase.Forms
             //Открыть диалог на открытие персонального учета выпускников
             string file = getFile();
             if(!string.IsNullOrWhiteSpace(file)){
-                Config.Statement1_Path = this.PathToStatement1File.Text = file;
+                if (!(Config.Statement1_Path == file))
+                {
+                    Config.Statement1_Path = this.PathToStatement1File.Text = file;
+                    SelectedNewFile_reboot();
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Вы выбрали файл, который открыт сейчас\n" +
+                        "Изменения не будут применены", "Внимание");
+                }
             }
         }
 
@@ -111,15 +120,53 @@ namespace DataBase.Forms
                 if(!(Config.Statement2_Path == file))
                 {
                     Config.Statement2_Path = this.PathToStatement2File.Text = file;
-                    MetroFramework.MetroMessageBox.Show(this, "Вы выбрали новый файл, " +
-                        "Изменения не будут применены");
+                    SelectedNewFile_reboot();
                 }
                 else
                 {
                     MetroFramework.MetroMessageBox.Show(this, "Вы выбрали файл, который открыт сейчас\n" +
-                        "Изменения не будут применены");
+                        "Изменения не будут применены", "Внимание");
                 }
             }
+        }
+
+        private void CreateStatement1_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialog1.ShowDialog();
+
+            if (!(string.IsNullOrWhiteSpace(this.saveFileDialog1.FileName)))
+            {
+                CreateXml(this.saveFileDialog1.FileName);
+                Config.Statement1_Path = this.PathToStatement1File.Text = this.saveFileDialog1.FileName;
+                SelectedNewFile_reboot();
+            }
+        }
+
+        private void CreateStatement2_Click(object sender, EventArgs e)
+        {
+            this.saveFileDialog1.ShowDialog();
+
+            if (!(string.IsNullOrWhiteSpace(this.saveFileDialog1.FileName)))
+            {
+                CreateXml(this.saveFileDialog1.FileName);
+                Config.Statement2_Path = this.PathToStatement2File.Text = this.saveFileDialog1.FileName;
+                SelectedNewFile_reboot();
+            }
+        }
+
+        private void SelectedNewFile_reboot()
+        {
+            MetroFramework.MetroMessageBox.Show(this, "Вы выбрали новый файл, необходимо перезагрузить программу\n" +
+                        "После нажатия кнопки \"OK\" будет выполнена перезагрузка", "Внимание", MessageBoxButtons.OK);
+            Process.Start(Environment.GetCommandLineArgs()[0], "reboot");
+            Application.Exit();
+        }
+
+        private void CreateXml(string path)
+        {
+            StreamWriter writer = new StreamWriter(File.Create(path));
+            writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF - 8\"?> <nodes></nodes>");
+            writer.Close();
         }
     }
 
@@ -240,6 +287,7 @@ namespace DataBase.Forms
             set
             {
                 rootElement.Attributes["PathToStatement1"].Value = value;
+                document.Save(SETTINGS_FILE_NAME);
             }
         }
 
@@ -253,6 +301,7 @@ namespace DataBase.Forms
             set
             {
                 rootElement.Attributes["PathToStatement2"].Value = value;
+                document.Save(SETTINGS_FILE_NAME);
             }
         }
     }

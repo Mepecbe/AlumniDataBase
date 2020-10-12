@@ -50,7 +50,7 @@
 		Примечание
 
 
-
+Пример ведомости распределения выпускников в XML
 		<?xml version="1.0" encoding="UTF-8"?>
 <statements>
   <statement year="2020" EducationalInstitution="Новопольский ГАЭК" codeAndSpecialityName="2-40-40 ПОИТ" chairman="Крумкач Т.Н." deputy="Неведомская Н.М." CommissionMember1="Платонова Т.Ю" CommissionMember2="Захарич ">

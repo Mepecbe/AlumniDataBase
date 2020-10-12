@@ -31,9 +31,9 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.Year = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.Education = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.CodeAndName = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.Table_1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -67,12 +67,12 @@
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.Table_10 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox7 = new MetroFramework.Controls.MetroComboBox();
+            this.ChairMan = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox8 = new MetroFramework.Controls.MetroComboBox();
+            this.deputy = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox9 = new MetroFramework.Controls.MetroComboBox();
-            this.metroComboBox10 = new MetroFramework.Controls.MetroComboBox();
+            this.CommissionMember1 = new MetroFramework.Controls.MetroComboBox();
+            this.CommissionMember2 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
@@ -126,15 +126,15 @@
             this.metroLabel2.TabIndex = 2;
             this.metroLabel2.Text = "Наименование УО\r\nили организации\r\n";
             // 
-            // metroComboBox1
+            // Education
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(192, 119);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(151, 29);
-            this.metroComboBox1.TabIndex = 3;
-            this.metroComboBox1.UseSelectable = true;
+            this.Education.FormattingEnabled = true;
+            this.Education.ItemHeight = 23;
+            this.Education.Location = new System.Drawing.Point(192, 119);
+            this.Education.Name = "Education";
+            this.Education.Size = new System.Drawing.Size(151, 29);
+            this.Education.TabIndex = 3;
+            this.Education.UseSelectable = true;
             // 
             // metroLabel3
             // 
@@ -145,35 +145,35 @@
             this.metroLabel3.TabIndex = 4;
             this.metroLabel3.Text = "Код и наименование \r\nспециальности";
             // 
-            // metroTextBox1
+            // CodeAndName
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(102, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(219, 176);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(124, 23);
-            this.metroTextBox1.TabIndex = 5;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.CodeAndName.CustomButton.Image = null;
+            this.CodeAndName.CustomButton.Location = new System.Drawing.Point(102, 1);
+            this.CodeAndName.CustomButton.Name = "";
+            this.CodeAndName.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.CodeAndName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.CodeAndName.CustomButton.TabIndex = 1;
+            this.CodeAndName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.CodeAndName.CustomButton.UseSelectable = true;
+            this.CodeAndName.CustomButton.Visible = false;
+            this.CodeAndName.Lines = new string[0];
+            this.CodeAndName.Location = new System.Drawing.Point(219, 176);
+            this.CodeAndName.MaxLength = 32767;
+            this.CodeAndName.Name = "CodeAndName";
+            this.CodeAndName.PasswordChar = '\0';
+            this.CodeAndName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.CodeAndName.SelectedText = "";
+            this.CodeAndName.SelectionLength = 0;
+            this.CodeAndName.SelectionStart = 0;
+            this.CodeAndName.ShortcutsEnabled = true;
+            this.CodeAndName.Size = new System.Drawing.Size(124, 23);
+            this.CodeAndName.TabIndex = 5;
+            this.CodeAndName.UseSelectable = true;
+            this.CodeAndName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CodeAndName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroLabel4
             // 
@@ -589,15 +589,15 @@
             this.metroLabel15.TabIndex = 31;
             this.metroLabel15.Text = "Председатель комиссии";
             // 
-            // metroComboBox7
+            // ChairMan
             // 
-            this.metroComboBox7.FormattingEnabled = true;
-            this.metroComboBox7.ItemHeight = 23;
-            this.metroComboBox7.Location = new System.Drawing.Point(219, 217);
-            this.metroComboBox7.Name = "metroComboBox7";
-            this.metroComboBox7.Size = new System.Drawing.Size(124, 29);
-            this.metroComboBox7.TabIndex = 32;
-            this.metroComboBox7.UseSelectable = true;
+            this.ChairMan.FormattingEnabled = true;
+            this.ChairMan.ItemHeight = 23;
+            this.ChairMan.Location = new System.Drawing.Point(219, 217);
+            this.ChairMan.Name = "ChairMan";
+            this.ChairMan.Size = new System.Drawing.Size(124, 29);
+            this.ChairMan.TabIndex = 32;
+            this.ChairMan.UseSelectable = true;
             // 
             // metroLabel16
             // 
@@ -608,15 +608,15 @@
             this.metroLabel16.TabIndex = 33;
             this.metroLabel16.Text = "Заместитель";
             // 
-            // metroComboBox8
+            // deputy
             // 
-            this.metroComboBox8.FormattingEnabled = true;
-            this.metroComboBox8.ItemHeight = 23;
-            this.metroComboBox8.Location = new System.Drawing.Point(151, 255);
-            this.metroComboBox8.Name = "metroComboBox8";
-            this.metroComboBox8.Size = new System.Drawing.Size(192, 29);
-            this.metroComboBox8.TabIndex = 34;
-            this.metroComboBox8.UseSelectable = true;
+            this.deputy.FormattingEnabled = true;
+            this.deputy.ItemHeight = 23;
+            this.deputy.Location = new System.Drawing.Point(151, 255);
+            this.deputy.Name = "deputy";
+            this.deputy.Size = new System.Drawing.Size(192, 29);
+            this.deputy.TabIndex = 34;
+            this.deputy.UseSelectable = true;
             // 
             // metroLabel17
             // 
@@ -627,25 +627,25 @@
             this.metroLabel17.TabIndex = 35;
             this.metroLabel17.Text = "Члены комиссии";
             // 
-            // metroComboBox9
+            // CommissionMember1
             // 
-            this.metroComboBox9.FormattingEnabled = true;
-            this.metroComboBox9.ItemHeight = 23;
-            this.metroComboBox9.Location = new System.Drawing.Point(391, 104);
-            this.metroComboBox9.Name = "metroComboBox9";
-            this.metroComboBox9.Size = new System.Drawing.Size(191, 29);
-            this.metroComboBox9.TabIndex = 36;
-            this.metroComboBox9.UseSelectable = true;
+            this.CommissionMember1.FormattingEnabled = true;
+            this.CommissionMember1.ItemHeight = 23;
+            this.CommissionMember1.Location = new System.Drawing.Point(391, 104);
+            this.CommissionMember1.Name = "CommissionMember1";
+            this.CommissionMember1.Size = new System.Drawing.Size(191, 29);
+            this.CommissionMember1.TabIndex = 36;
+            this.CommissionMember1.UseSelectable = true;
             // 
-            // metroComboBox10
+            // CommissionMember2
             // 
-            this.metroComboBox10.FormattingEnabled = true;
-            this.metroComboBox10.ItemHeight = 23;
-            this.metroComboBox10.Location = new System.Drawing.Point(391, 145);
-            this.metroComboBox10.Name = "metroComboBox10";
-            this.metroComboBox10.Size = new System.Drawing.Size(191, 29);
-            this.metroComboBox10.TabIndex = 37;
-            this.metroComboBox10.UseSelectable = true;
+            this.CommissionMember2.FormattingEnabled = true;
+            this.CommissionMember2.ItemHeight = 23;
+            this.CommissionMember2.Location = new System.Drawing.Point(391, 145);
+            this.CommissionMember2.Name = "CommissionMember2";
+            this.CommissionMember2.Size = new System.Drawing.Size(191, 29);
+            this.CommissionMember2.TabIndex = 37;
+            this.CommissionMember2.UseSelectable = true;
             // 
             // metroLabel18
             // 
@@ -683,12 +683,12 @@
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroLabel19);
             this.Controls.Add(this.metroLabel18);
-            this.Controls.Add(this.metroComboBox10);
-            this.Controls.Add(this.metroComboBox9);
+            this.Controls.Add(this.CommissionMember2);
+            this.Controls.Add(this.CommissionMember1);
             this.Controls.Add(this.metroLabel17);
-            this.Controls.Add(this.metroComboBox8);
+            this.Controls.Add(this.deputy);
             this.Controls.Add(this.metroLabel16);
-            this.Controls.Add(this.metroComboBox7);
+            this.Controls.Add(this.ChairMan);
             this.Controls.Add(this.metroLabel15);
             this.Controls.Add(this.Table_10);
             this.Controls.Add(this.metroLabel14);
@@ -712,9 +712,9 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.Table_1);
             this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.metroTextBox1);
+            this.Controls.Add(this.CodeAndName);
             this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.Education);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.Year);
             this.Controls.Add(this.metroLabel1);
@@ -731,9 +731,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox Year;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox Education;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox CodeAndName;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox Table_1;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -767,12 +767,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroComboBox Table_10;
         private MetroFramework.Controls.MetroLabel metroLabel15;
-        private MetroFramework.Controls.MetroComboBox metroComboBox7;
+        private MetroFramework.Controls.MetroComboBox ChairMan;
         private MetroFramework.Controls.MetroLabel metroLabel16;
-        private MetroFramework.Controls.MetroComboBox metroComboBox8;
+        private MetroFramework.Controls.MetroComboBox deputy;
         private MetroFramework.Controls.MetroLabel metroLabel17;
-        private MetroFramework.Controls.MetroComboBox metroComboBox9;
-        private MetroFramework.Controls.MetroComboBox metroComboBox10;
+        private MetroFramework.Controls.MetroComboBox CommissionMember1;
+        private MetroFramework.Controls.MetroComboBox CommissionMember2;
         private MetroFramework.Controls.MetroLabel metroLabel18;
         private MetroFramework.Controls.MetroLabel metroLabel19;
         private MetroFramework.Controls.MetroButton metroButton1;

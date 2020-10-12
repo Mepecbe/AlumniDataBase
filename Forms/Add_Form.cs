@@ -30,22 +30,22 @@ namespace DataBase.Forms
             //Наименование учреждения образования
             if (keyValues.ContainsKey("Наименование УО"))
             {
-                this.metroComboBox1.Items.AddRange(keyValues["Наименование УО"].ToArray());
+                this.Education.Items.AddRange(keyValues["Наименование УО"].ToArray());
             }
 
             //Председатель комиссии
             if(keyValues.ContainsKey("Председатель комиссии"))
-                this.metroComboBox7.Items.AddRange(keyValues["Председатель комиссии"].ToArray());
+                this.ChairMan.Items.AddRange(keyValues["Председатель комиссии"].ToArray());
 
             //Заместитель председателя
             if (keyValues.ContainsKey("Заместитель председателя"))
-                this.metroComboBox8.Items.AddRange(keyValues["Заместитель председателя"].ToArray());
+                this.deputy.Items.AddRange(keyValues["Заместитель председателя"].ToArray());
 
             //Члены комиссии
             if (keyValues.ContainsKey("Член комиссии"))
             {
-                this.metroComboBox9.Items.AddRange(keyValues["Член комиссии"].ToArray());
-                this.metroComboBox10.Items.AddRange(keyValues["Член комиссии"].ToArray());
+                this.CommissionMember1.Items.AddRange(keyValues["Член комиссии"].ToArray());
+                this.CommissionMember2.Items.AddRange(keyValues["Член комиссии"].ToArray());
             }
             /**/
 
@@ -91,7 +91,16 @@ namespace DataBase.Forms
                 DialogResult result = MetroMessageBox.Show(this, "Вы точно хотите сохранить ведомость? Табличная часть пуста", "Внимание", MessageBoxButtons.YesNo);
                 if (result == DialogResult.No) return;
 
-                
+                Statement2 newStatement = new Statement2(
+                    Statement2.Statement2_Document.DocumentElement,
+                    Convert.ToUInt16(this.Year.Text),
+                    this.Education.Text,
+                    this.CodeAndName.Text,
+                    this.ChairMan.Text,
+                    this.deputy.Text,
+                    this.CommissionMember1.Text,
+                    this.CommissionMember2.Text
+                    );
             }
         }
     }

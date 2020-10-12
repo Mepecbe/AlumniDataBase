@@ -50,10 +50,6 @@ namespace DataBase
             }
 
             this.UpdateStyles();
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(STATEMENTS2_FILE_NAME);
-            Statement2 a = new Statement2(doc, doc.DocumentElement);
         }
 
         private void metroTile1_Click(object sender, EventArgs e)
@@ -84,6 +80,13 @@ namespace DataBase
     public class Statement2
     {
         public XmlElement StatementInXml;
+        public static XmlDocument Statement2_Document = new XmlDocument();
+
+        static Statement2()
+        {
+            Statement2_Document.Load(Config.Statement2_Path);
+        }
+
 
         /// <summary>
         ///  Создать и сохранить ведомость
@@ -97,45 +100,42 @@ namespace DataBase
         /// <param name="deputy">Заместитель</param>
         /// <param name="CommissionMember1">Член комиссии</param>
         /// <param name="CommissionMember2">Член комиссии</param>
-        /// <param name="documentName">Наименование документа</param>
-        public Statement2(XmlDocument document, 
-                          XmlElement In, 
+        public Statement2(XmlElement In, 
                           System.UInt16 year = 0,
                           string EducationalInstitution = "",
                           string codeAndSpecialityName = "",
                           string chairman = "",
                           string deputy = "",
                           string CommissionMember1 = "",
-                          string CommissionMember2 = "",
-                          string documentName = "Statements2.xml"
+                          string CommissionMember2 = ""
             )
         {
             //
             //Можно было всё очень сильно упростить, если передавать параметры(атрибуты) ведомости с помощью словаря
-            // но я уже сделал вот так
+            // но я уже вот так сделал
             //
-            this.StatementInXml = document.CreateElement("statement");
+            this.StatementInXml = Statement2_Document.CreateElement("statement");
             In.AppendChild(this.StatementInXml);
 
-            XmlAttribute Attr_year                   = document.CreateAttribute("year");
+            XmlAttribute Attr_year                   = Statement2_Document.CreateAttribute("year");
                          Attr_year.Value = year.ToString();     
             
-            XmlAttribute Attr_EducationalInstitution = document.CreateAttribute("EducationalInstitution");
+            XmlAttribute Attr_EducationalInstitution = Statement2_Document.CreateAttribute("EducationalInstitution");
                          Attr_EducationalInstitution.Value = EducationalInstitution;
             
-            XmlAttribute Attr_codeAndSpecialityName  = document.CreateAttribute("codeAndSpecialityName");
+            XmlAttribute Attr_codeAndSpecialityName  = Statement2_Document.CreateAttribute("codeAndSpecialityName");
                          Attr_codeAndSpecialityName.Value = codeAndSpecialityName;
             
-            XmlAttribute Attr_chairman               = document.CreateAttribute("chairman");
+            XmlAttribute Attr_chairman               = Statement2_Document.CreateAttribute("chairman");
                          Attr_chairman.Value = chairman;
             
-            XmlAttribute Attr_deputy                 = document.CreateAttribute("deputy");
+            XmlAttribute Attr_deputy                 = Statement2_Document.CreateAttribute("deputy");
                          Attr_deputy.Value = deputy;
             
-            XmlAttribute Attr_CommissionMember1      = document.CreateAttribute("CommissionMember1");
+            XmlAttribute Attr_CommissionMember1      = Statement2_Document.CreateAttribute("CommissionMember1");
                          Attr_CommissionMember1.Value = CommissionMember1;
             
-            XmlAttribute Attr_CommissionMember2      = document.CreateAttribute("CommissionMember2");
+            XmlAttribute Attr_CommissionMember2      = Statement2_Document.CreateAttribute("CommissionMember2");
                          Attr_CommissionMember2.Value = CommissionMember2;
 
             this.StatementInXml.Attributes.Append(Attr_year);
@@ -146,10 +146,10 @@ namespace DataBase
             this.StatementInXml.Attributes.Append(Attr_CommissionMember1);
             this.StatementInXml.Attributes.Append(Attr_CommissionMember2);
 
-            XmlElement TabularPart = document.CreateElement("TabularPart");
+            XmlElement TabularPart = Statement2_Document.CreateElement("TabularPart");
             this.StatementInXml.AppendChild(TabularPart);
 
-            document.Save(documentName);
+            Statement2_Document.Save(Config.Statement2_Path);
         }
 
 
