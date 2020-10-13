@@ -19,13 +19,12 @@ namespace DataBase
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
-        public static string STATEMENTS2_FILE_NAME = "Statements2.xml";
-
         public MainForm()
         {
             InitializeComponent();
         }
 
+        #region События формы
         private void metroButton1_Click(object sender, EventArgs e)
         {
             if (metroStyleManager1.Theme == MetroThemeStyle.Light)
@@ -66,25 +65,20 @@ namespace DataBase
         {
             new SetExport_Form().ShowDialog();
         }
+
+        private void Show_Click(object sender, EventArgs e)
+        {
+            new Show_Form().ShowDialog();
+        }
+        #endregion
     }
-
-
-    /*
-    /// <summary>
-    /// Ведомость персонального учета выпускников
-    /// </summary>
-    public class Statement1
-    {
-    }
-    */
-
 
     /// <summary>
     /// Ведомость распределения выпускников
     /// </summary>
     public class Statement2
     {
-        public XmlElement StatementInXml;
+        #region Статические поля, методы, конструкторы
         public static XmlDocument Statement2_Document = new XmlDocument();
 
         static Statement2()
@@ -92,6 +86,31 @@ namespace DataBase
             Statement2_Document.Load(Config.Statement2_Path);
         }
 
+        public static Statement2[] GetStatements2FromDocument()
+        {
+            List<Statement2> Statements = new List<Statement2>();
+            foreach (XmlElement statement in Statement2_Document.DocumentElement)
+            {
+                Statements.Add(new Statement2(statement));
+            }
+
+            return Statements.ToArray();
+        }
+        #endregion
+        #region Конструкторы класса
+        /// <summary>
+        /// Элемент, представляющий ведомость в XML
+        /// </summary>
+        public XmlElement StatementInXml;
+
+        /// <summary>
+        /// "Загрузить" ведомость из XML элемента
+        /// </summary>
+        /// <param name="StatementElement">Элемент ведомости</param>
+        public Statement2(XmlElement StatementElement)
+        {
+            this.StatementInXml = StatementElement;
+        }
 
         /// <summary>
         ///  Создать и сохранить ведомость
@@ -156,18 +175,8 @@ namespace DataBase
 
             Statement2_Document.Save(Config.Statement2_Path);
         }
-
-
-        /// <summary>
-        /// "Загрузить" ведомость из XML элемента
-        /// </summary>
-        /// <param name="StatementElement">Элемент ведомости</param>
-        public Statement2(XmlElement StatementElement)
-        {
-            this.StatementInXml = StatementElement;
-        }
-
-
+        #endregion
+        #region Поля Ведомости
         /// <summary>
         /// Год ведомости
         /// </summary>
@@ -229,8 +238,8 @@ namespace DataBase
             get { return this.StatementInXml.Attributes["CommissionMember2"].Value; }
             set { this.StatementInXml.Attributes["CommissionMember2"].Value = value; }
         }
-                       
-
+        #endregion
+        #region Методы класса
         /// <summary>
         /// По имени ищет XmlElement среди потомков элемента, передаваемого в параметре
         /// </summary>
@@ -285,5 +294,6 @@ namespace DataBase
 
             Statement2_Document.Save(Config.Statement2_Path);
         }
+        #endregion
     }
 }

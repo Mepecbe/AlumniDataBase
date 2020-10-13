@@ -93,6 +93,7 @@
             this.Show.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Show.UseSelectable = true;
             this.Show.UseTileImage = true;
+            this.Show.Click += new System.EventHandler(this.Show_Click);
             // 
             // Edit
             // 
