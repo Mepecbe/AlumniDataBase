@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
+using System.Xml;
 
 namespace DataBase.Modules
 {
@@ -42,7 +43,12 @@ namespace DataBase.Modules
                 Error = true;
 
             /*Формирование табличной части*/
+            XmlElement XmlTabularPart = Statement.getTabularPart();
             Word.Table TabularPart = wordDocument.Tables[1];
+
+            //Добавление строк, -3 потому что 3 строки в шаблоне уже есть
+            for(int count = XmlTabularPart.ChildNodes.Count - 3; count > 0; count--)
+                TabularPart.Rows.Add();
 
             for (int column = 1; column < 12; column++)
                 TabularPart.Cell(4, column).Range.Text = "Hello";

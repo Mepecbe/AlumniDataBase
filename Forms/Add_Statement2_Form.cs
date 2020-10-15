@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Tulpep.NotificationWindow;
+
 namespace DataBase.Forms
 {
     public partial class Add_Statement2_Form : MetroFramework.Forms.MetroForm
@@ -71,13 +73,6 @@ namespace DataBase.Forms
                 {
                     if (control.Name == "Table_" + a)
                     {
-                        if (string.IsNullOrEmpty(control.Text))
-                        {
-                            MetroMessageBox.Show(this, "Необходимо заполнить все поля!");
-                            item.Remove();
-                            return;
-                        }
-
                         item.SubItems.Add(control.Text);
                     }
                 }
@@ -117,6 +112,14 @@ namespace DataBase.Forms
 
                 newStatement.AppendTabularPart(this.Table.Items, this.Table.Columns);
             }
+
+            new PopupNotifier()
+            {
+                TitleText = "База данных",
+                ContentText = "Ведомость сохранена"
+            }.Popup();
+
+            this.Close();
         }
 
         private void Add_Form_ResizeEnd(object sender, EventArgs e)
