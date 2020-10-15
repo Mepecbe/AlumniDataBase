@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
+
+using Microsoft.Office.Interop.Word;
+using DataBase.Modules;
 
 namespace DataBase.Forms
 {
@@ -24,6 +28,7 @@ namespace DataBase.Forms
             foreach(Statement2 statement in statements)
             {
                 ListViewItem item = metroListView2.Items.Add(statement.Year.ToString());
+                item.Tag = statement.UniqueKey;
                 item.SubItems.Add(statement.codeAndSpecialityName);
                 item.SubItems.Add(statement.getTabularPart().ChildNodes.Count.ToString()); //Количество потомков в "элементе" таблицы(потомки - строки)
             }
@@ -48,6 +53,15 @@ namespace DataBase.Forms
                 Show_Form_ResizeEnd(null, null);
 
             prevState = this.WindowState;
+        }
+
+        private void печатьВедомостиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (metroListView2.SelectedItems.Count == 0) return;
+
+            Statement2 SelectedStatement = Statement2.GetStatementByUniqueKey(metroListView2.SelectedItems[0].Tag.ToString());
+
+            DocumentBuilder.BuildStatement2(SelectedStatement);
         }
     }
 }

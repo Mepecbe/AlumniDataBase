@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace DataBase.Forms
 {
-    public partial class Add_Form : MetroFramework.Forms.MetroForm
+    public partial class Add_Statement2_Form : MetroFramework.Forms.MetroForm
     {
-        public Add_Form()
+        public Add_Statement2_Form()
         {
             InitializeComponent();
         }

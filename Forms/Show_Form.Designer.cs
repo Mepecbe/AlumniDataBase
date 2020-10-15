@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.metroListView1 = new MetroFramework.Controls.MetroListView();
@@ -38,9 +39,14 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Statements2_Table = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.печатьВедомостиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактированиеВедомостиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВедомостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.Statements2_Table.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -106,6 +112,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.metroListView2.ContextMenuStrip = this.Statements2_Table;
             this.metroListView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroListView2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListView2.FullRowSelect = true;
@@ -137,6 +144,34 @@
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader5.Width = 253;
             // 
+            // Statements2_Table
+            // 
+            this.Statements2_Table.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.печатьВедомостиToolStripMenuItem,
+            this.редактированиеВедомостиToolStripMenuItem,
+            this.удалитьВедомостьToolStripMenuItem});
+            this.Statements2_Table.Name = "Statements2_Table";
+            this.Statements2_Table.Size = new System.Drawing.Size(226, 92);
+            // 
+            // печатьВедомостиToolStripMenuItem
+            // 
+            this.печатьВедомостиToolStripMenuItem.Name = "печатьВедомостиToolStripMenuItem";
+            this.печатьВедомостиToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.печатьВедомостиToolStripMenuItem.Text = "Печать ведомости";
+            this.печатьВедомостиToolStripMenuItem.Click += new System.EventHandler(this.печатьВедомостиToolStripMenuItem_Click);
+            // 
+            // редактированиеВедомостиToolStripMenuItem
+            // 
+            this.редактированиеВедомостиToolStripMenuItem.Name = "редактированиеВедомостиToolStripMenuItem";
+            this.редактированиеВедомостиToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.редактированиеВедомостиToolStripMenuItem.Text = "Редактирование ведомости";
+            // 
+            // удалитьВедомостьToolStripMenuItem
+            // 
+            this.удалитьВедомостьToolStripMenuItem.Name = "удалитьВедомостьToolStripMenuItem";
+            this.удалитьВедомостьToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.удалитьВедомостьToolStripMenuItem.Text = "Удалить ведомость";
+            // 
             // Show_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +186,7 @@
             this.metroTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.Statements2_Table.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,5 +203,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private MetroFramework.Controls.MetroContextMenu Statements2_Table;
+        private System.Windows.Forms.ToolStripMenuItem печатьВедомостиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редактированиеВедомостиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВедомостьToolStripMenuItem;
     }
 }
