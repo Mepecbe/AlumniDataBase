@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,7 +38,7 @@ namespace DataBase.Forms
             }
 
             //Председатель комиссии
-            if(keyValues.ContainsKey("Председатель комиссии"))
+            if (keyValues.ContainsKey("Председатель комиссии"))
                 this.ChairMan.Items.AddRange(keyValues["Председатель комиссии"].ToArray());
 
             //Заместитель председателя
@@ -52,36 +54,48 @@ namespace DataBase.Forms
             /**/
 
             //Выставление значений по умолчанию
-            foreach(Control control in this.Controls)
+            foreach (Control control in this.Controls)
             {
-                if (control is MetroFramework.Controls.MetroComboBox && ((MetroComboBox)control).Items.Count == 0)
+                if (control is MetroFramework.Controls.MetroComboBox && ((MetroComboBox)control).Items.Count != 0)
                 {
                     ((MetroComboBox)control).Text = ((MetroComboBox)control).Items[0].ToString();
                 }
             }
+
+            Add_Form_ResizeEnd(null, null);
         }
 
+        /// <summary>
+        /// Добавление строки в табличную часть
+        /// </summary>
         private void Add_button_Click(object sender, EventArgs e)
         {
-            //Добавление строки в табличку
             ListViewItem item = this.Table.Items.Add(this.Table_1.Text);
-            
+
             //Добавление в строчку различных реквизитов(контролы реквизитов начинаются с "Table_", после "_" идет порядковый номер)
-            for(byte a = 2; a <= 10; a++)
+            for (byte a = 2; a <= 10; a++)
             {
                 foreach (Control control in this.Controls)
                 {
                     if (control.Name == "Table_" + a)
                     {
                         item.SubItems.Add(control.Text);
+
+                        if (control is MetroFramework.Controls.MetroTextBox)
+                            control.Text = "";
                     }
                 }
             }
+
+
         }
 
+        /// <summary>
+        /// Сохранить ведомость
+        /// </summary>
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if(this.Table.Items.Count == 0)
+            if (this.Table.Items.Count == 0)
             {
                 DialogResult result = MetroMessageBox.Show(this, "Вы точно хотите сохранить ведомость? Табличная часть пуста", "Внимание", MessageBoxButtons.YesNo);
                 if (result == DialogResult.No) return;
@@ -134,6 +148,9 @@ namespace DataBase.Forms
 
                 this.Table.Columns[index].Width = width;
             }
+
+            //Размер ListView, по дефолту 1281; 456
+            this.Table.Size = new Size(this.Table.Width, this.Height - this.Add_button.Location.Y - this.Add_button.Size.Height - 25);
         }
 
         private FormWindowState PrevState;
@@ -141,10 +158,19 @@ namespace DataBase.Forms
         {
             if (this.WindowState == FormWindowState.Maximized)
                 Add_Form_ResizeEnd(null, null);
-            else if(PrevState == FormWindowState.Maximized && this.WindowState == FormWindowState.Normal)
+            else if (PrevState == FormWindowState.Maximized && this.WindowState == FormWindowState.Normal)
                 Add_Form_ResizeEnd(null, null);
 
             PrevState = this.WindowState;
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            foreach (ListViewItem item in this.Table.SelectedItems)
+            {
+                item.Remove();
+            }
         }
     }
 }

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace DataBase.Forms
 {
-    public partial class Add_Statement1_Form : MetroFramework.Forms.MetroForm
+    public partial class Statement1_AddToTable : MetroFramework.Forms.MetroForm
     {
-        public Add_Statement1_Form()
+        public Statement1_AddToTable()
         {
             InitializeComponent();
-        }
-
-        private void Add_Statement1_Form_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

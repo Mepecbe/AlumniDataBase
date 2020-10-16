@@ -21,6 +21,7 @@ namespace DataBase.Modules
             string FileName =  $"{Statement.codeAndSpecialityName} {DateTime.Now.Year}.{DateTime.Now.Month}.{DateTime.Now.Day}.docx";
             bool Error = false;
 
+            //Если файл существует, то добавляем (Количество файлов в папке + 1) к названию файла
             if (File.Exists(Directory.GetCurrentDirectory() + "\\TemporaryFiles\\" + FileName))
                 FileName = (1 + Directory.GetFiles(Directory.GetCurrentDirectory() + "\\TemporaryFiles\\").Length) + "  " + FileName;
 
@@ -39,20 +40,34 @@ namespace DataBase.Modules
                 Error = true;
 
             //Код и наименование специальности
-            if (ReplaceInWord("{CodeAndName}", Statement.codeAndSpecialityName, wordDocument))
+            if (!ReplaceInWord("{CodeAndName}", Statement.codeAndSpecialityName, wordDocument))
                 Error = true;
+
+#warning Уточнить
+
+            //Председатель комиссии
+            ReplaceInWord("{CM}", Statement.chairman, wordDocument);
+
+            //Заместитель председателя
+            ReplaceInWord("{CH}", Statement.deputy, wordDocument);
+
+            //Члены комиссии
+            ReplaceInWord("{M1}", Statement.CommissionMember1, wordDocument);
+            ReplaceInWord("{M2}", Statement.CommissionMember1, wordDocument);
 
             /*Формирование табличной части*/
             XmlElement XmlTabularPart = Statement.getTabularPart();
             Word.Table TabularPart = wordDocument.Tables[1];
 
-            //Добавление строк, -3 потому что 3 строки в шаблоне уже есть
-            for(int count = XmlTabularPart.ChildNodes.Count - 3; count > 0; count--)
+            //Добавление строк, -1 потому что 1 строки в шаблоне уже есть
+            for(int count = XmlTabularPart.ChildNodes.Count - 1; count > 0; count--)
                 TabularPart.Rows.Add();
 
-            for (int column = 1; column < 12; column++)
-                TabularPart.Cell(4, column).Range.Text = "Hello";
-
+            for (int RowIndex = 0; RowIndex < XmlTabularPart.ChildNodes.Count; RowIndex++)
+            {
+                for (int column = 0; column < 10; column++)
+                    TabularPart.Cell(4 + RowIndex, column + 1).Range.Text = XmlTabularPart.ChildNodes[RowIndex].ChildNodes[column].InnerText;
+            }
 
             wordDocument.Save();
             wordApplication.Visible = true;

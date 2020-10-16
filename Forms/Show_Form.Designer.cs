@@ -109,13 +109,14 @@
             // metroListView2
             // 
             this.metroListView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
             this.columnHeader4,
+            this.columnHeader3,
             this.columnHeader5});
             this.metroListView2.ContextMenuStrip = this.Statements2_Table;
             this.metroListView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroListView2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListView2.FullRowSelect = true;
+            this.metroListView2.GridLines = true;
             this.metroListView2.Location = new System.Drawing.Point(0, 0);
             this.metroListView2.Name = "metroListView2";
             this.metroListView2.OwnerDraw = true;
@@ -151,7 +152,7 @@
             this.редактированиеВедомостиToolStripMenuItem,
             this.удалитьВедомостьToolStripMenuItem});
             this.Statements2_Table.Name = "Statements2_Table";
-            this.Statements2_Table.Size = new System.Drawing.Size(226, 92);
+            this.Statements2_Table.Size = new System.Drawing.Size(226, 70);
             // 
             // печатьВедомостиToolStripMenuItem
             // 
