@@ -265,9 +265,16 @@ namespace DataBase
         /// </summary>
         /// <param name="items"></param>
         /// <param name="columns"></param>
-        public void AppendTabularPart(ListView.ListViewItemCollection items, ListView.ColumnHeaderCollection columns)
+        public void AppendTabularPart(string FIO, ListView.ListViewItemCollection items, ListView.ColumnHeaderCollection columns)
         {
             XmlElement TabularPart = getTabularPart();
+
+            XmlElement Row = Statement1.Statement1_Document.CreateElement("Row");
+            
+            XmlAttribute Attr_FIO = Statement1.Statement1_Document.CreateAttribute("FIO");
+            Attr_FIO.Value = FIO;
+
+            Row.Attributes.Append(Attr_FIO);
 
             for (int row = 0; row < items.Count; row++)
             {
@@ -656,6 +663,12 @@ namespace DataBase
         public Row(XmlElement XmlRowElement)
         {
             this.RowElement = XmlRowElement;
+
+            if(XmlRowElement.Attributes["FIO"] is null)
+            {
+                XmlAttribute Attr_FIO = Statement1.Statement1_Document.CreateAttribute("FIO");
+                this.RowElement.Attributes.Append(Attr_FIO);
+            }
         }
 
         string FIO
@@ -683,9 +696,48 @@ namespace DataBase
             List<InformationForTheYear> list = new List<InformationForTheYear>();
 
             foreach (XmlElement child in RowElement.ChildNodes)
+            {
                 list.Add(new InformationForTheYear(child));
+            }
 
             return list.ToArray();
+        }
+
+        /// <summary>
+        /// Добавить информацию за год
+        /// </summary>
+        /// <param name="In">Элемент, представляющий строку таблицы(row)</param>
+        /// <param name="year">Год</param>
+        /// <param name="organization">Организация</param>
+        /// <param name="position">Должность</param>
+        /// <param name="note">Примечание</param>
+        public void Append_InformationForTheYear(XmlElement In, string year, string organization, string position, string note)
+        {
+            XmlElement Xml_year = Statement1.Statement1_Document.CreateElement("year");
+
+            XmlAttribute Attr_Year = Statement1.Statement1_Document.CreateAttribute("number");
+            Attr_Year.Value = year;
+                        
+            XmlElement Xml_Organization = Statement1.Statement1_Document.CreateElement("Organization");
+            Xml_Organization.InnerText = organization;
+
+            XmlElement Xml_Position = Statement1.Statement1_Document.CreateElement("Position");
+            Xml_Position.InnerText = position;
+
+            XmlElement Xml_Note = Statement1.Statement1_Document.CreateElement("Note");
+            Xml_Note.InnerText = note;
+
+            Xml_year.Attributes.Append(Attr_Year);
+            Xml_year.AppendChild(Xml_Organization);
+            Xml_year.AppendChild(Xml_Position);
+            Xml_year.AppendChild(Xml_Note);
+
+            In.AppendChild(Xml_year);
+        }
+
+        public void Append_InformationForTheYear(Row In, string year, string organization, string position, string note)
+        {
+            Append_InformationForTheYear(In.RowElement, year, organization, position, note);
         }
     }
 }
