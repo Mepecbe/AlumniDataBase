@@ -47,6 +47,9 @@
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_FIO = new MetroFramework.Controls.MetroTextBox();
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменитьВыбранноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Edit_Button = new MetroFramework.Controls.MetroButton();
             this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,14 +100,16 @@
             // metroContextMenu1
             // 
             this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.удалитьВыбранноеToolStripMenuItem});
+            this.добавитьToolStripMenuItem,
+            this.удалитьВыбранноеToolStripMenuItem,
+            this.изменитьВыбранноеToolStripMenuItem});
             this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(184, 26);
+            this.metroContextMenu1.Size = new System.Drawing.Size(194, 70);
             // 
             // удалитьВыбранноеToolStripMenuItem
             // 
             this.удалитьВыбранноеToolStripMenuItem.Name = "удалитьВыбранноеToolStripMenuItem";
-            this.удалитьВыбранноеToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.удалитьВыбранноеToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.удалитьВыбранноеToolStripMenuItem.Text = "Удалить выбранное";
             this.удалитьВыбранноеToolStripMenuItem.Click += new System.EventHandler(this.удалитьВыбранноеToolStripMenuItem_Click);
             // 
@@ -123,7 +128,7 @@
             // 
             // 
             this.TextBox_Year.CustomButton.Image = null;
-            this.TextBox_Year.CustomButton.Location = new System.Drawing.Point(405, 1);
+            this.TextBox_Year.CustomButton.Location = new System.Drawing.Point(279, 1);
             this.TextBox_Year.CustomButton.Name = "";
             this.TextBox_Year.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.TextBox_Year.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -162,7 +167,7 @@
             // 
             // 
             this.TextBox_Organization.CustomButton.Image = null;
-            this.TextBox_Organization.CustomButton.Location = new System.Drawing.Point(255, 1);
+            this.TextBox_Organization.CustomButton.Location = new System.Drawing.Point(355, 1);
             this.TextBox_Organization.CustomButton.Name = "";
             this.TextBox_Organization.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.TextBox_Organization.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -201,7 +206,7 @@
             // 
             // 
             this.TextBox_Position.CustomButton.Image = null;
-            this.TextBox_Position.CustomButton.Location = new System.Drawing.Point(360, 1);
+            this.TextBox_Position.CustomButton.Location = new System.Drawing.Point(234, 1);
             this.TextBox_Position.CustomButton.Name = "";
             this.TextBox_Position.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.TextBox_Position.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -228,7 +233,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(459, 118);
+            this.metroLabel4.Location = new System.Drawing.Point(459, 107);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(87, 19);
             this.metroLabel4.TabIndex = 7;
@@ -240,7 +245,7 @@
             // 
             // 
             this.TextBox_Note.CustomButton.Image = null;
-            this.TextBox_Note.CustomButton.Location = new System.Drawing.Point(275, 1);
+            this.TextBox_Note.CustomButton.Location = new System.Drawing.Point(375, 1);
             this.TextBox_Note.CustomButton.Name = "";
             this.TextBox_Note.CustomButton.Size = new System.Drawing.Size(47, 47);
             this.TextBox_Note.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -249,7 +254,7 @@
             this.TextBox_Note.CustomButton.UseSelectable = true;
             this.TextBox_Note.CustomButton.Visible = false;
             this.TextBox_Note.Lines = new string[0];
-            this.TextBox_Note.Location = new System.Drawing.Point(552, 118);
+            this.TextBox_Note.Location = new System.Drawing.Point(552, 107);
             this.TextBox_Note.MaxLength = 32767;
             this.TextBox_Note.Multiline = true;
             this.TextBox_Note.Name = "TextBox_Note";
@@ -259,7 +264,7 @@
             this.TextBox_Note.SelectionLength = 0;
             this.TextBox_Note.SelectionStart = 0;
             this.TextBox_Note.ShortcutsEnabled = true;
-            this.TextBox_Note.Size = new System.Drawing.Size(423, 49);
+            this.TextBox_Note.Size = new System.Drawing.Size(423, 60);
             this.TextBox_Note.TabIndex = 8;
             this.TextBox_Note.UseSelectable = true;
             this.TextBox_Note.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -269,7 +274,7 @@
             // 
             this.metroButton1.Location = new System.Drawing.Point(86, 185);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(889, 54);
+            this.metroButton1.Size = new System.Drawing.Size(341, 45);
             this.metroButton1.TabIndex = 9;
             this.metroButton1.Text = "Добавить";
             this.metroButton1.UseSelectable = true;
@@ -290,7 +295,7 @@
             // 
             // 
             this.TextBox_FIO.CustomButton.Image = null;
-            this.TextBox_FIO.CustomButton.Location = new System.Drawing.Point(395, 1);
+            this.TextBox_FIO.CustomButton.Location = new System.Drawing.Point(269, 1);
             this.TextBox_FIO.CustomButton.Name = "";
             this.TextBox_FIO.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.TextBox_FIO.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -314,11 +319,37 @@
             this.TextBox_FIO.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBox_FIO.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // добавитьToolStripMenuItem
+            // 
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
+            // 
+            // изменитьВыбранноеToolStripMenuItem
+            // 
+            this.изменитьВыбранноеToolStripMenuItem.Name = "изменитьВыбранноеToolStripMenuItem";
+            this.изменитьВыбранноеToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.изменитьВыбранноеToolStripMenuItem.Text = "Изменить выбранное";
+            this.изменитьВыбранноеToolStripMenuItem.Click += new System.EventHandler(this.изменитьВыбранноеToolStripMenuItem_Click);
+            // 
+            // Edit_Button
+            // 
+            this.Edit_Button.Location = new System.Drawing.Point(459, 185);
+            this.Edit_Button.Name = "Edit_Button";
+            this.Edit_Button.Size = new System.Drawing.Size(516, 45);
+            this.Edit_Button.TabIndex = 12;
+            this.Edit_Button.Text = "Закончить редактирование";
+            this.Edit_Button.UseSelectable = true;
+            this.Edit_Button.Visible = false;
+            this.Edit_Button.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
             // Statement1_AddToTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 700);
+            this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.TextBox_FIO);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroButton1);
@@ -361,5 +392,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         public MetroFramework.Controls.MetroTextBox TextBox_FIO;
         public MetroFramework.Controls.MetroListView metroListView1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem изменитьВыбранноеToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton Edit_Button;
     }
 }

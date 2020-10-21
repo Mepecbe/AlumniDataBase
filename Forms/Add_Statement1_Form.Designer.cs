@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.ComboBox_Education = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.ComboBox_Specialty = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.ComboBox_SpecialityDirection = new MetroFramework.Controls.MetroComboBox();
+            this.ComboBox_SpecialtyDirection = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.ComboBox_Specialization = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -43,9 +44,14 @@
             this.ComboBox_Group = new MetroFramework.Controls.MetroComboBox();
             this.metroListView1 = new MetroFramework.Controls.MetroListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьВыбранноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_Info = new MetroFramework.Controls.MetroTextBox();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -105,15 +111,15 @@
             this.metroLabel3.TabIndex = 4;
             this.metroLabel3.Text = "Направление специальности";
             // 
-            // ComboBox_SpecialityDirection
+            // ComboBox_SpecialtyDirection
             // 
-            this.ComboBox_SpecialityDirection.FormattingEnabled = true;
-            this.ComboBox_SpecialityDirection.ItemHeight = 23;
-            this.ComboBox_SpecialityDirection.Location = new System.Drawing.Point(255, 153);
-            this.ComboBox_SpecialityDirection.Name = "ComboBox_SpecialityDirection";
-            this.ComboBox_SpecialityDirection.Size = new System.Drawing.Size(279, 29);
-            this.ComboBox_SpecialityDirection.TabIndex = 5;
-            this.ComboBox_SpecialityDirection.UseSelectable = true;
+            this.ComboBox_SpecialtyDirection.FormattingEnabled = true;
+            this.ComboBox_SpecialtyDirection.ItemHeight = 23;
+            this.ComboBox_SpecialtyDirection.Location = new System.Drawing.Point(255, 153);
+            this.ComboBox_SpecialtyDirection.Name = "ComboBox_SpecialtyDirection";
+            this.ComboBox_SpecialtyDirection.Size = new System.Drawing.Size(279, 29);
+            this.ComboBox_SpecialtyDirection.TabIndex = 5;
+            this.ComboBox_SpecialtyDirection.UseSelectable = true;
             // 
             // metroLabel4
             // 
@@ -175,7 +181,9 @@
             // metroListView1
             // 
             this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
+            this.columnHeader1,
+            this.columnHeader2});
+            this.metroListView1.ContextMenuStrip = this.metroContextMenu1;
             this.metroListView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListView1.FullRowSelect = true;
@@ -193,15 +201,31 @@
             this.columnHeader1.Text = "ФИО, адрес, телефон";
             this.columnHeader1.Width = 1069;
             // 
-            // metroButton1
+            // columnHeader2
             // 
-            this.metroButton1.Location = new System.Drawing.Point(579, 205);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(414, 23);
-            this.metroButton1.TabIndex = 13;
-            this.metroButton1.Text = "Учет";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.columnHeader2.Text = "Записей";
+            // 
+            // metroContextMenu1
+            // 
+            this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьToolStripMenuItem,
+            this.удалитьВыбранноеToolStripMenuItem});
+            this.metroContextMenu1.Name = "metroContextMenu1";
+            this.metroContextMenu1.Size = new System.Drawing.Size(184, 48);
+            // 
+            // добавитьToolStripMenuItem
+            // 
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
+            // 
+            // удалитьВыбранноеToolStripMenuItem
+            // 
+            this.удалитьВыбранноеToolStripMenuItem.Name = "удалитьВыбранноеToolStripMenuItem";
+            this.удалитьВыбранноеToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.удалитьВыбранноеToolStripMenuItem.Text = "Удалить выбранное";
+            this.удалитьВыбранноеToolStripMenuItem.Click += new System.EventHandler(this.удалитьВыбранноеToolStripMenuItem_Click);
             // 
             // metroLabel7
             // 
@@ -218,7 +242,7 @@
             // 
             // 
             this.TextBox_Info.CustomButton.Image = null;
-            this.TextBox_Info.CustomButton.Location = new System.Drawing.Point(157, 1);
+            this.TextBox_Info.CustomButton.Location = new System.Drawing.Point(182, 1);
             this.TextBox_Info.CustomButton.Name = "";
             this.TextBox_Info.CustomButton.Size = new System.Drawing.Size(41, 41);
             this.TextBox_Info.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -227,7 +251,7 @@
             this.TextBox_Info.CustomButton.UseSelectable = true;
             this.TextBox_Info.CustomButton.Visible = false;
             this.TextBox_Info.Lines = new string[0];
-            this.TextBox_Info.Location = new System.Drawing.Point(794, 156);
+            this.TextBox_Info.Location = new System.Drawing.Point(769, 156);
             this.TextBox_Info.MaxLength = 32767;
             this.TextBox_Info.Multiline = true;
             this.TextBox_Info.Name = "TextBox_Info";
@@ -237,20 +261,29 @@
             this.TextBox_Info.SelectionLength = 0;
             this.TextBox_Info.SelectionStart = 0;
             this.TextBox_Info.ShortcutsEnabled = true;
-            this.TextBox_Info.Size = new System.Drawing.Size(199, 43);
+            this.TextBox_Info.Size = new System.Drawing.Size(224, 43);
             this.TextBox_Info.TabIndex = 15;
             this.TextBox_Info.UseSelectable = true;
             this.TextBox_Info.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBox_Info.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(579, 205);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(414, 23);
+            this.metroButton1.TabIndex = 17;
+            this.metroButton1.Text = "Сохранить ведомость";
+            this.metroButton1.UseSelectable = true;
             // 
             // Add_Statement1_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 694);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.TextBox_Info);
             this.Controls.Add(this.metroLabel7);
-            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroListView1);
             this.Controls.Add(this.ComboBox_Group);
             this.Controls.Add(this.ComboBox_Qualification);
@@ -258,16 +291,20 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.ComboBox_Specialization);
             this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.ComboBox_SpecialityDirection);
+            this.Controls.Add(this.ComboBox_SpecialtyDirection);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.ComboBox_Specialty);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.ComboBox_Education);
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.metroLabel1);
+            this.MinimumSize = new System.Drawing.Size(1114, 694);
             this.Name = "Add_Statement1_Form";
             this.Text = "Добавление ведомости персонального учета выпускников";
             this.Load += new System.EventHandler(this.Add_Statement1_Form_Load);
+            this.ResizeEnd += new System.EventHandler(this.Add_Statement1_Form_ResizeEnd);
+            this.Resize += new System.EventHandler(this.Add_Statement1_Form_Resize);
+            this.metroContextMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +318,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroComboBox ComboBox_Specialty;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroComboBox ComboBox_SpecialityDirection;
+        private MetroFramework.Controls.MetroComboBox ComboBox_SpecialtyDirection;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroComboBox ComboBox_Specialization;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -290,8 +327,12 @@
         private MetroFramework.Controls.MetroComboBox ComboBox_Group;
         private MetroFramework.Controls.MetroListView metroListView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroTextBox TextBox_Info;
+        private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВыбранноеToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

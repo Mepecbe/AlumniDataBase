@@ -52,5 +52,42 @@ namespace DataBase.Forms
         {
 
         }
+
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public ListViewItem SelectedItem;
+        private void изменитьВыбранноеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(this.metroListView1.SelectedItems.Count > 0)
+            {
+                SelectedItem = this.metroListView1.SelectedItems[0];
+
+                this.TextBox_Year.Text         = SelectedItem.SubItems[0].Text;
+                this.TextBox_Organization.Text = SelectedItem.SubItems[1].Text;
+                this.TextBox_Position.Text     = SelectedItem.SubItems[2].Text;
+                this.TextBox_Note.Text         = SelectedItem.SubItems[3].Text;
+
+                this.Edit_Button.Visible = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Закончить редактирование
+        /// </summary>
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            SelectedItem.SubItems[0].Text = this.TextBox_Year.Text;
+            SelectedItem.SubItems[1].Text = this.TextBox_Organization.Text;
+            SelectedItem.SubItems[2].Text = this.TextBox_Position.Text;
+            SelectedItem.SubItems[3].Text = this.TextBox_Note.Text;
+
+            SelectedItem = null;
+
+            this.Edit_Button.Visible = false;
+        }
     }
 }

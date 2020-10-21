@@ -77,6 +77,18 @@ namespace DataBase
         public Statement1(XmlElement StatementElement)
         {
             this.StatementInXml = StatementElement;
+
+            List<Row> Rows = new List<Row>();
+
+            foreach(XmlElement Xml_Row in getTabularPart().ChildNodes)
+            {
+                if (Xml_Row.Name == "row")
+                {
+                    Rows.Add(new Row(Xml_Row));
+                }
+            }
+
+            this.TabularPart = Rows.ToArray();
         }
 
         /// <summary>
@@ -125,6 +137,9 @@ namespace DataBase
             XmlAttribute Attr_Group = Statement1_Document.CreateAttribute("Group");
             Attr_Group.Value = Group;
 
+            XmlElement Xml_TabularPart = Statement1_Document.CreateElement("TabularPart");
+
+
             this.StatementInXml = Statement1_Document.CreateElement("statement");
             this.StatementInXml.Attributes.Append(Attr_UniqueKey);
             this.StatementInXml.Attributes.Append(Attr_EducationName);
@@ -134,8 +149,11 @@ namespace DataBase
             this.StatementInXml.Attributes.Append(Attr_Specialization);
             this.StatementInXml.Attributes.Append(Attr_Qualification);
             this.StatementInXml.Attributes.Append(Attr_Group);
+            this.StatementInXml.AppendChild(Xml_TabularPart);
 
             In.AppendChild(this.StatementInXml);
+
+            Statement1_Document.Save(Config.Statement1_Path);
         }
 
         #endregion
@@ -149,6 +167,9 @@ namespace DataBase
             set { this.StatementInXml.Attributes["UniqueKey"].Value = value; }
         }
 
+        /// <summary>
+        /// Наименование учреждения образования
+        /// </summary>
         public string EducationName
         {
             get { return this.StatementInXml.Attributes["EducationName"].Value; }
@@ -209,19 +230,10 @@ namespace DataBase
             set { this.StatementInXml.Attributes["Group"].Value = value; }
         }
 
-        public Row[] GetAllRows()
-        {
-            List<Row> rows = new List<Row>();
-            XmlElement TabularPart = getElementByName(StatementInXml, "TabularPart");
-
-            foreach (XmlElement element in TabularPart.ChildNodes)
-            {
-                rows.Add(new Row(element));
-            }
-
-            return rows.ToArray();
-        }
-
+        /// <summary>
+        /// Табличная часть
+        /// </summary>
+        public Row[] TabularPart = new Row[0];
         #endregion
         #region Методы класса
         /// <summary>
@@ -260,38 +272,33 @@ namespace DataBase
             Statement1_Document.Save(Config.Statement1_Path);
         }
 
-        /// <summary>
-        /// Вставить табличную часть на основании таблицы элемента ListView 
-        /// </summary>
-        /// <param name="items"></param>
-        /// <param name="columns"></param>
-        public void AppendTabularPart(string FIO, ListView.ListViewItemCollection items, ListView.ColumnHeaderCollection columns)
+        public Row AppendRow(string FIO = " ")
         {
-            XmlElement TabularPart = getTabularPart();
+            XmlElement Xml_Row = Statement1_Document.CreateElement("row");
+            this.getTabularPart().AppendChild(Xml_Row);
 
-            XmlElement Row = Statement1.Statement1_Document.CreateElement("Row");
-            
-            XmlAttribute Attr_FIO = Statement1.Statement1_Document.CreateAttribute("FIO");
-            Attr_FIO.Value = FIO;
+            Row newRow = new Row(Xml_Row);
+            newRow.FIO = FIO;
 
-            Row.Attributes.Append(Attr_FIO);
-
-            for (int row = 0; row < items.Count; row++)
-            {
-                XmlElement TableRow = Statement1_Document.CreateElement("row");
-                TabularPart.AppendChild(TableRow);
-
-                for (byte column = 0; column < items[0].SubItems.Count; column++)
-                {
-                    XmlElement XmlColumn = Statement1_Document.CreateElement(columns[column].Tag.ToString());
-                    XmlColumn.InnerText = items[row].SubItems[column].Text;
-                    TableRow.AppendChild(XmlColumn);
-                }
-            }
+            Array.Resize(ref this.TabularPart, this.TabularPart.Length + 1);
+            this.TabularPart[this.TabularPart.Length - 1] = newRow;
 
             Statement1_Document.Save(Config.Statement1_Path);
+            return newRow;
         }
 
+        public Row[] GetAllRows()
+        {
+            List<Row> rows = new List<Row>();
+            XmlElement TabularPart = getElementByName(StatementInXml, "TabularPart");
+
+            foreach (XmlElement element in TabularPart.ChildNodes)
+            {
+                rows.Add(new Row(element));
+            }
+
+            return rows.ToArray();
+        }
         #endregion
     }
 
@@ -671,7 +678,7 @@ namespace DataBase
             }
         }
 
-        string FIO
+        public string FIO
         {
             get { return RowElement.Attributes["FIO"].Value; }
             set { RowElement.Attributes["FIO"].Value = value; }
@@ -706,12 +713,11 @@ namespace DataBase
         /// <summary>
         /// Добавить информацию за год
         /// </summary>
-        /// <param name="In">Элемент, представляющий строку таблицы(row)</param>
         /// <param name="year">Год</param>
         /// <param name="organization">Организация</param>
         /// <param name="position">Должность</param>
         /// <param name="note">Примечание</param>
-        public void Append_InformationForTheYear(XmlElement In, string year, string organization, string position, string note)
+        public void Append_InformationForTheYear(string year, string organization, string position, string note)
         {
             XmlElement Xml_year = Statement1.Statement1_Document.CreateElement("year");
 
@@ -732,12 +738,8 @@ namespace DataBase
             Xml_year.AppendChild(Xml_Position);
             Xml_year.AppendChild(Xml_Note);
 
-            In.AppendChild(Xml_year);
-        }
-
-        public void Append_InformationForTheYear(Row In, string year, string organization, string position, string note)
-        {
-            Append_InformationForTheYear(In.RowElement, year, organization, position, note);
+            this.RowElement.AppendChild(Xml_year);
+            Statement1.Statement1_Document.Save(Config.Statement1_Path);
         }
     }
 }
