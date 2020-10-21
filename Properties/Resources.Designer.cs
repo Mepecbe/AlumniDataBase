@@ -73,6 +73,16 @@ namespace DataBase.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap business_person_silhouette_wearing_tie {
+            get {
+                object obj = ResourceManager.GetObject("business-person-silhouette-wearing-tie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap documents_symbol {
             get {
                 object obj = ResourceManager.GetObject("documents-symbol", resourceCulture);
@@ -116,6 +126,16 @@ namespace DataBase.Properties {
         internal static System.Drawing.Bitmap settings_gear {
             get {
                 object obj = ResourceManager.GetObject("settings-gear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_black_close_up_shape {
+            get {
+                object obj = ResourceManager.GetObject("user-black-close-up-shape", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

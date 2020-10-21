@@ -20,15 +20,40 @@ namespace DataBase
 
         static Config()
         {
+            StreamWriter writer;
+
             if (!System.IO.File.Exists(SETTINGS_FILE_NAME))
             {
-                StreamWriter writer = new StreamWriter(File.Create(SETTINGS_FILE_NAME));
-                writer.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+                string CurrentDir = Directory.GetCurrentDirectory();
+                writer = new StreamWriter(File.Create(SETTINGS_FILE_NAME));
+                writer.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?> " +
+                    $"<settings PathToStatement1=\"{CurrentDir}\\Files\\Statement1.xml\" PathToStatement2=\"{CurrentDir}\\Files\\Statement2.xml\"> </settings>");
                 writer.Close();
             }
 
             document.Load(SETTINGS_FILE_NAME);
             rootElement = document.DocumentElement;
+
+            if(!Directory.Exists(Directory.GetCurrentDirectory() + "\\Files"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Files");
+            }
+
+            if (!File.Exists(Statement1_Path))
+            {
+                writer = new StreamWriter(File.Create(Statement1_Path));
+                writer.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?> " +
+                $"<statements> </statements>");
+                writer.Close();
+            }
+
+            if (!File.Exists(Statement2_Path))
+            {
+                writer = new StreamWriter(File.Create(Statement2_Path));
+                writer.Write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?> " +
+                $"<statements> </statements>");
+                writer.Close();
+            }
         }
 
         /// <summary>
@@ -54,6 +79,10 @@ namespace DataBase
             return dictionary;
         }
 
+        /// <summary>
+        /// Сгенерировать ключ
+        /// </summary>
+        /// <returns></returns>
         public static string GenKey()
         {
             string retKey = "";
@@ -63,7 +92,6 @@ namespace DataBase
             return retKey;
         }
 
-
         /// <summary>
         /// Добавить значение в конфиг
         /// </summary>
@@ -71,12 +99,6 @@ namespace DataBase
         /// <param name="value">Значение</param>
         public static void AddToConfig(string key, string value)
         {
-            /*XmlElement element = document.CreateElement("value");
-
-            XmlAttribute attr = document.CreateAttribute("type");
-            attr.Value = value
-            element.Attributes.Append()*/
-
             bool Added = false;
 
             foreach (XmlElement Elements in rootElement)
@@ -108,6 +130,11 @@ namespace DataBase
             document.Save(SETTINGS_FILE_NAME);
         }
 
+        /// <summary>
+        /// Удалить ключ и значение из конфига
+        /// </summary>
+        /// <param name="key">Ключ</param>
+        /// <param name="value">Значение</param>
         public static void DeleteFromConfig(string key, string value)
         {
             foreach (XmlElement Elements in rootElement)
@@ -127,6 +154,9 @@ namespace DataBase
             document.Save(SETTINGS_FILE_NAME);
         }
 
+        /// <summary>
+        /// Путь к шаблону ведомости персонального учета 
+        /// </summary>
         public static string Statement1_Path
         {
             get
@@ -141,6 +171,9 @@ namespace DataBase
             }
         }
 
+        /// <summary>
+        /// Путь к шаблону ведомости распределения
+        /// </summary>
         public static string Statement2_Path
         {
             get

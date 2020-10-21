@@ -240,6 +240,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroListView1);
             this.Name = "Settings_Form";
+            this.Resizable = false;
             this.Text = "Настройки";
             this.Shown += new System.EventHandler(this.Settings_Form_Shown);
             this.metroContextMenu1.ResumeLayout(false);

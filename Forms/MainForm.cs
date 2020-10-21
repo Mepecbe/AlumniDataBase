@@ -58,8 +58,20 @@ namespace DataBase
 
         private void Add_Click(object sender, EventArgs e)
         {
-            new Add_Statement1_Form().ShowDialog();
-            //new Add_Statement2_Form().ShowDialog();
+            Select_Statement Selector = new Select_Statement();
+            Selector.ShowDialog();
+
+            if (!string.IsNullOrEmpty(Selector.number))
+            {
+                if (Selector.number == "1")
+                {
+                    new Add_Statement1_Form().ShowDialog();
+                }
+                else
+                {
+                    new Add_Statement2_Form().ShowDialog();
+                }
+            }
         }
 
         private void Export_Click(object sender, EventArgs e)

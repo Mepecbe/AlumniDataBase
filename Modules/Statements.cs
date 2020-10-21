@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Xml;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,15 @@ namespace DataBase
         public static XmlDocument Statement1_Document = new XmlDocument();
         static Statement1()
         {
+            if (!File.Exists(Config.Statement1_Path))
+            {
+                StreamWriter writer = new StreamWriter(File.Create(Config.Statement1_Path));
+                writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" ?> " +
+                    $"<statements> </statements>");
+
+                writer.Close();
+            }
+
             Statement1_Document.Load(Config.Statement1_Path);
         }
 
@@ -329,7 +339,7 @@ namespace DataBase
         public static Statement2[] GetStatements2FromDocument()
         {
             List<Statement2> Statements = new List<Statement2>();
-            foreach (XmlElement statement in Statement2_Document.DocumentElement)
+            foreach (XmlElement statement in Statement2_Document.DocumentElement.ChildNodes)
             {
                 Statements.Add(new Statement2(statement));
             }
