@@ -22,7 +22,12 @@ namespace DataBase
         {
             StreamWriter writer;
 
-            if (!System.IO.File.Exists(SETTINGS_FILE_NAME))
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\TemporaryFiles"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\TemporaryFiles");
+            }
+
+            if (!File.Exists(SETTINGS_FILE_NAME))
             {
                 string CurrentDir = Directory.GetCurrentDirectory();
                 writer = new StreamWriter(File.Create(SETTINGS_FILE_NAME));
