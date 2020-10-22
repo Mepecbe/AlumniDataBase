@@ -23,6 +23,30 @@ namespace DataBase.Forms
 
         private void Show_Form_Shown(object sender, EventArgs e)
         {
+            //
+            // Вывод списка ведомостей персонального учета
+            //
+
+            Statement1[] statements1 = Statement1.GetStatementsFromDocument();
+
+            foreach (Statement1 statement in statements1)
+            {
+                ListViewItem item = metroListView1.Items.Add(statement.Year.ToString());
+                item.Tag = statement.UniqueKey;
+                item.SubItems.Add(statement.Group.ToString());
+                item.SubItems.Add(statement.getTabularPart().ChildNodes.Count.ToString()); //Количество потомков в "элементе" таблицы(потомки - строки)
+            }
+
+            this.metroListView2.Columns[1].Width = 100;
+            this.metroListView2.Columns[2].Width = 250;
+
+            Show_Form_ResizeEnd(null, null);
+
+
+            //
+            // Вывод списка ведомостей распределения
+            //
+
             Statement2[] statements = Statement2.GetStatements2FromDocument();
 
             foreach(Statement2 statement in statements)
@@ -35,6 +59,7 @@ namespace DataBase.Forms
 
             this.metroListView2.Columns[1].Width = 100;
             this.metroListView2.Columns[2].Width = 250;
+
             Show_Form_ResizeEnd(null, null);
         }
 
@@ -62,6 +87,14 @@ namespace DataBase.Forms
             Statement2 SelectedStatement = Statement2.GetStatementByUniqueKey(metroListView2.SelectedItems[0].Tag.ToString());
 
             DocumentBuilder.BuildStatement2(SelectedStatement);
+        }
+
+        private void редактированиеВедомостиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (metroListView2.SelectedItems.Count > 0)
+            {
+                new Statement2_Form( Statement2.GetStatementByUniqueKey(metroListView2.SelectedItems[0].Tag.ToString()) ).Show();
+            }
         }
     }
 }

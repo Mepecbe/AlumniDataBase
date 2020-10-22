@@ -36,8 +36,8 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroListView2 = new MetroFramework.Controls.MetroListView();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Statements2_Table = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.печатьВедомостиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,18 +126,18 @@
             this.metroListView2.UseSelectable = true;
             this.metroListView2.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Tag = "Year";
-            this.columnHeader3.Text = "Год";
-            this.columnHeader3.Width = 85;
-            // 
             // columnHeader4
             // 
             this.columnHeader4.Tag = "Speciality";
             this.columnHeader4.Text = "Специальность";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader4.Width = 657;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Tag = "Year";
+            this.columnHeader3.Text = "Год";
+            this.columnHeader3.Width = 85;
             // 
             // columnHeader5
             // 
@@ -152,7 +152,7 @@
             this.редактированиеВедомостиToolStripMenuItem,
             this.удалитьВедомостьToolStripMenuItem});
             this.Statements2_Table.Name = "Statements2_Table";
-            this.Statements2_Table.Size = new System.Drawing.Size(226, 70);
+            this.Statements2_Table.Size = new System.Drawing.Size(226, 92);
             // 
             // печатьВедомостиToolStripMenuItem
             // 
@@ -166,6 +166,7 @@
             this.редактированиеВедомостиToolStripMenuItem.Name = "редактированиеВедомостиToolStripMenuItem";
             this.редактированиеВедомостиToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.редактированиеВедомостиToolStripMenuItem.Text = "Редактирование ведомости";
+            this.редактированиеВедомостиToolStripMenuItem.Click += new System.EventHandler(this.редактированиеВедомостиToolStripMenuItem_Click);
             // 
             // удалитьВедомостьToolStripMenuItem
             // 

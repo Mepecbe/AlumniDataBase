@@ -38,7 +38,7 @@ namespace DataBase
         /// Получить все ведомости из документа XML
         /// </summary>
         /// <returns></returns>
-        public static Statement1[] GetStatements2FromDocument()
+        public static Statement1[] GetStatementsFromDocument()
         {
             List<Statement1> Statements = new List<Statement1>();
             foreach (XmlElement statement in Statement1_Document.DocumentElement)
@@ -88,13 +88,13 @@ namespace DataBase
         {
             this.StatementInXml = StatementElement;
 
-            List<Row> Rows = new List<Row>();
+            List<Statement1_Row> Rows = new List<Statement1_Row>();
 
             foreach(XmlElement Xml_Row in getTabularPart().ChildNodes)
             {
                 if (Xml_Row.Name == "row")
                 {
-                    Rows.Add(new Row(Xml_Row));
+                    Rows.Add(new Statement1_Row(Xml_Row));
                 }
             }
 
@@ -177,6 +177,12 @@ namespace DataBase
             set { this.StatementInXml.Attributes["UniqueKey"].Value = value; }
         }
 
+        public System.UInt16 Year
+        {
+            get { return Convert.ToUInt16(this.StatementInXml.Attributes["Year"].Value); }
+            set { this.StatementInXml.Attributes["Year"].Value = value.ToString(); }
+        }
+
         /// <summary>
         /// Наименование учреждения образования
         /// </summary>
@@ -243,7 +249,7 @@ namespace DataBase
         /// <summary>
         /// Табличная часть
         /// </summary>
-        public Row[] TabularPart = new Row[0];
+        public Statement1_Row[] TabularPart = new Statement1_Row[0];
         #endregion
         #region Методы класса
         /// <summary>
@@ -282,12 +288,12 @@ namespace DataBase
             Statement1_Document.Save(Config.Statement1_Path);
         }
 
-        public Row AppendRow(string FIO = " ")
+        public Statement1_Row AppendRow(string FIO = " ")
         {
             XmlElement Xml_Row = Statement1_Document.CreateElement("row");
             this.getTabularPart().AppendChild(Xml_Row);
 
-            Row newRow = new Row(Xml_Row);
+            Statement1_Row newRow = new Statement1_Row(Xml_Row);
             newRow.FIO = FIO;
 
             Array.Resize(ref this.TabularPart, this.TabularPart.Length + 1);
@@ -297,14 +303,14 @@ namespace DataBase
             return newRow;
         }
 
-        public Row[] GetAllRows()
+        public Statement1_Row[] GetAllRows()
         {
-            List<Row> rows = new List<Row>();
+            List<Statement1_Row> rows = new List<Statement1_Row>();
             XmlElement TabularPart = getElementByName(StatementInXml, "TabularPart");
 
             foreach (XmlElement element in TabularPart.ChildNodes)
             {
-                rows.Add(new Row(element));
+                rows.Add(new Statement1_Row(element));
             }
 
             return rows.ToArray();
@@ -526,6 +532,25 @@ namespace DataBase
             get { return this.StatementInXml.Attributes["CommissionMember2"].Value; }
             set { this.StatementInXml.Attributes["CommissionMember2"].Value = value; }
         }
+
+        /// <summary>
+        /// Табличная часть
+        /// </summary>
+        public Statement2_Row[] TabularPart
+        {
+            get {
+                XmlElement TabularPart = this.getTabularPart();
+                Statement2_Row[] rows = new Statement2_Row[TabularPart.ChildNodes.Count];
+
+                for(int index = 0; index < TabularPart.ChildNodes.Count; index++)
+                {
+                    rows[index] = new Statement2_Row((XmlElement)TabularPart.ChildNodes[index]);
+                }
+
+                return rows;
+            }
+        }
+
         #endregion
         #region Методы класса
         /// <summary>
@@ -555,15 +580,6 @@ namespace DataBase
         }
 
         /// <summary>
-        /// Вставить в документ и сохранить
-        /// </summary>
-        /// <param name="document"></param>
-        public void AppendAndSaveStatementInDocument(XmlDocument document)
-        {
-            document.DocumentElement.AppendChild(this.StatementInXml);
-        }
-
-        /// <summary>
         /// Вставить табличную часть на основании таблицы элемента ListView 
         /// </summary>
         /// <param name="items"></param>
@@ -586,10 +602,9 @@ namespace DataBase
             }
 
             Statement2_Document.Save(Config.Statement2_Path);
-        }
+        } 
         #endregion
     }
-
 
     /// <summary>
     /// Представляет собой информацию за год
@@ -617,7 +632,7 @@ namespace DataBase
         /// <param name="Note">Примечание</param>
         public InformationForTheYear(
             XmlDocument document,
-            Row TableRow,
+            Statement1_Row TableRow,
             System.UInt16 year,
             string Organization,
             string Position,
@@ -673,11 +688,11 @@ namespace DataBase
     /// <summary>
     /// Представляет собой строку таблицы ведомости персонального учета выпускников
     /// </summary>
-    public class Row
+    public class Statement1_Row
     {
         public XmlElement RowElement;
 
-        public Row(XmlElement XmlRowElement)
+        public Statement1_Row(XmlElement XmlRowElement)
         {
             this.RowElement = XmlRowElement;
 
@@ -750,6 +765,177 @@ namespace DataBase
 
             this.RowElement.AppendChild(Xml_year);
             Statement1.Statement1_Document.Save(Config.Statement1_Path);
+        }
+    }
+
+    /// <summary>
+    /// Представляет собой строку таблицы ведомости распределения
+    /// </summary>
+    public class Statement2_Row
+    {
+        public XmlElement Xml_Row;
+
+        /// <summary>
+        /// Конструктор новой строки
+        /// </summary>
+        /// <param name="Element">Куда вставить элемент строки</param>
+        /// <param name="name"></param>
+        /// <param name="sex"></param>
+        /// <param name="YearOfBirth"></param>
+        /// <param name="familyStatus"></param>
+        /// <param name="Address"></param>
+        /// <param name="GovernmentAgency"></param>
+        /// <param name="Organization"></param>
+        /// <param name="Position"></param>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        public Statement2_Row(XmlElement Element,
+            string name,
+            string sex,
+            string YearOfBirth,
+            string familyStatus,
+            string Address,
+            string GovernmentAgency,
+            string Organization,
+            string Position,
+            string m1,
+            string m2)
+        {
+            this.Xml_Row = Statement2.Statement2_Document.CreateElement("row");
+            
+            XmlElement Xml_Name = Statement2.Statement2_Document.CreateElement("name");
+            Xml_Name.InnerText = name;
+
+            XmlElement Xml_Sex = Statement2.Statement2_Document.CreateElement("Sex");
+            Xml_Sex.InnerText = sex;
+
+            XmlElement Xml_YearOfBirth = Statement2.Statement2_Document.CreateElement("YearOfBirth");
+            Xml_YearOfBirth.InnerText = YearOfBirth;
+            
+            XmlElement Xml_FamilyStatus = Statement2.Statement2_Document.CreateElement("FamilyStatus");
+            Xml_FamilyStatus.InnerText = familyStatus;
+
+            XmlElement Xml_Address = Statement2.Statement2_Document.CreateElement("Address");
+            Xml_Address.InnerText = Address;
+            
+            XmlElement Xml_GovernmentAgency = Statement2.Statement2_Document.CreateElement("GovernmentAgency");
+            Xml_GovernmentAgency.InnerText = GovernmentAgency;
+
+            XmlElement Xml_Organization = Statement2.Statement2_Document.CreateElement("Organization");
+            Xml_Organization.InnerText = Organization;
+
+            XmlElement Xml_Position = Statement2.Statement2_Document.CreateElement("Position");
+            Xml_Position.InnerText = Position;
+
+            XmlElement Xml_m1 = Statement2.Statement2_Document.CreateElement("m1");
+            Xml_m1.InnerText = m1;
+
+            XmlElement Xml_m2 = Statement2.Statement2_Document.CreateElement("m2");
+            Xml_m2.InnerText = m2;
+
+            this.Xml_Row.AppendChild(Xml_Name);
+            this.Xml_Row.AppendChild(Xml_Sex);
+            this.Xml_Row.AppendChild(Xml_YearOfBirth);
+            this.Xml_Row.AppendChild(Xml_FamilyStatus);
+            this.Xml_Row.AppendChild(Xml_Address);
+            this.Xml_Row.AppendChild(Xml_GovernmentAgency);
+            this.Xml_Row.AppendChild(Xml_Organization);
+            this.Xml_Row.AppendChild(Xml_Position);
+            this.Xml_Row.AppendChild(Xml_m1);
+            this.Xml_Row.AppendChild(Xml_m2);
+
+            Element.AppendChild(Xml_Row);
+
+            Statement2.Statement2_Document.Save(Config.Statement2_Path);
+        }
+
+        /// <summary>
+        /// На основании уже готового
+        /// </summary>
+        /// <param name="element"></param>
+        public Statement2_Row(XmlElement element)
+        {
+            this.Xml_Row = element;
+        }
+
+#warning Добавить описание в XML
+        public string Name {
+            get { return getElementByName("name", this.Xml_Row).InnerText; }
+            set { getElementByName("name", this.Xml_Row).InnerText = value; }
+        }
+
+        public string Sex
+        {
+            get { return getElementByName("Sex", this.Xml_Row).InnerText; }
+            set { getElementByName("Sex", this.Xml_Row).InnerText = value; }
+        }
+
+        public string YearOfBirth
+        {
+            get { return getElementByName("YearOfBirth", this.Xml_Row).InnerText; }
+            set { getElementByName("YearOfBirth", this.Xml_Row).InnerText = value; }
+        }
+
+        public string FamilyStatus
+        {
+            get { return getElementByName("FamilyStatus", this.Xml_Row).InnerText; }
+            set { getElementByName("FamilyStatus", this.Xml_Row).InnerText = value; }
+        }
+
+        public string Address
+        {
+            get { return getElementByName("Address", this.Xml_Row).InnerText; }
+            set { getElementByName("Address", this.Xml_Row).InnerText = value; }
+        }
+
+        public string GovernmentAgency
+        {
+            get { return getElementByName("GovernmentAgency", this.Xml_Row).InnerText; }
+            set { getElementByName("GovernmentAgency", this.Xml_Row).InnerText = value; }
+        }
+
+        public string Organization
+        {
+            get { return getElementByName("Organization", this.Xml_Row).InnerText; }
+            set { getElementByName("Organization", this.Xml_Row).InnerText = value; }
+        }
+
+        public string Position
+        {
+            get { return getElementByName("Position", this.Xml_Row).InnerText; }
+            set { getElementByName("Position", this.Xml_Row).InnerText = value; }
+        }
+
+        public string m1
+        {
+            get { return getElementByName("m1", this.Xml_Row).InnerText; }
+            set { getElementByName("m1", this.Xml_Row).InnerText = value; }
+        }
+
+        public string m2
+        {
+            get { return getElementByName("m2", this.Xml_Row).InnerText; }
+            set { getElementByName("m2", this.Xml_Row).InnerText = value; }
+        }
+
+
+        /// <summary>
+        /// Получить элемент по имени
+        /// </summary>
+        /// <param name="name">Имя элемента</param>
+        /// <param name="element">XML элемент, среди потомков которого будет производится поиск</param>
+        /// <returns></returns>
+        private static XmlElement getElementByName(string name, XmlElement element)
+        {
+            foreach(XmlElement child in element.ChildNodes)
+            {
+                if(child.Name == name)
+                {
+                    return child;
+                }
+            }
+
+            throw new Exception("Element not found");
         }
     }
 }

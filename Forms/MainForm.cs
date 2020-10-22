@@ -33,7 +33,6 @@ namespace DataBase
                 this.metroButton1      .Theme = MetroThemeStyle.Dark;
                 this.Export            .Theme = MetroThemeStyle.Dark;
                 this.Show              .Theme = MetroThemeStyle.Dark;
-                this.Edit              .Theme = MetroThemeStyle.Dark;
                 this.Add               .Theme = MetroThemeStyle.Dark;
                 this                   .Theme = MetroThemeStyle.Dark;
             }
@@ -43,7 +42,6 @@ namespace DataBase
                 this.metroButton1      .Theme = MetroThemeStyle.Light;
                 this.Export            .Theme = MetroThemeStyle.Light;
                 this.Show              .Theme = MetroThemeStyle.Light;
-                this.Edit              .Theme = MetroThemeStyle.Light;
                 this.Add               .Theme = MetroThemeStyle.Light;
                 this                   .Theme = MetroThemeStyle.Light;
             }
@@ -65,11 +63,11 @@ namespace DataBase
             {
                 if (Selector.number == "1")
                 {
-                    new Add_Statement1_Form().ShowDialog();
+                    new Statement1_Form().ShowDialog();
                 }
                 else
                 {
-                    new Add_Statement2_Form().ShowDialog();
+                    new Statement2_Form().ShowDialog();
                 }
             }
         }

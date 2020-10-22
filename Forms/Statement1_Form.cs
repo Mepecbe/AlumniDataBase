@@ -12,16 +12,16 @@ using System.Xml;
 
 namespace DataBase.Forms
 {
-    public partial class Add_Statement1_Form : MetroFramework.Forms.MetroForm
+    public partial class Statement1_Form : MetroFramework.Forms.MetroForm
     {
         public Statement1 Statement;
         
-        public Add_Statement1_Form()
+        public Statement1_Form()
         {
             InitializeComponent();
         }
 
-        public Add_Statement1_Form(Statement1 statement)
+        public Statement1_Form(Statement1 statement)
         {
             throw new NotImplementedException();
         }
@@ -109,7 +109,7 @@ namespace DataBase.Forms
             {
                 ListViewItem item = this.metroListView1.Items.Add(Form.TextBox_FIO.Text);
 
-                Row newRow = Statement.AppendRow(Form.TextBox_FIO.Text);
+                Statement1_Row newRow = Statement.AppendRow(Form.TextBox_FIO.Text);
 
                 for (int index = 0; index < Form.metroListView1.Items.Count; index++)
                 {

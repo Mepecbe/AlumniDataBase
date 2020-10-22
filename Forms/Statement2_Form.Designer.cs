@@ -1,6 +1,6 @@
 ﻿namespace DataBase.Forms
 {
-    partial class Add_Statement2_Form
+    partial class Statement2_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -41,7 +41,7 @@
             this.Table_2 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.Table_3 = new MetroFramework.Controls.MetroTextBox();
-            this.Add_button = new MetroFramework.Controls.MetroButton();
+            this.AddToTable_button = new MetroFramework.Controls.MetroButton();
             this.Table = new MetroFramework.Controls.MetroListView();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Sex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,6 +53,8 @@
             this.Position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.m1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.m2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.Table_4 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -76,9 +78,8 @@
             this.CommissionMember2 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
-            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Button_SaveStatement = new MetroFramework.Controls.MetroButton();
+            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@
             // 
             // 
             this.Year.CustomButton.Image = null;
-            this.Year.CustomButton.Location = new System.Drawing.Point(206, 1);
+            this.Year.CustomButton.Location = new System.Drawing.Point(114, 1);
             this.Year.CustomButton.Name = "";
             this.Year.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Year.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -155,7 +156,7 @@
             // 
             // 
             this.CodeAndName.CustomButton.Image = null;
-            this.CodeAndName.CustomButton.Location = new System.Drawing.Point(102, 1);
+            this.CodeAndName.CustomButton.Location = new System.Drawing.Point(134, 1);
             this.CodeAndName.CustomButton.Name = "";
             this.CodeAndName.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.CodeAndName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -279,15 +280,15 @@
             this.Table_3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Table_3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // Add_button
+            // AddToTable_button
             // 
-            this.Add_button.Location = new System.Drawing.Point(689, 280);
-            this.Add_button.Name = "Add_button";
-            this.Add_button.Size = new System.Drawing.Size(530, 23);
-            this.Add_button.TabIndex = 15;
-            this.Add_button.Text = "Добавить в таблицу";
-            this.Add_button.UseSelectable = true;
-            this.Add_button.Click += new System.EventHandler(this.Add_button_Click);
+            this.AddToTable_button.Location = new System.Drawing.Point(689, 280);
+            this.AddToTable_button.Name = "AddToTable_button";
+            this.AddToTable_button.Size = new System.Drawing.Size(530, 23);
+            this.AddToTable_button.TabIndex = 15;
+            this.AddToTable_button.Text = "Добавить в таблицу";
+            this.AddToTable_button.UseSelectable = true;
+            this.AddToTable_button.Click += new System.EventHandler(this.Add_button_Click);
             // 
             // Table
             // 
@@ -375,6 +376,21 @@
             this.m2.Text = "Предоставляется право смостоятельного трудоустройства";
             this.m2.Width = 158;
             // 
+            // metroContextMenu1
+            // 
+            this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьToolStripMenuItem,
+            this.редактироватьToolStripMenuItem});
+            this.metroContextMenu1.Name = "metroContextMenu1";
+            this.metroContextMenu1.Size = new System.Drawing.Size(155, 48);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
+            // 
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
@@ -412,7 +428,7 @@
             // 
             // 
             this.Table_5.CustomButton.Image = null;
-            this.Table_5.CustomButton.Location = new System.Drawing.Point(197, 1);
+            this.Table_5.CustomButton.Location = new System.Drawing.Point(218, 1);
             this.Table_5.CustomButton.Name = "";
             this.Table_5.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Table_5.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -451,7 +467,7 @@
             // 
             // 
             this.Table_6.CustomButton.Image = null;
-            this.Table_6.CustomButton.Location = new System.Drawing.Point(180, 1);
+            this.Table_6.CustomButton.Location = new System.Drawing.Point(201, 1);
             this.Table_6.CustomButton.Name = "";
             this.Table_6.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Table_6.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -490,7 +506,7 @@
             // 
             // 
             this.Table_7.CustomButton.Image = null;
-            this.Table_7.CustomButton.Location = new System.Drawing.Point(154, 1);
+            this.Table_7.CustomButton.Location = new System.Drawing.Point(175, 1);
             this.Table_7.CustomButton.Name = "";
             this.Table_7.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.Table_7.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -682,36 +698,29 @@
             this.metroLabel19.TabIndex = 39;
             this.metroLabel19.Text = "2";
             // 
-            // metroButton1
+            // Button_SaveStatement
             // 
-            this.metroButton1.Location = new System.Drawing.Point(411, 191);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(211, 23);
-            this.metroButton1.TabIndex = 40;
-            this.metroButton1.Text = "Сохранить ведомость";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.Button_SaveStatement.Location = new System.Drawing.Point(411, 191);
+            this.Button_SaveStatement.Name = "Button_SaveStatement";
+            this.Button_SaveStatement.Size = new System.Drawing.Size(211, 23);
+            this.Button_SaveStatement.TabIndex = 40;
+            this.Button_SaveStatement.Text = "Сохранить ведомость";
+            this.Button_SaveStatement.UseSelectable = true;
+            this.Button_SaveStatement.Click += new System.EventHandler(this.Button_ClickSaveStatement);
             // 
-            // metroContextMenu1
+            // редактироватьToolStripMenuItem
             // 
-            this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.удалитьToolStripMenuItem});
-            this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(181, 48);
+            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.редактироватьToolStripMenuItem.Text = "Редактировать";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
             // 
-            // удалитьToolStripMenuItem
-            // 
-            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
-            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
-            // 
-            // Add_Statement2_Form
+            // Statement2_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1321, 785);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.Button_SaveStatement);
             this.Controls.Add(this.metroLabel19);
             this.Controls.Add(this.metroLabel18);
             this.Controls.Add(this.CommissionMember2);
@@ -736,7 +745,7 @@
             this.Controls.Add(this.Table_4);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.Table);
-            this.Controls.Add(this.Add_button);
+            this.Controls.Add(this.AddToTable_button);
             this.Controls.Add(this.Table_3);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.Table_2);
@@ -749,7 +758,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.Year);
             this.Controls.Add(this.metroLabel1);
-            this.Name = "Add_Statement2_Form";
+            this.Name = "Statement2_Form";
             this.Text = "Добавление ведомости распределения выпускников";
             this.Load += new System.EventHandler(this.Add_Form_Load);
             this.ResizeBegin += new System.EventHandler(this.Add_Form_ResizeEnd);
@@ -775,7 +784,7 @@
         private MetroFramework.Controls.MetroComboBox Table_2;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox Table_3;
-        private MetroFramework.Controls.MetroButton Add_button;
+        private MetroFramework.Controls.MetroButton AddToTable_button;
         private MetroFramework.Controls.MetroListView Table;
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader Sex;
@@ -810,8 +819,9 @@
         private MetroFramework.Controls.MetroComboBox CommissionMember2;
         private MetroFramework.Controls.MetroLabel metroLabel18;
         private MetroFramework.Controls.MetroLabel metroLabel19;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton Button_SaveStatement;
         private MetroFramework.Controls.MetroContextMenu metroContextMenu1;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
     }
 }

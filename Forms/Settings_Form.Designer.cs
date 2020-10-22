@@ -239,6 +239,7 @@
             this.Controls.Add(this.PathToStatement2File);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroListView1);
+            this.MaximizeBox = false;
             this.Name = "Settings_Form";
             this.Resizable = false;
             this.Text = "Настройки";

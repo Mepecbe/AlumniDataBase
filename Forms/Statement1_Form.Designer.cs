@@ -1,6 +1,6 @@
 ﻿namespace DataBase.Forms
 {
-    partial class Add_Statement1_Form
+    partial class Statement1_Form
     {
         /// <summary>
         /// Required designer variable.

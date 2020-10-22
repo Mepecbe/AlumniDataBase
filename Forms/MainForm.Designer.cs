@@ -34,7 +34,6 @@
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.Export = new MetroFramework.Controls.MetroTile();
             this.Show = new MetroFramework.Controls.MetroTile();
-            this.Edit = new MetroFramework.Controls.MetroTile();
             this.Add = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +55,7 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(61, 288);
+            this.metroTile1.Location = new System.Drawing.Point(689, 73);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(183, 187);
             this.metroTile1.TabIndex = 5;
@@ -70,7 +69,7 @@
             // Export
             // 
             this.Export.ActiveControl = null;
-            this.Export.Location = new System.Drawing.Point(682, 73);
+            this.Export.Location = new System.Drawing.Point(482, 73);
             this.Export.Name = "Export";
             this.Export.Size = new System.Drawing.Size(183, 187);
             this.Export.TabIndex = 3;
@@ -84,7 +83,7 @@
             // Show
             // 
             this.Show.ActiveControl = null;
-            this.Show.Location = new System.Drawing.Point(476, 73);
+            this.Show.Location = new System.Drawing.Point(272, 73);
             this.Show.Name = "Show";
             this.Show.Size = new System.Drawing.Size(183, 187);
             this.Show.TabIndex = 2;
@@ -94,19 +93,6 @@
             this.Show.UseSelectable = true;
             this.Show.UseTileImage = true;
             this.Show.Click += new System.EventHandler(this.Show_Click);
-            // 
-            // Edit
-            // 
-            this.Edit.ActiveControl = null;
-            this.Edit.Location = new System.Drawing.Point(262, 73);
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(198, 187);
-            this.Edit.TabIndex = 1;
-            this.Edit.Text = "Редактирование ведомостей";
-            this.Edit.TileImage = global::DataBase.Properties.Resources.file;
-            this.Edit.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Edit.UseSelectable = true;
-            this.Edit.UseTileImage = true;
             // 
             // Add
             // 
@@ -126,12 +112,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 498);
+            this.ClientSize = new System.Drawing.Size(984, 312);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.Export);
             this.Controls.Add(this.Show);
-            this.Controls.Add(this.Edit);
             this.Controls.Add(this.Add);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -146,7 +131,6 @@
         #endregion
 
         private MetroFramework.Controls.MetroTile Add;
-        private MetroFramework.Controls.MetroTile Edit;
         private MetroFramework.Controls.MetroTile Show;
         private MetroFramework.Controls.MetroTile Export;
         private MetroFramework.Controls.MetroButton metroButton1;
