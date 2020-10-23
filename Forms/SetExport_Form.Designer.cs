@@ -30,6 +30,7 @@
         {
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.Export = new MetroFramework.Controls.MetroTile();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // metroTile1
@@ -60,6 +61,12 @@
             this.Export.UseTileImage = true;
             this.Export.Click += new System.EventHandler(this.Export_Click);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "Ведомости";
+            this.saveFileDialog1.Filter = "XML Файлы|*.xml";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
             // SetExport_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -81,5 +88,6 @@
 
         private MetroFramework.Controls.MetroTile Export;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
