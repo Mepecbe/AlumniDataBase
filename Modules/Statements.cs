@@ -11,6 +11,9 @@ using System.Configuration;
 
 namespace DataBase
 {
+    /// <summary>
+    /// Ведомость персонального учета выпускников
+    /// </summary>
     public class Statement1
     {
         /// <summary>
@@ -56,6 +59,7 @@ namespace DataBase
         public static void DeleteStatementFromDocument(XmlElement statement)
         {
             Statement1_Document.DocumentElement.RemoveChild(statement);
+            Statement1_Document.Save(Config.Statement1_Path);
         }
 
         /// <summary>
@@ -65,7 +69,7 @@ namespace DataBase
         /// <returns>Ведомость</returns>
         public static Statement1 GetStatementByUniqueKey(string key)
         {
-            Statement1[] statements = Statement1.GetStatements2FromDocument();
+            Statement1[] statements = Statement1.GetStatementsFromDocument();
 
             foreach (Statement1 st in statements)
             {
@@ -114,6 +118,7 @@ namespace DataBase
         /// <param name="Group">Группа</param>
         public Statement1(
             XmlElement In,
+            string year,
             string EducationName,
             string InformationAboutGraduates,
             string Specialty,
@@ -125,6 +130,9 @@ namespace DataBase
         {
             XmlAttribute Attr_UniqueKey = Statement1_Document.CreateAttribute("UniqueKey");
             Attr_UniqueKey.Value = Config.GenKey();
+
+            XmlAttribute Attr_Year = Statement1_Document.CreateAttribute("Year");
+            Attr_Year.Value = year;
 
             XmlAttribute Attr_EducationName = Statement1_Document.CreateAttribute("EducationName");
             Attr_EducationName.Value = EducationName;
@@ -149,9 +157,9 @@ namespace DataBase
 
             XmlElement Xml_TabularPart = Statement1_Document.CreateElement("TabularPart");
 
-
             this.StatementInXml = Statement1_Document.CreateElement("statement");
             this.StatementInXml.Attributes.Append(Attr_UniqueKey);
+            this.StatementInXml.Attributes.Append(Attr_Year);
             this.StatementInXml.Attributes.Append(Attr_EducationName);
             this.StatementInXml.Attributes.Append(Attr_InformationAboutGraduates);
             this.StatementInXml.Attributes.Append(Attr_Specialty);
@@ -206,8 +214,8 @@ namespace DataBase
         /// </summary>
         public string Specialty
         {
-            get { return this.StatementInXml.Attributes["Speciality"].Value;  }
-            set { this.StatementInXml.Attributes["Speciality"].Value = value; }
+            get { return this.StatementInXml.Attributes["Specialty"].Value;  }
+            set { this.StatementInXml.Attributes["Specialty"].Value = value; }
         }
 
         /// <summary>
@@ -303,6 +311,11 @@ namespace DataBase
             return newRow;
         }
 
+        public void AppendRow(Statement1_Row row)
+        {
+            this.getTabularPart().AppendChild(row.RowElement);
+        }
+
         public Statement1_Row[] GetAllRows()
         {
             List<Statement1_Row> rows = new List<Statement1_Row>();
@@ -317,6 +330,209 @@ namespace DataBase
         }
         #endregion
     }
+
+    /// <summary>
+    /// Представляет собой строку таблицы ведомости персонального учета выпускников
+    /// </summary>
+    public class Statement1_Row
+    {
+        public XmlElement RowElement;
+
+        /// <summary>
+        /// Создать элемент, но никуда не вставлять
+        /// </summary>
+        public Statement1_Row() : this(Statement1.Statement1_Document.CreateElement("row"))
+        {
+            //
+            //Элемент создается, но никуда не вставляется
+            //Главное не забыть его вставить)
+            //
+        }
+
+        /// <summary>
+        /// На основании уже существующего
+        /// </summary>
+        /// <param name="XmlRowElement">XML элемент, представляющий строку таблицы</param>
+        public Statement1_Row(XmlElement XmlRowElement)
+        {
+            this.RowElement = XmlRowElement;
+
+            if (XmlRowElement.Attributes["FIO"] is null)
+            {
+                XmlAttribute Attr_FIO = Statement1.Statement1_Document.CreateAttribute("FIO");
+                this.RowElement.Attributes.Append(Attr_FIO);
+            }
+        }
+
+        /// <summary>
+        /// Фамилия, имя, отчество
+        /// </summary>
+        public string FIO
+        {
+            get { return RowElement.Attributes["FIO"].Value; }
+            set { RowElement.Attributes["FIO"].Value = value; }
+        }
+
+        /// <summary>
+        /// Получить информацию за год
+        /// </summary>
+        /// <param name="year">год</param>
+        /// <returns></returns>
+        public InformationForTheYear this[System.UInt16 year]
+        {
+            get
+            {
+                foreach (XmlElement element in RowElement.ChildNodes)
+                {
+                    if (element.Attributes["number"].Value == year.ToString())
+                        return new InformationForTheYear(element);
+                }
+
+                throw new Exception("Element not found");
+            }
+        }
+
+        /// <summary>
+        /// Получить информацию за все "годы" в этой строке
+        /// </summary>
+        /// <returns></returns>
+        public InformationForTheYear[] GetAllInformation()
+        {
+            List<InformationForTheYear> list = new List<InformationForTheYear>();
+
+            foreach (XmlElement child in RowElement.ChildNodes)
+            {
+                list.Add(new InformationForTheYear(child));
+            }
+
+            return list.ToArray();
+        }
+
+        /// <summary>
+        /// Добавить информацию за год
+        /// </summary>
+        /// <param name="year">Год</param>
+        /// <param name="organization">Организация</param>
+        /// <param name="position">Должность</param>
+        /// <param name="note">Примечание</param>
+        public InformationForTheYear Append_InformationForTheYear(string year, string organization, string position, string note)
+        {
+            XmlElement Xml_year = Statement1.Statement1_Document.CreateElement("year");
+
+            XmlAttribute Attr_Year = Statement1.Statement1_Document.CreateAttribute("number");
+            Attr_Year.Value = year;
+
+            XmlElement Xml_Organization = Statement1.Statement1_Document.CreateElement("Organization");
+            Xml_Organization.InnerText = organization;
+
+            XmlElement Xml_Position = Statement1.Statement1_Document.CreateElement("Position");
+            Xml_Position.InnerText = position;
+
+            XmlElement Xml_Note = Statement1.Statement1_Document.CreateElement("Note");
+            Xml_Note.InnerText = note;
+
+            Xml_year.Attributes.Append(Attr_Year);
+            Xml_year.AppendChild(Xml_Organization);
+            Xml_year.AppendChild(Xml_Position);
+            Xml_year.AppendChild(Xml_Note);
+
+            this.RowElement.AppendChild(Xml_year);
+            Statement1.Statement1_Document.Save(Config.Statement1_Path);
+
+            return new InformationForTheYear(this, year, organization, position, note);
+        }
+
+        /// <summary>
+        /// Вставить информацию за год, пустые поля
+        /// </summary>
+        /// <returns></returns>
+        public InformationForTheYear Append_InformationForTheYear()
+        {
+            return new InformationForTheYear(this, "", "", "", "");
+        }
+    }
+
+    /// <summary>
+    /// Представляет собой информацию за год
+    /// </summary>
+    public class InformationForTheYear
+    {
+        public XmlElement Element;
+
+        /// <summary>
+        /// На основании уже существующего элемента XML
+        /// </summary>
+        /// <param name="element">Элемент, представляющий информацию за год в XML</param>
+        public InformationForTheYear(XmlElement element)
+        {
+            this.Element = element;
+        }
+
+        /// <summary>
+        /// Создать элемент, представляющий информацию за год
+        /// </summary>
+        /// <param name="TableRow">Элемент представляющий "строку" таблицы(во внутрь которого будет вложен элемент, представляющий информацию за год)</param>
+        /// <param name="year">Год</param>
+        /// <param name="Organization">Наименование организации</param>
+        /// <param name="Position">Должность</param>
+        /// <param name="Note">Примечание</param>
+        public InformationForTheYear(
+            Statement1_Row TableRow,
+            string year,
+            string Organization,
+            string Position,
+            string Note)
+        {
+            Element = Statement1.Statement1_Document.CreateElement("year");
+
+            XmlAttribute Attr_number = Statement1.Statement1_Document.CreateAttribute("number");
+            Attr_number.Value = year.ToString();
+
+            XmlElement Xml_Organization = Statement1.Statement1_Document.CreateElement("Organization");
+            Xml_Organization.InnerText = Organization;
+
+            XmlElement Xml_Position = Statement1.Statement1_Document.CreateElement("Position");
+            Xml_Position.InnerText = Position;
+
+            XmlElement Xml_Note = Statement1.Statement1_Document.CreateElement("Note");
+            Xml_Note.InnerText = Note;
+
+            Element.Attributes.Append(Attr_number);
+            Element.AppendChild(Xml_Organization);
+            Element.AppendChild(Xml_Position);
+            Element.AppendChild(Xml_Note);
+
+            TableRow.RowElement.AppendChild(Element);
+        }
+
+        public System.UInt16 Year
+        {
+            get { return Convert.ToUInt16(Element.Attributes["number"].Value); }
+            set { Element.Attributes["number"].Value = value.ToString(); }
+        }
+
+        public string Organization
+        {
+            get { return Element.ChildNodes[0].InnerText; }
+            set { Element.ChildNodes[0].InnerText = value; }
+        }
+
+        public string Position
+        {
+            get { return Element.ChildNodes[1].InnerText; }
+            set { Element.ChildNodes[1].InnerText = value; }
+        }
+
+        public string Note
+        {
+            get { return Element.ChildNodes[2].InnerText; }
+            set { Element.ChildNodes[2].InnerText = value; }
+        }
+    }
+
+
+
+
 
 
 
@@ -605,169 +821,6 @@ namespace DataBase
         } 
         #endregion
     }
-
-    /// <summary>
-    /// Представляет собой информацию за год
-    /// </summary>
-    public class InformationForTheYear
-    {
-        public XmlElement Element;
-
-        /// <summary>
-        /// На основании уже существующего элемента XML
-        /// </summary>
-        /// <param name="element">Элемент, представляющий информацию за год в XML</param>
-        public InformationForTheYear(XmlElement element)
-        {
-            this.Element = element;
-        }
-
-        /// <summary>
-        /// Создать элемент, представляющий информацию за год
-        /// </summary>
-        /// <param name="TableRow">Элемент представляющий "строку" таблицы(во внутрь которого будет вложен элемент, представляющий информацию за год)</param>
-        /// <param name="year">Год</param>
-        /// <param name="Organization">Наименование организации</param>
-        /// <param name="Position">Должность</param>
-        /// <param name="Note">Примечание</param>
-        public InformationForTheYear(
-            XmlDocument document,
-            Statement1_Row TableRow,
-            System.UInt16 year,
-            string Organization,
-            string Position,
-            string Note)
-        {
-            Element = document.CreateElement("year");
-
-            XmlAttribute Attr_number = document.CreateAttribute("number");
-            Attr_number.Value = year.ToString();
-            
-            XmlElement Xml_Organization = document.CreateElement("Organization");
-            Xml_Organization.InnerText = Organization;
-
-            XmlElement Xml_Position = document.CreateElement("Position");
-            Xml_Position.InnerText = Position;
-
-            XmlElement Xml_Note = document.CreateElement("Note");
-            Xml_Note.InnerText = Note;
-
-            Element.Attributes.Append(Attr_number);
-            Element.AppendChild(Xml_Organization);
-            Element.AppendChild(Xml_Position);
-            Element.AppendChild(Xml_Note);
-
-            TableRow.RowElement.AppendChild(Element);
-        }
-
-        public System.UInt16 Year
-        {
-            get { return Convert.ToUInt16(Element.Attributes["number"].Value); }
-            set { Element.Attributes["number"].Value = value.ToString(); }
-        }
-
-        public string Organization
-        {
-            get { return Element.ChildNodes[0].InnerText; }
-            set { Element.ChildNodes[0].InnerText = value; }
-        }
-
-        public string Position
-        {
-            get { return Element.ChildNodes[1].InnerText; }
-            set { Element.ChildNodes[1].InnerText = value; }
-        }
-
-        public string Note
-        {
-            get { return Element.ChildNodes[2].InnerText; }
-            set { Element.ChildNodes[2].InnerText = value; }
-        }
-    }
-
-    /// <summary>
-    /// Представляет собой строку таблицы ведомости персонального учета выпускников
-    /// </summary>
-    public class Statement1_Row
-    {
-        public XmlElement RowElement;
-
-        public Statement1_Row(XmlElement XmlRowElement)
-        {
-            this.RowElement = XmlRowElement;
-
-            if(XmlRowElement.Attributes["FIO"] is null)
-            {
-                XmlAttribute Attr_FIO = Statement1.Statement1_Document.CreateAttribute("FIO");
-                this.RowElement.Attributes.Append(Attr_FIO);
-            }
-        }
-
-        public string FIO
-        {
-            get { return RowElement.Attributes["FIO"].Value; }
-            set { RowElement.Attributes["FIO"].Value = value; }
-        }
-
-        public InformationForTheYear this[System.UInt16 year]
-        {
-            get
-            {
-                foreach (XmlElement element in RowElement.ChildNodes)
-                {
-                    if (element.Attributes["number"].Value == year.ToString())
-                        return new InformationForTheYear(element);
-                }
-
-                throw new Exception("Element not found");
-            }
-        }
-
-        public InformationForTheYear[] GetAllInformation()
-        {
-            List<InformationForTheYear> list = new List<InformationForTheYear>();
-
-            foreach (XmlElement child in RowElement.ChildNodes)
-            {
-                list.Add(new InformationForTheYear(child));
-            }
-
-            return list.ToArray();
-        }
-
-        /// <summary>
-        /// Добавить информацию за год
-        /// </summary>
-        /// <param name="year">Год</param>
-        /// <param name="organization">Организация</param>
-        /// <param name="position">Должность</param>
-        /// <param name="note">Примечание</param>
-        public void Append_InformationForTheYear(string year, string organization, string position, string note)
-        {
-            XmlElement Xml_year = Statement1.Statement1_Document.CreateElement("year");
-
-            XmlAttribute Attr_Year = Statement1.Statement1_Document.CreateAttribute("number");
-            Attr_Year.Value = year;
-                        
-            XmlElement Xml_Organization = Statement1.Statement1_Document.CreateElement("Organization");
-            Xml_Organization.InnerText = organization;
-
-            XmlElement Xml_Position = Statement1.Statement1_Document.CreateElement("Position");
-            Xml_Position.InnerText = position;
-
-            XmlElement Xml_Note = Statement1.Statement1_Document.CreateElement("Note");
-            Xml_Note.InnerText = note;
-
-            Xml_year.Attributes.Append(Attr_Year);
-            Xml_year.AppendChild(Xml_Organization);
-            Xml_year.AppendChild(Xml_Position);
-            Xml_year.AppendChild(Xml_Note);
-
-            this.RowElement.AppendChild(Xml_year);
-            Statement1.Statement1_Document.Save(Config.Statement1_Path);
-        }
-    }
-
     /// <summary>
     /// Представляет собой строку таблицы ведомости распределения
     /// </summary>
@@ -802,7 +855,7 @@ namespace DataBase
             string m2)
         {
             this.Xml_Row = Statement2.Statement2_Document.CreateElement("row");
-            
+
             XmlElement Xml_Name = Statement2.Statement2_Document.CreateElement("name");
             Xml_Name.InnerText = name;
 
@@ -811,13 +864,13 @@ namespace DataBase
 
             XmlElement Xml_YearOfBirth = Statement2.Statement2_Document.CreateElement("YearOfBirth");
             Xml_YearOfBirth.InnerText = YearOfBirth;
-            
+
             XmlElement Xml_FamilyStatus = Statement2.Statement2_Document.CreateElement("FamilyStatus");
             Xml_FamilyStatus.InnerText = familyStatus;
 
             XmlElement Xml_Address = Statement2.Statement2_Document.CreateElement("Address");
             Xml_Address.InnerText = Address;
-            
+
             XmlElement Xml_GovernmentAgency = Statement2.Statement2_Document.CreateElement("GovernmentAgency");
             Xml_GovernmentAgency.InnerText = GovernmentAgency;
 
@@ -859,7 +912,8 @@ namespace DataBase
         }
 
 #warning Добавить описание в XML
-        public string Name {
+        public string Name
+        {
             get { return getElementByName("name", this.Xml_Row).InnerText; }
             set { getElementByName("name", this.Xml_Row).InnerText = value; }
         }
@@ -927,9 +981,9 @@ namespace DataBase
         /// <returns></returns>
         private static XmlElement getElementByName(string name, XmlElement element)
         {
-            foreach(XmlElement child in element.ChildNodes)
+            foreach (XmlElement child in element.ChildNodes)
             {
-                if(child.Name == name)
+                if (child.Name == name)
                 {
                     return child;
                 }

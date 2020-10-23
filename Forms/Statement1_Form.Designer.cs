@@ -51,6 +51,9 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_Info = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_Year = new MetroFramework.Controls.MetroTextBox();
+            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -209,9 +212,10 @@
             // 
             this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьToolStripMenuItem,
+            this.редактироватьToolStripMenuItem,
             this.удалитьВыбранноеToolStripMenuItem});
             this.metroContextMenu1.Name = "metroContextMenu1";
-            this.metroContextMenu1.Size = new System.Drawing.Size(184, 48);
+            this.metroContextMenu1.Size = new System.Drawing.Size(184, 70);
             // 
             // добавитьToolStripMenuItem
             // 
@@ -275,12 +279,61 @@
             this.metroButton1.TabIndex = 17;
             this.metroButton1.Text = "Сохранить ведомость";
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // Add_Statement1_Form
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(61, 233);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(30, 19);
+            this.metroLabel8.TabIndex = 18;
+            this.metroLabel8.Text = "Год";
+            // 
+            // TextBox_Year
+            // 
+            // 
+            // 
+            // 
+            this.TextBox_Year.CustomButton.Image = null;
+            this.TextBox_Year.CustomButton.Location = new System.Drawing.Point(60, 1);
+            this.TextBox_Year.CustomButton.Name = "";
+            this.TextBox_Year.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.TextBox_Year.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBox_Year.CustomButton.TabIndex = 1;
+            this.TextBox_Year.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBox_Year.CustomButton.UseSelectable = true;
+            this.TextBox_Year.CustomButton.Visible = false;
+            this.TextBox_Year.Lines = new string[0];
+            this.TextBox_Year.Location = new System.Drawing.Point(97, 233);
+            this.TextBox_Year.MaxLength = 32767;
+            this.TextBox_Year.Name = "TextBox_Year";
+            this.TextBox_Year.PasswordChar = '\0';
+            this.TextBox_Year.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBox_Year.SelectedText = "";
+            this.TextBox_Year.SelectionLength = 0;
+            this.TextBox_Year.SelectionStart = 0;
+            this.TextBox_Year.ShortcutsEnabled = true;
+            this.TextBox_Year.Size = new System.Drawing.Size(82, 23);
+            this.TextBox_Year.TabIndex = 19;
+            this.TextBox_Year.UseSelectable = true;
+            this.TextBox_Year.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBox_Year.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // редактироватьToolStripMenuItem
+            // 
+            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.редактироватьToolStripMenuItem.Text = "Редактировать";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
+            // 
+            // Statement1_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 694);
+            this.Controls.Add(this.TextBox_Year);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.TextBox_Info);
             this.Controls.Add(this.metroLabel7);
@@ -299,11 +352,12 @@
             this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.metroLabel1);
             this.MinimumSize = new System.Drawing.Size(1114, 694);
-            this.Name = "Add_Statement1_Form";
-            this.Text = "Добавление ведомости персонального учета выпускников";
+            this.Name = "Statement1_Form";
+            this.Text = "Форма ведомости персонального учета выпускников";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Statement1_Form_FormClosing);
             this.Load += new System.EventHandler(this.Add_Statement1_Form_Load);
             this.ResizeEnd += new System.EventHandler(this.Add_Statement1_Form_ResizeEnd);
-            this.Resize += new System.EventHandler(this.Add_Statement1_Form_Resize);
+            this.Resize += new System.EventHandler(this.Add_Statement1_Form_ResizeEnd);
             this.metroContextMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -334,5 +388,8 @@
         private System.Windows.Forms.ToolStripMenuItem удалитьВыбранноеToolStripMenuItem;
         private MetroFramework.Controls.MetroButton metroButton1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroTextBox TextBox_Year;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
     }
 }

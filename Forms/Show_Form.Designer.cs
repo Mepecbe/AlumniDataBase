@@ -34,6 +34,10 @@
             this.metroListView1 = new MetroFramework.Controls.MetroListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Statement1_Table = new MetroFramework.Controls.MetroContextMenu(this.components);
+            this.печатьВедомостиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.metroListView2 = new MetroFramework.Controls.MetroListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,6 +49,7 @@
             this.удалитьВедомостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.Statement1_Table.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.Statements2_Table.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +61,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1007, 509);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -75,9 +80,11 @@
             this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.metroListView1.ContextMenuStrip = this.Statement1_Table;
             this.metroListView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.metroListView1.FullRowSelect = true;
+            this.metroListView1.GridLines = true;
             this.metroListView1.Location = new System.Drawing.Point(0, 0);
             this.metroListView1.Name = "metroListView1";
             this.metroListView1.OwnerDraw = true;
@@ -96,6 +103,35 @@
             // 
             this.columnHeader2.Text = "Группа";
             this.columnHeader2.Width = 118;
+            // 
+            // Statement1_Table
+            // 
+            this.Statement1_Table.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.печатьВедомостиToolStripMenuItem1,
+            this.редактироватьToolStripMenuItem,
+            this.удалитьToolStripMenuItem});
+            this.Statement1_Table.Name = "Statement1_Table";
+            this.Statement1_Table.Size = new System.Drawing.Size(216, 70);
+            // 
+            // печатьВедомостиToolStripMenuItem1
+            // 
+            this.печатьВедомостиToolStripMenuItem1.Name = "печатьВедомостиToolStripMenuItem1";
+            this.печатьВедомостиToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
+            this.печатьВедомостиToolStripMenuItem1.Text = "Печать ведомости";
+            // 
+            // редактироватьToolStripMenuItem
+            // 
+            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.редактироватьToolStripMenuItem.Text = "Редактировать ведомость";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить ведомость";
+            this.удалитьToolStripMenuItem.Click += new System.EventHandler(this.удалитьToolStripMenuItem_Click);
             // 
             // tabPage2
             // 
@@ -152,7 +188,7 @@
             this.редактированиеВедомостиToolStripMenuItem,
             this.удалитьВедомостьToolStripMenuItem});
             this.Statements2_Table.Name = "Statements2_Table";
-            this.Statements2_Table.Size = new System.Drawing.Size(226, 92);
+            this.Statements2_Table.Size = new System.Drawing.Size(226, 70);
             // 
             // печатьВедомостиToolStripMenuItem
             // 
@@ -187,6 +223,7 @@
             this.Resize += new System.EventHandler(this.Show_Form_Resize);
             this.metroTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.Statement1_Table.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.Statements2_Table.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -209,5 +246,9 @@
         private System.Windows.Forms.ToolStripMenuItem печатьВедомостиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактированиеВедомостиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьВедомостьToolStripMenuItem;
+        private MetroFramework.Controls.MetroContextMenu Statement1_Table;
+        private System.Windows.Forms.ToolStripMenuItem печатьВедомостиToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tulpep.NotificationWindow;
 
 namespace DataBase.Forms
 {
@@ -33,6 +34,7 @@ namespace DataBase.Forms
             {
                 case 0: {
                         MetroFramework.MetroMessageBox.Show(this, "Нет подключенных съемных устройств");
+                        this.Close();
                         break; 
                     }
                 case 1: {

@@ -10,22 +10,57 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
+using Tulpep.NotificationWindow;
+
 namespace DataBase.Forms
 {
     public partial class Statement1_Form : MetroFramework.Forms.MetroForm
     {
         public Statement1 Statement;
-        
+
         public Statement1_Form()
         {
             InitializeComponent();
+            this.TextBox_Year.Text = DateTime.Now.Year.ToString();
         }
 
+        /// <summary>
+        /// Форма для редактирования уже существующей ведомости
+        /// </summary>
+        /// <param name="statement"></param>
         public Statement1_Form(Statement1 statement)
         {
-            throw new NotImplementedException();
+            InitializeComponent();
+            this.Statement = statement;
+            this.Text = "Редактирование существующей ведомости";
+
+            //
+            // Информация в контролы
+            //
+
+            this.TextBox_Year.Text = statement.Year.ToString();
+            this.ComboBox_Education.Text = statement.EducationName;
+            this.ComboBox_Group.Text = statement.EducationName;
+            this.ComboBox_Qualification.Text = statement.EducationName;
+            this.ComboBox_Specialization.Text = statement.EducationName;
+            this.ComboBox_SpecialtyDirection.Text = statement.EducationName;
+            this.ComboBox_Specialty.Text = statement.EducationName;
+            this.TextBox_Info.Text = statement.InformationAboutGraduates;
+
+            //
+            // Табличная часть
+            //
+
+            for (int rowIndex = 0; rowIndex < this.Statement.TabularPart.Length; rowIndex++)
+            {
+                ListViewItem item = this.metroListView1.Items.Add(this.Statement.TabularPart[rowIndex].FIO);
+                item.Tag = this.Statement.TabularPart[rowIndex];
+            }
         }
 
+        /// <summary>
+        /// Загрузка формы(выставление значений по умолчанию)
+        /// </summary>
         private void Add_Statement1_Form_Load(object sender, EventArgs e)
         {
             /***** Добавление "Вариантов выбора" *****/
@@ -78,48 +113,34 @@ namespace DataBase.Forms
                 }
             }
         }
-         
+
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Statement1_AddToTable Form = new Statement1_AddToTable();
+            Statement1_AddToTable Form = new Statement1_AddToTable(new Statement1_Row());
             Form.ShowDialog();
-
-
-            //Если ведомость ещё не была создана, то создаем
-            if (Statement == null)
-            {
-                Statement = new Statement1(
-                    Statement1.Statement1_Document.DocumentElement,
-                    this.ComboBox_Education.Text,
-                    this.TextBox_Info.Text,
-                    this.ComboBox_Specialty.Text,
-                    this.ComboBox_SpecialtyDirection.Text,
-                    this.ComboBox_Specialization.Text,
-                    this.ComboBox_Qualification.Text,
-                    this.ComboBox_Group.Text
-                    );
-            }
-
+            
             if (string.IsNullOrEmpty(Form.TextBox_FIO.Text))
             {
                 return;
             }
 
+            if (this.Statement != null)
+            {
+                //
+                // Если редактируем ведомость, то сразу же добавляем строку в табличную часть
+                //
+
+                this.Statement.AppendRow(Form.Row);
+            }
+
             if (Form.metroListView1.Items.Count != 0)
             {
+                //
+                // Добавление ITEM'ов в таблицу на форме
+                //
+
                 ListViewItem item = this.metroListView1.Items.Add(Form.TextBox_FIO.Text);
-
-                Statement1_Row newRow = Statement.AppendRow(Form.TextBox_FIO.Text);
-
-                for (int index = 0; index < Form.metroListView1.Items.Count; index++)
-                {
-                    newRow.Append_InformationForTheYear(
-                        Form.metroListView1.Items[index].SubItems[0].Text,
-                        Form.metroListView1.Items[index].SubItems[1].Text,
-                        Form.metroListView1.Items[index].SubItems[2].Text,
-                        Form.metroListView1.Items[index].SubItems[3].Text
-                    );
-                }
+                item.Tag = Form.Row;
             }
         }
 
@@ -132,19 +153,6 @@ namespace DataBase.Forms
         }
 
         FormWindowState PrevState;
-        private void Add_Statement1_Form_Resize(object sender, EventArgs e)
-        {
-            if(PrevState == FormWindowState.Normal && this.WindowState == FormWindowState.Maximized)
-            {
-                TryResize();
-            }
-            else if(PrevState == FormWindowState.Maximized)
-            {
-                TryResize();
-            }
-
-            PrevState = this.WindowState;
-        }
 
         private void Add_Statement1_Form_ResizeEnd(object sender, EventArgs e)
         {
@@ -160,7 +168,80 @@ namespace DataBase.Forms
                 this.metroListView1.Columns[index].Width = CellSize;
             }
 
-            this.metroListView1.Height = this.Height - this.metroButton1.Location.Y - this.metroButton1.Height - 30;
+            this.metroListView1.Height = this.Height - this.metroButton1.Location.Y - this.metroButton1.Height - 60;
+        }
+
+        /// <summary>
+        /// Сохранить ведомость
+        /// </summary>
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            if (this.Statement != null)
+            {
+                //
+                // Если форма была создана для редактирования ведомости
+                //
+                this.Statement.Year = Convert.ToUInt16(this.TextBox_Year.Text);
+                this.Statement.EducationName = this.ComboBox_Education.Text;
+                this.Statement.InformationAboutGraduates = this.TextBox_Info.Text;
+                this.Statement.Specialty = this.ComboBox_Specialty.Text;
+                this.Statement.SpecialtyDirection = this.ComboBox_SpecialtyDirection.Text;
+                this.Statement.Specialization = this.ComboBox_Specialization.Text;
+                this.Statement.Qualification = this.ComboBox_Qualification.Text;
+                this.Statement.Group = this.ComboBox_Group.Text;
+            }
+            else {
+                Statement1 newStatement = new Statement1(Statement1.Statement1_Document.DocumentElement,
+                    this.TextBox_Year.Text,
+                    this.ComboBox_Education.Text,
+                    this.TextBox_Info.Text,
+                    this.ComboBox_Specialty.Text,
+                    this.ComboBox_SpecialtyDirection.Text,
+                    this.ComboBox_Specialization.Text,
+                    this.ComboBox_Qualification.Text,
+                    this.ComboBox_Group.Text);
+
+                //
+                //  Табличная часть
+                //
+
+                foreach (ListViewItem item in this.metroListView1.Items)
+                {
+                    newStatement.AppendRow((Statement1_Row)item.Tag);
+                }
+            }
+
+            new PopupNotifier()
+            {
+                TitleText = "База данных",
+                ContentText = "Ведомость сохранена"
+            }.Popup();
+
+            Statement1.Statement1_Document.Save(Config.Statement1_Path);
+            Save = true;
+            this.Close();
+        }
+
+
+        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.metroListView1.SelectedItems.Count > 0)
+            {
+                Statement1_Row Row = (Statement1_Row)this.metroListView1.SelectedItems[0].Tag;
+                Statement1_AddToTable form = new Statement1_AddToTable(Row);
+                form.ShowDialog();
+
+                this.metroListView1.SelectedItems[0].SubItems[0].Text = form.TextBox_FIO.Text;
+            }
+        }
+
+        bool Save = false;
+        private void Statement1_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!Save && MetroFramework.MetroMessageBox.Show(this, "Сохранить все изменения?", "Внимание", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                metroButton1_Click(null, null);
+            }
         }
     }
 }

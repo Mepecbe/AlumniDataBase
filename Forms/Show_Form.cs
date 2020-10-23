@@ -32,16 +32,12 @@ namespace DataBase.Forms
             foreach (Statement1 statement in statements1)
             {
                 ListViewItem item = metroListView1.Items.Add(statement.Year.ToString());
-                item.Tag = statement.UniqueKey;
+                item.Tag = statement;
                 item.SubItems.Add(statement.Group.ToString());
-                item.SubItems.Add(statement.getTabularPart().ChildNodes.Count.ToString()); //Количество потомков в "элементе" таблицы(потомки - строки)
             }
 
-            this.metroListView2.Columns[1].Width = 100;
-            this.metroListView2.Columns[2].Width = 250;
-
-            Show_Form_ResizeEnd(null, null);
-
+            this.metroListView1.Columns[0].Width = this.metroListView1.Width / 2;
+            this.metroListView1.Columns[1].Width = this.metroListView1.Width / 2;
 
             //
             // Вывод списка ведомостей распределения
@@ -52,9 +48,10 @@ namespace DataBase.Forms
             foreach(Statement2 statement in statements)
             {
                 ListViewItem item = metroListView2.Items.Add(statement.codeAndSpecialityName);
-                item.Tag = statement.UniqueKey;
+                item.Tag = statement;
                 item.SubItems.Add(statement.Year.ToString());
-                item.SubItems.Add(statement.getTabularPart().ChildNodes.Count.ToString()); //Количество потомков в "элементе" таблицы(потомки - строки)
+                //Количество потомков в "элементе" таблицы(потомки - строки)
+                item.SubItems.Add(statement.getTabularPart().ChildNodes.Count.ToString()); 
             }
 
             this.metroListView2.Columns[1].Width = 100;
@@ -65,8 +62,11 @@ namespace DataBase.Forms
 
         private void Show_Form_ResizeEnd(object sender, EventArgs e)
         {
-            //Размеры 2-ой колонки таблицы распределения выпускников
-            var size = this.metroListView2.Width - this.metroListView2.Columns[1].Width - this.metroListView2.Columns[2].Width - 7;
+            var size = (this.metroListView1.Width / this.metroListView1.Columns.Count) - 2;
+            this.metroListView1.Columns[0].Width = size;
+            this.metroListView1.Columns[1].Width = size;
+
+            size = this.metroListView2.Width - this.metroListView2.Columns[1].Width - this.metroListView2.Columns[2].Width - 7;
             this.metroListView2.Columns[0].Width = size;
         }
 
@@ -94,6 +94,34 @@ namespace DataBase.Forms
             if (metroListView2.SelectedItems.Count > 0)
             {
                 new Statement2_Form( Statement2.GetStatementByUniqueKey(metroListView2.SelectedItems[0].Tag.ToString()) ).Show();
+            }
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {       
+            if(this.metroListView1.SelectedItems.Count > 0)
+            {
+                if (MetroFramework.MetroMessageBox.Show(this, "Вы точно хотите удалить ведомость?", "Внимание", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+
+                Statement1.DeleteStatementFromDocument(
+                    Statement1.GetStatementByUniqueKey(
+                        this.metroListView1.SelectedItems[0].Tag.ToString()
+                    ).StatementInXml
+                );
+
+                this.metroListView1.SelectedItems[0].Remove();
+            }
+        }
+
+        private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.metroListView1.SelectedItems.Count > 0)
+            {
+                Statement1_Form form = new Statement1_Form((Statement1)(this.metroListView1.SelectedItems[0].Tag));
+                form.ShowDialog();
             }
         }
     }
