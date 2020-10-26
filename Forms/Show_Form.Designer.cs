@@ -111,13 +111,14 @@
             this.редактироватьToolStripMenuItem,
             this.удалитьToolStripMenuItem});
             this.Statement1_Table.Name = "Statement1_Table";
-            this.Statement1_Table.Size = new System.Drawing.Size(216, 70);
+            this.Statement1_Table.Size = new System.Drawing.Size(216, 92);
             // 
             // печатьВедомостиToolStripMenuItem1
             // 
             this.печатьВедомостиToolStripMenuItem1.Name = "печатьВедомостиToolStripMenuItem1";
             this.печатьВедомостиToolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
             this.печатьВедомостиToolStripMenuItem1.Text = "Печать ведомости";
+            this.печатьВедомостиToolStripMenuItem1.Click += new System.EventHandler(this.печатьВедомостиToolStripMenuItem1_Click);
             // 
             // редактироватьToolStripMenuItem
             // 

@@ -106,11 +106,8 @@ namespace DataBase.Forms
                     return;
                 }
 
-                Statement1.DeleteStatementFromDocument(
-                    Statement1.GetStatementByUniqueKey(
-                        this.metroListView1.SelectedItems[0].Tag.ToString()
-                    ).StatementInXml
-                );
+                Statement1.Statement1_Document.DocumentElement.RemoveChild(((Statement1)this.metroListView1.SelectedItems[0].Tag).StatementInXml);
+                Statement1.Statement1_Document.Save(Config.Statement1_Path);
 
                 this.metroListView1.SelectedItems[0].Remove();
             }
@@ -122,6 +119,13 @@ namespace DataBase.Forms
             {
                 Statement1_Form form = new Statement1_Form((Statement1)(this.metroListView1.SelectedItems[0].Tag));
                 form.ShowDialog();
+            }
+        }
+
+        private void печатьВедомостиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.metroListView1.SelectedItems.Count > 0) {
+                DocumentBuilder.BuildStatement1((Statement1)this.metroListView1.SelectedItems[0].Tag);
             }
         }
     }

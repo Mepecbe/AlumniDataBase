@@ -455,7 +455,7 @@ namespace DataBase
     /// <summary>
     /// Представляет собой информацию за год
     /// </summary>
-    public class InformationForTheYear
+    public class InformationForTheYear : IComparable
     {
         public XmlElement Element;
 
@@ -527,6 +527,22 @@ namespace DataBase
         {
             get { return Element.ChildNodes[2].InnerText; }
             set { Element.ChildNodes[2].InnerText = value; }
+        }
+
+        public int CompareTo(object obj)
+        {
+            if(((InformationForTheYear)(obj)).Year == this.Year)
+            {
+                return 0;
+            }
+            else if(((InformationForTheYear)(obj)).Year >= this.Year)
+            {
+                return -1;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 
