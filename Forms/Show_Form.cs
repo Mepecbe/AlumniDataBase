@@ -84,7 +84,7 @@ namespace DataBase.Forms
         {
             if (metroListView2.SelectedItems.Count == 0) return;
 
-            Statement2 SelectedStatement = Statement2.GetStatementByUniqueKey(metroListView2.SelectedItems[0].Tag.ToString());
+            Statement2 SelectedStatement = (Statement2)(metroListView2.SelectedItems[0].Tag);
 
             DocumentBuilder.BuildStatement2(SelectedStatement);
         }
@@ -93,7 +93,7 @@ namespace DataBase.Forms
         {
             if (metroListView2.SelectedItems.Count > 0)
             {
-                new Statement2_Form( Statement2.GetStatementByUniqueKey(metroListView2.SelectedItems[0].Tag.ToString()) ).Show();
+                new Statement2_Form((Statement2)(metroListView2.SelectedItems[0].Tag)).Show();
             }
         }
 
@@ -126,6 +126,15 @@ namespace DataBase.Forms
         {
             if (this.metroListView1.SelectedItems.Count > 0) {
                 DocumentBuilder.BuildStatement1((Statement1)this.metroListView1.SelectedItems[0].Tag);
+            }
+        }
+
+        private void удалитьВедомостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.metroListView2.SelectedItems.Count > 0 && MetroFramework.MetroMessageBox.Show(this, "Вы уверены что хотите удалить ведомость?", "Внимание", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {                
+                Statement2.DeleteStatementFromDocument(((Statement2)(this.metroListView2.SelectedItems[0].Tag)).StatementInXml);
+                this.metroListView2.SelectedItems[0].Remove();
             }
         }
     }

@@ -592,6 +592,7 @@ namespace DataBase
         public static void DeleteStatementFromDocument(XmlElement statement)
         {
             Statement2_Document.DocumentElement.RemoveChild(statement);
+            Statement2_Document.Save(Config.Statement2_Path);
         }
 
         /// <summary>

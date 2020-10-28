@@ -44,16 +44,15 @@
             this.ComboBox_Group = new MetroFramework.Controls.MetroComboBox();
             this.metroListView1 = new MetroFramework.Controls.MetroListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьВыбранноеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_Info = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.TextBox_Year = new MetroFramework.Controls.MetroTextBox();
-            this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,8 +183,7 @@
             // metroListView1
             // 
             this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader1});
             this.metroListView1.ContextMenuStrip = this.metroContextMenu1;
             this.metroListView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -204,10 +202,6 @@
             this.columnHeader1.Text = "ФИО, адрес, телефон";
             this.columnHeader1.Width = 1069;
             // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Записей";
-            // 
             // metroContextMenu1
             // 
             this.metroContextMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -223,6 +217,13 @@
             this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.добавитьToolStripMenuItem.Text = "Добавить";
             this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
+            // 
+            // редактироватьToolStripMenuItem
+            // 
+            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
+            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.редактироватьToolStripMenuItem.Text = "Редактировать";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
             // 
             // удалитьВыбранноеToolStripMenuItem
             // 
@@ -320,13 +321,6 @@
             this.TextBox_Year.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBox_Year.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // редактироватьToolStripMenuItem
-            // 
-            this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
-            this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.редактироватьToolStripMenuItem.Text = "Редактировать";
-            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
-            // 
             // Statement1_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,7 +381,6 @@
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьВыбранноеToolStripMenuItem;
         private MetroFramework.Controls.MetroButton metroButton1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroTextBox TextBox_Year;
         private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;

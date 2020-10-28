@@ -61,7 +61,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1007, 509);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -111,7 +111,7 @@
             this.редактироватьToolStripMenuItem,
             this.удалитьToolStripMenuItem});
             this.Statement1_Table.Name = "Statement1_Table";
-            this.Statement1_Table.Size = new System.Drawing.Size(216, 92);
+            this.Statement1_Table.Size = new System.Drawing.Size(216, 70);
             // 
             // печатьВедомостиToolStripMenuItem1
             // 
@@ -189,7 +189,7 @@
             this.редактированиеВедомостиToolStripMenuItem,
             this.удалитьВедомостьToolStripMenuItem});
             this.Statements2_Table.Name = "Statements2_Table";
-            this.Statements2_Table.Size = new System.Drawing.Size(226, 70);
+            this.Statements2_Table.Size = new System.Drawing.Size(226, 92);
             // 
             // печатьВедомостиToolStripMenuItem
             // 
@@ -210,6 +210,7 @@
             this.удалитьВедомостьToolStripMenuItem.Name = "удалитьВедомостьToolStripMenuItem";
             this.удалитьВедомостьToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.удалитьВедомостьToolStripMenuItem.Text = "Удалить ведомость";
+            this.удалитьВедомостьToolStripMenuItem.Click += new System.EventHandler(this.удалитьВедомостьToolStripMenuItem_Click);
             // 
             // Show_Form
             // 
