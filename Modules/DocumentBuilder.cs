@@ -9,7 +9,6 @@ using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using System.Xml;
 using Tulpep.NotificationWindow;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace DataBase.Modules
 {
