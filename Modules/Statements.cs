@@ -928,61 +928,91 @@ namespace DataBase
             this.Xml_Row = element;
         }
 
-#warning Добавить описание в XML
+
+        /// <summary>
+        /// Имя
+        /// </summary>
         public string Name
         {
             get { return getElementByName("name", this.Xml_Row).InnerText; }
             set { getElementByName("name", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Пол
+        /// </summary>
         public string Sex
         {
             get { return getElementByName("Sex", this.Xml_Row).InnerText; }
             set { getElementByName("Sex", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Год рождения
+        /// </summary>
         public string YearOfBirth
         {
             get { return getElementByName("YearOfBirth", this.Xml_Row).InnerText; }
             set { getElementByName("YearOfBirth", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Семейный статус(женат/не женат)
+        /// </summary>
         public string FamilyStatus
         {
             get { return getElementByName("FamilyStatus", this.Xml_Row).InnerText; }
             set { getElementByName("FamilyStatus", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Адрес
+        /// </summary>
         public string Address
         {
             get { return getElementByName("Address", this.Xml_Row).InnerText; }
             set { getElementByName("Address", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Государственный орган
+        /// </summary>
         public string GovernmentAgency
         {
             get { return getElementByName("GovernmentAgency", this.Xml_Row).InnerText; }
             set { getElementByName("GovernmentAgency", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Организация
+        /// </summary>
         public string Organization
         {
             get { return getElementByName("Organization", this.Xml_Row).InnerText; }
             set { getElementByName("Organization", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Должность
+        /// </summary>
         public string Position
         {
             get { return getElementByName("Position", this.Xml_Row).InnerText; }
             set { getElementByName("Position", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Возможность обеспечения жил. площадью
+        /// </summary>
         public string m1
         {
             get { return getElementByName("m1", this.Xml_Row).InnerText; }
             set { getElementByName("m1", this.Xml_Row).InnerText = value; }
         }
 
+        /// <summary>
+        /// Возможность самостоятельного трудоустройства
+        /// </summary>
         public string m2
         {
             get { return getElementByName("m2", this.Xml_Row).InnerText; }

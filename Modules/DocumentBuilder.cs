@@ -48,14 +48,13 @@ namespace DataBase.Modules
 
             Word.Table TabularPart = wordDocument.Tables[1];
 
-#warning проверить все циклы на использование слишком больших переменных
-#warning Если учтено больше трёх лет, запрашиваем у пользователя за какие "годы" выводить информацию в документ
+#warning Если учтено больше трёх лет, необходимо запрашивать у пользователя за какие "годы" выводить информацию в документ
 
             Statement1_Row[] Rows = statement.GetAllRows();
 
-            int AllRowOffset = 4; //Первая строка, с которой начинается вывод информации, является четвертой, поэтому тут 4 заранее
+            System.UInt16 AllRowOffset = 4; //Первая строка, с которой начинается вывод информации, является четвертой, поэтому тут 4 заранее
             
-            for (int index = 0; index < Rows.Length; index++)
+            for (System.UInt16 index = 0; index < Rows.Length; index++)
             {
                 //TabularPart.Rows.Add();
 
@@ -68,16 +67,16 @@ namespace DataBase.Modules
                 // Добавление строк в таблицу
                 //
 
-                int AllocateRows = 0;
+                System.UInt16 AllocateRows = 0;
                 foreach (System.UInt16 key in keyValues.Keys)
                 {
                     if(keyValues[key].Count > AllocateRows)
                     {
-                        AllocateRows = keyValues[key].Count;
+                        AllocateRows = (System.UInt16)keyValues[key].Count;
                     }
                 }
 
-                for(int counter = 0; counter < AllocateRows; counter++)
+                for(System.UInt16 counter = 0; counter < AllocateRows; counter++)
                 {
                     TabularPart.Rows.Add();
                 }
@@ -182,9 +181,7 @@ namespace DataBase.Modules
             //Код и наименование специальности
             if (!ReplaceInWord("{CodeAndName}", Statement.codeAndSpecialityName, wordDocument))
                 Error = true;
-
-#warning Уточнить
-
+            
             //Председатель комиссии
             ReplaceInWord("{CM}", Statement.chairman, wordDocument);
 

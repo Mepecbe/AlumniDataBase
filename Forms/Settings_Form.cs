@@ -95,7 +95,6 @@ namespace DataBase.Forms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            //Открыть диалог на открытие персонального учета выпускников
             string file = getFile();
             if(!string.IsNullOrWhiteSpace(file)){
                 if (!Config.CheckValidXmlDocument(file))
@@ -105,9 +104,22 @@ namespace DataBase.Forms
                     return;
                 }
 
-                if (!(Config.Statement1_Path == file))
+                if(MessageBox.Show("Вы хотите сохранить текущие ведомости персонального учета?\nИначе они будут удалены", "Внимание", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Config.Statement1_Path = this.PathToStatement1File.Text = file;
+                    if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        Directory.CreateDirectory($"{folderBrowserDialog1.SelectedPath}\\Ведомости персонального учета экспорт {DateTime.Now.Day}.{DateTime.Now.Month}.{DateTime.Now.Year} {DateTime.Now.Hour}.{DateTime.Now.Minute}");
+                        File.Move(Config.Statement1_Path, $"{ folderBrowserDialog1.SelectedPath}\\Ведомости персонального учета экспорт {DateTime.Now.Day}.{ DateTime.Now.Month}.{ DateTime.Now.Year} {DateTime.Now.Hour}.{DateTime.Now.Minute}\\Statement1.xml");
+                    }
+                    else
+                    {
+                        File.Delete(Config.Statement1_Path);
+                    }
+                }
+
+                if (Config.Statement1_Path != file)
+                {
+                    File.Copy(file, Config.Statement1_Path);
                     SelectedNewFile_reboot();
                 }
                 else
@@ -120,7 +132,6 @@ namespace DataBase.Forms
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            //Открыть диалог на открытие ведомости распределения выпускников
             string file = getFile();
             if (!string.IsNullOrWhiteSpace(file))
             {
@@ -131,9 +142,22 @@ namespace DataBase.Forms
                     return;
                 }
 
-                if (!(Config.Statement2_Path == file))
+                if (MessageBox.Show("Вы хотите сохранить текущие ведомости распределения выпускников?\nИначе они будут удалены", "Внимание", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    Config.Statement2_Path = this.PathToStatement2File.Text = file;
+                    if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        Directory.CreateDirectory($"{folderBrowserDialog1.SelectedPath}\\Ведомости распределения экспорт {DateTime.Now.Day}.{DateTime.Now.Month}.{DateTime.Now.Year} {DateTime.Now.Hour}.{DateTime.Now.Minute}");
+                        File.Move(Config.Statement2_Path, $"{ folderBrowserDialog1.SelectedPath}\\Ведомости распределения экспорт {DateTime.Now.Day}.{ DateTime.Now.Month}.{ DateTime.Now.Year} {DateTime.Now.Hour}.{DateTime.Now.Minute}\\Statement2.xml");
+                    }
+                    else
+                    {
+                        File.Delete(Config.Statement2_Path);
+                    }
+                }
+
+                if (Config.Statement2_Path != file)
+                {
+                    File.Copy(file, Config.Statement2_Path);
                     SelectedNewFile_reboot();
                 }
                 else
@@ -143,31 +167,7 @@ namespace DataBase.Forms
                 }
             }
         }
-
-        private void CreateStatement1_Click(object sender, EventArgs e)
-        {
-            this.saveFileDialog1.ShowDialog();
-
-            if (!(string.IsNullOrWhiteSpace(this.saveFileDialog1.FileName)))
-            {
-                CreateXml(this.saveFileDialog1.FileName);
-                Config.Statement1_Path = this.PathToStatement1File.Text = this.saveFileDialog1.FileName;
-                SelectedNewFile_reboot();
-            }
-        }
-
-        private void CreateStatement2_Click(object sender, EventArgs e)
-        {
-            this.saveFileDialog1.ShowDialog();
-
-            if (!(string.IsNullOrWhiteSpace(this.saveFileDialog1.FileName)))
-            {
-                CreateXml(this.saveFileDialog1.FileName);
-                Config.Statement2_Path = this.PathToStatement2File.Text = this.saveFileDialog1.FileName;
-                SelectedNewFile_reboot();
-            }
-        }
-
+        
         private void SelectedNewFile_reboot()
         {
             MetroFramework.MetroMessageBox.Show(this, "Вы выбрали новый файл, необходимо перезагрузить программу\n" +
@@ -175,14 +175,5 @@ namespace DataBase.Forms
             Process.Start(Environment.GetCommandLineArgs()[0], "reboot");
             Application.Exit();
         }
-
-        private void CreateXml(string path)
-        {
-            StreamWriter writer = new StreamWriter(File.Create(path));
-            writer.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?> <nodes></nodes>");
-            writer.Close();
-        }
     }
-
-
 }

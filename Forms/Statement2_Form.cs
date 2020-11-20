@@ -65,6 +65,8 @@ namespace DataBase.Forms
                 item.SubItems.Add(row.Position);
                 item.SubItems.Add(row.m1);
                 item.SubItems.Add(row.m2);
+
+                item.Tag = row;
             }
         }
 
@@ -118,10 +120,23 @@ namespace DataBase.Forms
         {
             if (EditItem != null)
             {
-#warning Отредактированное в таблице не будет сохраняться при редактировании документа
                 //Если происходит редактирование ITEM'а в табличке
-                this.AddToTable_button.Text = "Добавить в таблицу";
 
+                {
+                    //Запись новых данных
+                    ((Statement2_Row)(EditItem.Tag)).Name = this.Table_1.Text;
+                    ((Statement2_Row)(EditItem.Tag)).Sex = this.Table_2.Text;
+                    ((Statement2_Row)(EditItem.Tag)).YearOfBirth = this.Table_3.Text;
+                    ((Statement2_Row)(EditItem.Tag)).FamilyStatus = this.Table_4.Text;
+                    ((Statement2_Row)(EditItem.Tag)).Address = this.Table_5.Text;
+                    ((Statement2_Row)(EditItem.Tag)).GovernmentAgency = this.Table_6.Text;
+                    ((Statement2_Row)(EditItem.Tag)).Organization = this.Table_7.Text;
+                    ((Statement2_Row)(EditItem.Tag)).Position = this.Table_8.Text;
+                    ((Statement2_Row)(EditItem.Tag)).m1 = this.Table_9.Text;
+                    ((Statement2_Row)(EditItem.Tag)).m2 = this.Table_10.Text;
+                }
+
+                //Очистка полей
                 for (byte number = 1; number <= 10; number++)
                 {
                     if (this.Controls["Table_" + number.ToString()] is MetroFramework.Controls.MetroTextBox)
@@ -166,17 +181,10 @@ namespace DataBase.Forms
                 //Добавление в строчку различных реквизитов(контролы реквизитов начинаются с "Table_", после "_" идет порядковый номер)
                 for (byte number = 2; number <= 10; number++)
                 {
-#warning Можно оптимизировать, заменив перебор на прямое обращение к контролу по имени
-                    foreach (Control control in this.Controls)
-                    {
-                        if (control.Name == "Table_" + number)
-                        {
-                            item.SubItems.Add(control.Text);
+                    item.SubItems.Add(this.Controls["Table_" + number].Text);
 
-                            if (control is MetroFramework.Controls.MetroTextBox)
-                                control.Text = "";
-                        }
-                    }
+                    if (this.Controls["Table_" + number] is MetroFramework.Controls.MetroTextBox)
+                        this.Controls["Table_" + number].Text = "";
                 }
             }
 

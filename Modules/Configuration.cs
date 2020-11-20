@@ -22,6 +22,9 @@ namespace DataBase
         {
             StreamWriter writer;
 
+            Statement1_Path = Directory.GetCurrentDirectory() + "\\Files\\Statement1.xml";
+            Statement2_Path = Directory.GetCurrentDirectory() + "\\Files\\Statement2.xml";
+
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\TemporaryFiles"))
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\TemporaryFiles");
@@ -162,36 +165,12 @@ namespace DataBase
         /// <summary>
         /// Путь к шаблону ведомости персонального учета 
         /// </summary>
-        public static string Statement1_Path
-        {
-            get
-            {
-                return rootElement.Attributes["PathToStatement1"].Value;
-            }
-
-            set
-            {
-                rootElement.Attributes["PathToStatement1"].Value = value;
-                document.Save(SETTINGS_FILE_NAME);
-            }
-        }
+        public static readonly string Statement1_Path;
 
         /// <summary>
         /// Путь к шаблону ведомости распределения
         /// </summary>
-        public static string Statement2_Path
-        {
-            get
-            {
-                return rootElement.Attributes["PathToStatement2"].Value;
-            }
-
-            set
-            {
-                rootElement.Attributes["PathToStatement2"].Value = value;
-                document.Save(SETTINGS_FILE_NAME);
-            }
-        }
+        public static readonly string Statement2_Path;
 
         /// <summary>
         /// Проверяет "валидность" XML файла

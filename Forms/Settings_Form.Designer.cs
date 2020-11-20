@@ -42,9 +42,7 @@
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.CreateStatement1 = new MetroFramework.Controls.MetroButton();
-            this.CreateStatement2 = new MetroFramework.Controls.MetroButton();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.metroContextMenu1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,6 +124,7 @@
             this.PathToStatement2File.MaxLength = 32767;
             this.PathToStatement2File.Name = "PathToStatement2File";
             this.PathToStatement2File.PasswordChar = '\0';
+            this.PathToStatement2File.ReadOnly = true;
             this.PathToStatement2File.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.PathToStatement2File.SelectedText = "";
             this.PathToStatement2File.SelectionLength = 0;
@@ -156,6 +155,7 @@
             this.PathToStatement1File.MaxLength = 32767;
             this.PathToStatement1File.Name = "PathToStatement1File";
             this.PathToStatement1File.PasswordChar = '\0';
+            this.PathToStatement1File.ReadOnly = true;
             this.PathToStatement1File.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.PathToStatement1File.SelectedText = "";
             this.PathToStatement1File.SelectionLength = 0;
@@ -182,7 +182,7 @@
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(75, 23);
             this.metroButton1.TabIndex = 5;
-            this.metroButton1.Text = "Открыть";
+            this.metroButton1.Text = "Импорт";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
@@ -192,7 +192,7 @@
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(75, 23);
             this.metroButton2.TabIndex = 6;
-            this.metroButton2.Text = "Открыть";
+            this.metroButton2.Text = "Импорт";
             this.metroButton2.UseSelectable = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
@@ -201,37 +201,11 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Файлы XML (*.xml) | *.xml";
             // 
-            // CreateStatement1
-            // 
-            this.CreateStatement1.Location = new System.Drawing.Point(386, 116);
-            this.CreateStatement1.Name = "CreateStatement1";
-            this.CreateStatement1.Size = new System.Drawing.Size(75, 23);
-            this.CreateStatement1.TabIndex = 7;
-            this.CreateStatement1.Text = "Создать";
-            this.CreateStatement1.UseSelectable = true;
-            this.CreateStatement1.Click += new System.EventHandler(this.CreateStatement1_Click);
-            // 
-            // CreateStatement2
-            // 
-            this.CreateStatement2.Location = new System.Drawing.Point(386, 193);
-            this.CreateStatement2.Name = "CreateStatement2";
-            this.CreateStatement2.Size = new System.Drawing.Size(75, 23);
-            this.CreateStatement2.TabIndex = 8;
-            this.CreateStatement2.Text = "Создать";
-            this.CreateStatement2.UseSelectable = true;
-            this.CreateStatement2.Click += new System.EventHandler(this.CreateStatement2_Click);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = "Файлы XML (*.xml) | *.xml";
-            // 
             // Settings_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 512);
-            this.Controls.Add(this.CreateStatement2);
-            this.Controls.Add(this.CreateStatement1);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.PathToStatement1File);
@@ -265,8 +239,6 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private MetroFramework.Controls.MetroButton CreateStatement1;
-        private MetroFramework.Controls.MetroButton CreateStatement2;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
